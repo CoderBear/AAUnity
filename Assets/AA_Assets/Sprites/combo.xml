@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:97373732eba6a921e8f76e4283d66b33$ -->
+<Imageset Name="combo" Imagefile="combo.png" NativeHorzRes="1800" NativeVertRes="1500" AutoScaled="false">
+    <Image Name="combo01" XPos="0" YPos="0" Width="600" Height="300"/>
+    <Image Name="combo02" XPos="600" YPos="0" Width="600" Height="300"/>
+    <Image Name="combo03" XPos="1200" YPos="0" Width="600" Height="300"/>
+    <Image Name="combo04" XPos="0" YPos="300" Width="600" Height="300"/>
+    <Image Name="combo05" XPos="600" YPos="300" Width="600" Height="300"/>
+    <Image Name="combo06" XPos="1200" YPos="300" Width="600" Height="300"/>
+    <Image Name="combo07" XPos="0" YPos="600" Width="600" Height="300"/>
+    <Image Name="combo08" XPos="600" YPos="600" Width="600" Height="300"/>
+    <Image Name="combo09" XPos="1200" YPos="600" Width="600" Height="300"/>
+    <Image Name="combo10" XPos="0" YPos="900" Width="600" Height="300"/>
+    <Image Name="combo11" XPos="600" YPos="900" Width="600" Height="300"/>
+    <Image Name="combo12" XPos="1200" YPos="900" Width="600" Height="300"/>
+    <Image Name="combo13" XPos="0" YPos="1200" Width="600" Height="300"/>
+    <Image Name="combo14" XPos="600" YPos="1200" Width="600" Height="300"/>
+</Imageset>

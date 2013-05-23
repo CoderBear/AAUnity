@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:816764c9606de78bfec98fa8dd481c9e$ -->
+<Imageset Name="andy" Imagefile="andy.png" NativeHorzRes="1360" NativeVertRes="1960" AutoScaled="false">
+    <Image Name="andy01" XPos="0" YPos="0" Width="340" Height="280"/>
+    <Image Name="andy02" XPos="340" YPos="0" Width="340" Height="280"/>
+    <Image Name="andy03" XPos="680" YPos="0" Width="340" Height="280"/>
+    <Image Name="andy04" XPos="1020" YPos="0" Width="340" Height="280"/>
+    <Image Name="andy05" XPos="0" YPos="280" Width="340" Height="280"/>
+    <Image Name="andy06" XPos="340" YPos="280" Width="340" Height="280"/>
+    <Image Name="andy07" XPos="680" YPos="280" Width="340" Height="280"/>
+    <Image Name="andy08" XPos="1020" YPos="280" Width="340" Height="280"/>
+    <Image Name="andy09" XPos="0" YPos="560" Width="340" Height="280"/>
+    <Image Name="andy10" XPos="340" YPos="560" Width="340" Height="280"/>
+    <Image Name="kelly1" XPos="680" YPos="560" Width="340" Height="280"/>
+    <Image Name="kelly2" XPos="1020" YPos="560" Width="340" Height="280"/>
+    <Image Name="kelly3" XPos="0" YPos="840" Width="340" Height="280"/>
+    <Image Name="ninja1" XPos="340" YPos="840" Width="340" Height="280"/>
+    <Image Name="ninja2" XPos="680" YPos="840" Width="340" Height="280"/>
+    <Image Name="ninja3" XPos="1020" YPos="840" Width="340" Height="280"/>
+    <Image Name="ninja4" XPos="0" YPos="1120" Width="340" Height="280"/>
+    <Image Name="pig1" XPos="340" YPos="1120" Width="340" Height="280"/>
+    <Image Name="pig2" XPos="680" YPos="1120" Width="340" Height="280"/>
+    <Image Name="pig3" XPos="1020" YPos="1120" Width="340" Height="280"/>
+    <Image Name="pig4" XPos="0" YPos="1400" Width="340" Height="280"/>
+    <Image Name="pirate1" XPos="340" YPos="1400" Width="340" Height="280"/>
+    <Image Name="pirate2" XPos="680" YPos="1400" Width="340" Height="280"/>
+    <Image Name="pirate3" XPos="1020" YPos="1400" Width="340" Height="280"/>
+    <Image Name="wizard1" XPos="0" YPos="1680" Width="340" Height="280"/>
+    <Image Name="wizard2" XPos="340" YPos="1680" Width="340" Height="280"/>
+    <Image Name="wizard3" XPos="680" YPos="1680" Width="340" Height="280"/>
+</Imageset>

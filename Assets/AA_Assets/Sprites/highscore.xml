@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:e725bcadb2a7f145dbe454186b9d8b28$ -->
+<Imageset Name="highscore" Imagefile="highscore.png" NativeHorzRes="3000" NativeVertRes="360" AutoScaled="false">
+    <Image Name="hs01" XPos="0" YPos="0" Width="600" Height="120"/>
+    <Image Name="hs02" XPos="600" YPos="0" Width="600" Height="120"/>
+    <Image Name="hs03" XPos="1200" YPos="0" Width="600" Height="120"/>
+    <Image Name="hs04" XPos="1800" YPos="0" Width="600" Height="120"/>
+    <Image Name="hs05" XPos="2400" YPos="0" Width="600" Height="120"/>
+    <Image Name="hs06" XPos="0" YPos="120" Width="600" Height="120"/>
+    <Image Name="hs07" XPos="600" YPos="120" Width="600" Height="120"/>
+    <Image Name="hs08" XPos="1200" YPos="120" Width="600" Height="120"/>
+    <Image Name="hs09" XPos="1800" YPos="120" Width="600" Height="120"/>
+    <Image Name="hs10" XPos="2400" YPos="120" Width="600" Height="120"/>
+    <Image Name="hs11" XPos="0" YPos="240" Width="600" Height="120"/>
+    <Image Name="hs12" XPos="600" YPos="240" Width="600" Height="120"/>
+    <Image Name="hs13" XPos="1200" YPos="240" Width="600" Height="120"/>
+    <Image Name="hs14" XPos="1800" YPos="240" Width="600" Height="120"/>
+    <Image Name="hs15" XPos="2400" YPos="240" Width="600" Height="120"/>
+</Imageset>

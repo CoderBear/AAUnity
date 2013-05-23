@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:22439ad3384d8c31e150329f52ae5e9a$ -->
+<Imageset Name="gold_effects" Imagefile="gold_effects.png" NativeHorzRes="1800" NativeVertRes="1800" AutoScaled="false">
+    <Image Name="double1" XPos="0" YPos="0" Width="600" Height="360"/>
+    <Image Name="double2" XPos="600" YPos="0" Width="600" Height="360"/>
+    <Image Name="double3" XPos="1200" YPos="0" Width="600" Height="360"/>
+    <Image Name="double4" XPos="0" YPos="360" Width="600" Height="360"/>
+    <Image Name="frenzy1" XPos="600" YPos="360" Width="600" Height="360"/>
+    <Image Name="frenzy2" XPos="1200" YPos="360" Width="600" Height="360"/>
+    <Image Name="frenzy3" XPos="0" YPos="720" Width="600" Height="360"/>
+    <Image Name="frenzy4" XPos="600" YPos="720" Width="600" Height="360"/>
+    <Image Name="repellent" XPos="1200" YPos="720" Width="600" Height="360"/>
+    <Image Name="super1" XPos="0" YPos="1080" Width="600" Height="360"/>
+    <Image Name="super2" XPos="600" YPos="1080" Width="600" Height="360"/>
+    <Image Name="super3" XPos="1200" YPos="1080" Width="600" Height="360"/>
+    <Image Name="super4" XPos="0" YPos="1440" Width="600" Height="360"/>
+</Imageset>
