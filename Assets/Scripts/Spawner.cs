@@ -118,22 +118,42 @@ public class Spawner : MonoBehaviour
 	
 	void SpawnComboApple ()
 	{
-		if(spawns.Count == 2){
+		if(spawns.Count == 1){
 			spawns.Clear();
 			refillSpawns();
 		}
 		
-//		Debug.Log("Combo Apple Spawned at x = " + spawns[0]);
-		for (int i = 0; i < 3; i++) {
-			Vector3 spawnPos = transform.position + new Vector3 ((float)spawns [0], 0, 0);
-
-			if (random.Next (100) < 50) {
-				Instantiate (comboPrefab1, spawnPos, Quaternion.identity);
-			} else {
-				Instantiate (comboPrefab2, spawnPos, Quaternion.identity);
+		switch(goldScript.CURRENT_EFFECT) {
+		case AppleCollider.GOLD_EFFECTS.SUPERFRENZY:
+		case AppleCollider.GOLD_EFFECTS.FRENZY:
+		{
+			for (int i = 0; i < 2; i++) {
+				Vector3 spawnPos = transform.position + new Vector3 ((float)spawns [0], 0, 0);
+				
+				if (random.Next (100) < 50) {
+					Instantiate (comboPrefab1, spawnPos, Quaternion.identity);
+				} else {
+					Instantiate (comboPrefab2, spawnPos, Quaternion.identity);
+				}
 			}
+			spawns.RemoveAt (0);
 		}
-		spawns.RemoveAt (0);
+			break;
+		default:
+			for (int i = 0; i < 2; i++) {
+				Vector3 spawnPos = transform.position + new Vector3 ((float)spawns [0], 0, 0);
+				
+				if (random.Next (100) < 50) {
+					Instantiate (comboPrefab1, spawnPos, Quaternion.identity);
+				} else {
+					Instantiate (comboPrefab2, spawnPos, Quaternion.identity);
+				}
+				spawns.RemoveAt (0);
+			}
+			break;
+		}
+		
+//		Debug.Log("Combo Apple Spawned at x = " + spawns[0]);
 		
 		if (spawns.Count == 0)
 			refillSpawns ();

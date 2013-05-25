@@ -257,11 +257,11 @@ public class AppleCollider : MonoBehaviour
 					activateEffect ();
 				}
 			}
-			Debug.Log("AAUNITY/GAME !firstGame is " + !firstGame);
+//			Debug.Log("AAUNITY/GAME !firstGame is " + !firstGame);
 			if (!firstGame) {
-				Debug.Log("AAUNITY/GAME !newHighscore is " + !newHighscore);
+//				Debug.Log("AAUNITY/GAME !newHighscore is " + !newHighscore);
 				if (!newHighscore) {
-					Debug.Log("AAUNITY/GAME (displayedScore > highscore) is " + (displayedScore > highscore));
+//					Debug.Log("AAUNITY/GAME (displayedScore > highscore) is " + (displayedScore > highscore));
 					if (displayedScore > highscore) {
 						newHighscore = true;
 					}
