@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using com.soomla.unity;
+using com.soomla.unity.example;
 
 public class playerAnimController : MonoBehaviour {
 	tk2dSprite basket;
@@ -18,6 +20,28 @@ public class playerAnimController : MonoBehaviour {
 		Screen.sleepTimeout = (int)SleepTimeout.NeverSleep;
 		anim = GetComponent<tk2dAnimatedSprite>();
 		flipped = hasflipped = false;
+
+        // set character skin
+        if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.KELLY_GOOD.ItemId))
+        {
+            anim.Play("Kelly");
+        }
+        if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.NINJA_GOOD.ItemId))
+        {
+            anim.Play("Ninja");
+        }
+        if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIG_GOOD.ItemId))
+        {
+            anim.Play("Pig");
+        }
+        if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIRATE_GOOD.ItemId))
+        {
+            anim.Play("Pirate");
+        }
+        if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.WIZARD_GOOD.ItemId))
+        {
+            anim.Play("Wizard");
+        }
 	}
 	
 	// Update is called once per frame
