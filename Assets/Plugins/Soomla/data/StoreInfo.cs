@@ -62,7 +62,7 @@ namespace com.soomla.unity
 				packs.Add(vi.toJSONObject());
 			}
 			
-			StoreUtils.LogDebug(TAG, "SOOMLA/UNITY Adding goods");
+//			StoreUtils.LogDebug(TAG, "Adding goods");
 		    JSONObject suGoods = new JSONObject(JSONObject.Type.ARRAY);
 		    JSONObject ltGoods = new JSONObject(JSONObject.Type.ARRAY);
 		    JSONObject eqGoods = new JSONObject(JSONObject.Type.ARRAY);
@@ -70,18 +70,27 @@ namespace com.soomla.unity
 		    JSONObject paGoods = new JSONObject(JSONObject.Type.ARRAY);
 		    foreach(VirtualGood g in storeAssets.GetGoods()){
 		        if (g is SingleUseVG) {
+                    Debug.Log("Adding SingleUseVG called " + g.Name);
 		            suGoods.Add(g.toJSONObject());
 		        } else if (g is EquippableVG) {
-					Debug.Log ("SOOMLA/UNITY Adding good " + g.Name + " as EquippableVG");
+                    Debug.Log("Adding EquippableVG called " + g.Name);
 		            eqGoods.Add(g.toJSONObject());
 		        } else if (g is LifetimeVG) {
 		            ltGoods.Add(g.toJSONObject());
 		        } else if (g is SingleUsePackVG) {
 		            paGoods.Add(g.toJSONObject());
 		        } else if (g is UpgradeVG) {
+                    Debug.Log("Adding UpgradeVG called " + g.Name);
 		            upGoods.Add(g.toJSONObject());
 		        }
 		    }
+            Debug.Log("Adding SingleUseVGs");
+            Debug.Log(suGoods.print());
+            Debug.Log("Adding EquippableVGs");
+            Debug.Log(eqGoods.print());
+            Debug.Log("Adding UpgradeVGs");
+            Debug.Log(upGoods.print());
+
 			JSONObject goods = new JSONObject(JSONObject.Type.OBJECT);
 			goods.AddField(JSONConsts.STORE_GOODS_SU, suGoods);
 			goods.AddField(JSONConsts.STORE_GOODS_LT, ltGoods);
@@ -108,7 +117,7 @@ namespace com.soomla.unity
 			storeAssetsObj.AddField(JSONConsts.STORE_CURRENCYPACKS, packs);
 			storeAssetsObj.AddField(JSONConsts.STORE_GOODS, goods);
 			storeAssetsObj.AddField(JSONConsts.STORE_NONCONSUMABLES, nonConsumables);
-			
+
 			string storeAssetsJSON = storeAssetsObj.print();
 			
 #if UNITY_ANDROID
@@ -226,7 +235,7 @@ namespace com.soomla.unity
 			
 			JSONObject obj = new JSONObject(json);
 			return new UpgradeVG(obj);
-# else
+#else
 			return null;
 #endif
 		}

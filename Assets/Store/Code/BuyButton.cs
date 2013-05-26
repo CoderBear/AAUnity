@@ -53,19 +53,19 @@ public class BuyButton : MonoBehaviour
 //			store.BuySkin1();
 		}
 		else if(this.gameObject.tag == "Skin2") {
-//			store.BuySkin2();
+            store.BuySkin2();
 		}
 		else if(this.gameObject.tag == "Skin3") {
-//			store.BuySkin3();
+            store.BuySkin3();
 		}
 		else if(this.gameObject.tag == "Skin4") {
-//			store.BuySkin4();
+            store.BuySkin4();
 		}
 		else if(this.gameObject.tag == "Skin5") {
-//			store.BuySkin5();
+            store.BuySkin5();
 		}
 		else if(this.gameObject.tag == "Skin6") {
-//			store.BuySkin6();
+            store.BuySkin6();
 		}
 		// Unlockable - Background 
 		if(this.gameObject.tag == "Background") {

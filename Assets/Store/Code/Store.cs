@@ -82,12 +82,9 @@ public class Store : MonoBehaviour
 	}
 	
 	#region Display Functions
-	void DisplayPowerupInfo (string itemId)
-	{
-	}
-	
 	void DisplayCurrencyInfo ()
 	{
+        Debug.Log("AAUNITY/SOOMLA CurrencyBalance: " + StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID));
 		currencyBalanceLabel.text = StoreInventory.GetItemBalance (AndysApplesAssets.COMBO_CURRENCY_ITEM_ID).ToString ();
 //		currencyBalanceLabel.text = LocalStoreInfo.CurrencyBalance.ToString ();
 	}
@@ -510,73 +507,94 @@ public class Store : MonoBehaviour
 //		}
 //	}
 //	
-//	public void BuySkin2 ()
-//	{
-//		string itemId = LocalStoreInfo.VirtualGoodUnlockables [1].ItemId;
-//		int balance = StoreInventory.GetItemBalance (itemId);
-//		if (balance == 0) {
-//			tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
-//		}
-//		else {
-//			if(!StoreInventory.IsVirtualGoodEquipped(itemId))
-//				StoreInventory.EquipVirtualGood(itemId);
-//		}
-//	}
-//	
-//	public void BuySkin3 ()
-//	{
-//		string itemId = LocalStoreInfo.VirtualGoodUnlockables [2].ItemId;
-//		int balance = StoreInventory.GetItemBalance (itemId);
-//		if (balance == 0) {
-//			StoreInventory.BuyItem (itemId);
-//			tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
-//		}
-//		else {
-//			if(!StoreInventory.IsVirtualGoodEquipped(itemId))
-//				StoreInventory.EquipVirtualGood(itemId);
-//		}
-//	}
-//	
-//	public void BuySkin4 ()
-//	{
-//		string itemId = LocalStoreInfo.VirtualGoodUnlockables [3].ItemId;
-//		int balance = StoreInventory.GetItemBalance (itemId);
-//		if (balance == 0) {
-//			StoreInventory.BuyItem (itemId);
-//			tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
-//		}
-//		else {
-//			if(!StoreInventory.IsVirtualGoodEquipped(itemId))
-//				StoreInventory.EquipVirtualGood(itemId);
-//		}
-//	}
-//	
-//	public void BuySkin5 ()
-//	{
-//		string itemId = LocalStoreInfo.VirtualGoodUnlockables [4].ItemId;
-//		int balance = StoreInventory.GetItemBalance (itemId);
-//		if (balance == 0) {
-//			StoreInventory.BuyItem (itemId);
-//			tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
-//		}
-//		else {
-//			if(!StoreInventory.IsVirtualGoodEquipped(itemId))
-//				StoreInventory.EquipVirtualGood(itemId);
-//		}
-//	}
-//	
-//	public void BuySkin6 ()
-//	{
-//		string itemId = LocalStoreInfo.VirtualGoodUnlockables [5].ItemId;
-//		int balance = StoreInventory.GetItemBalance (itemId);
-//		if (balance == 0) {
-//			StoreInventory.BuyItem (itemId);
-//			tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
-//		}
-//		else {
-//			if(!StoreInventory.IsVirtualGoodEquipped(itemId))
-//				StoreInventory.EquipVirtualGood(itemId);
-//		}
-//	}
+    public void BuySkin2()
+    {
+        string itemId = LocalStoreInfo.VirtualGoodUnlockables[1].ItemId;
+        int balance = StoreInventory.GetItemBalance(itemId);
+        if (balance == 0)
+        {
+            tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        }
+        else
+        {
+            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
+                StoreInventory.EquipVirtualGood(itemId);
+        }
+    }
+
+    public void BuySkin3()
+    {
+        string itemId = LocalStoreInfo.VirtualGoodUnlockables[2].ItemId;
+        int balance = StoreInventory.GetItemBalance(itemId);
+        if (balance == 0)
+        {
+            StoreInventory.BuyItem(itemId);
+            tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        }
+        else
+        {
+            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
+                StoreInventory.EquipVirtualGood(itemId);
+        }
+    }
+
+    public void BuySkin4()
+    {
+        string itemId = LocalStoreInfo.VirtualGoodUnlockables[3].ItemId;
+        int balance = StoreInventory.GetItemBalance(itemId);
+        if (balance == 0)
+        {
+            StoreInventory.BuyItem(itemId);
+            tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        }
+        else
+        {
+            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
+                StoreInventory.EquipVirtualGood(itemId);
+        }
+    }
+
+    public void BuySkin5()
+    {
+        string itemId = LocalStoreInfo.VirtualGoodUnlockables[4].ItemId;
+        int balance = StoreInventory.GetItemBalance(itemId);
+        if (balance == 0)
+        {
+            StoreInventory.BuyItem(itemId);
+            tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        }
+        else
+        {
+            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
+                StoreInventory.EquipVirtualGood(itemId);
+        }
+    }
+
+    public void BuySkin6()
+    {
+        string itemId = LocalStoreInfo.VirtualGoodUnlockables[5].ItemId;
+        int balance = StoreInventory.GetItemBalance(itemId);
+        if (balance == 0)
+        {
+            StoreInventory.BuyItem(itemId);
+            tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        }
+        else
+        {
+            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
+                StoreInventory.EquipVirtualGood(itemId);
+        }
+    }
 	#endregion
+
+    #region Equippable good functions
+    void EquipAndy()
+    {
+        string itemId = LocalStoreInfo.VirtualGoodUnlockables [0].ItemId;
+        if (StoreInventory.IsVirtualGoodEquipped(itemId))
+        {
+            StoreInventory.EquipVirtualGood(itemId);
+        }
+    }
+    #endregion
 }

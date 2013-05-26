@@ -1,16 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Store\Code\AndysApplesAssets.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets\Store\Code\Store.cs" Line="1" Column="1" />
-      <File FileName="Assets\Store\Code\AndysApplesAssets.cs" Line="174" Column="4" />
-      <File FileName="Assets\Store\Code\LocalStoreInfo.cs" Line="9" Column="38" />
-      <File FileName="Assets\Scripts\Buttons\EnergyButton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AppleCollider.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Buttons\BackToMain.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Buttons\SeedButton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Spawner.cs" Line="43" Column="3" />
-      <File FileName="Assets\Plugins\Soomla\domain\virtualGoods\EquippableVG.cs" Line="104" Column="12" />
+      <File FileName="Assets\Scripts\ShieldHitTrigger.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
