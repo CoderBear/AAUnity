@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class UnlockablesDisplay
+public class UnlockablesDisplay : MonoBehaviour
 {
-    UICheckbox equipCheck;
-    UILabel equipText;
+    public UICheckbox equipCheck;
+    public UILabel equipText;
 
-    UILabel costText, buyText;
-    UIButton button;
-    UISprite icon;
+    public UILabel costText, buyText;
+    public UIButton button;
+    public UISprite icon;
 
     public void allowEquipping()
     {
