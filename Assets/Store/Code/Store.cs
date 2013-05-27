@@ -58,6 +58,18 @@ public class Store : MonoBehaviour
         seedBalance.text = StoreInventory.GetItemBalance(ItemId).ToString();
 
         displayInfo();
+
+        if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
+            kelly.allowEquipping();
+        if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
+            ninja.allowEquipping();
+        if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
+            pig.allowEquipping();
+        if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
+            pirate.allowEquipping();
+        if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
+            wizard.allowEquipping();
+
         StoreController.StoreOpening();
     }
 
@@ -529,6 +541,8 @@ public class Store : MonoBehaviour
         string itemId = AndysApplesAssets.KELLY_GOOD.ItemId;
         StoreInventory.BuyItem(itemId);
         tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        Invoke("DisplayCurrencyInfo", 0.5f);
+        kelly.allowEquipping();
     }
 
     public void BuySkin3()
@@ -536,6 +550,8 @@ public class Store : MonoBehaviour
         string itemId = AndysApplesAssets.NINJA_GOOD.ItemId;
         StoreInventory.BuyItem(itemId);
         tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        Invoke("DisplayCurrencyInfo", 0.5f);
+        ninja.allowEquipping();
     }
 
     public void BuySkin4()
@@ -543,6 +559,8 @@ public class Store : MonoBehaviour
         string itemId = AndysApplesAssets.PIG_GOOD.ItemId;
         StoreInventory.BuyItem(itemId);
         tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        Invoke("DisplayCurrencyInfo", 0.5f);
+        pig.allowEquipping();
     }
 
     public void BuySkin5()
@@ -550,6 +568,8 @@ public class Store : MonoBehaviour
         string itemId = AndysApplesAssets.PIRATE_GOOD.ItemId;
         StoreInventory.BuyItem(itemId);
         tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        Invoke("DisplayCurrencyInfo", 0.5f);
+        pirate.allowEquipping();
     }
 
     public void BuySkin6()
@@ -557,6 +577,8 @@ public class Store : MonoBehaviour
         string itemId = AndysApplesAssets.WIZARD_GOOD.ItemId;
         StoreInventory.BuyItem(itemId);
         tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
+        Invoke("DisplayCurrencyInfo", 0.5f);
+        wizard.allowEquipping();
     }
     #endregion
 
@@ -578,7 +600,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.KELLY_GOOD.ItemId;
 
-        if (andy.equipCheck.isChecked)
+        if (kelly.equipCheck.isChecked)
         {
             if (!StoreInventory.IsVirtualGoodEquipped(itemId))
             {
@@ -591,7 +613,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.NINJA_GOOD.ItemId;
 
-        if (andy.equipCheck.isChecked)
+        if (ninja.equipCheck.isChecked)
         {
             if (!StoreInventory.IsVirtualGoodEquipped(itemId))
             {
@@ -604,7 +626,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.PIG_GOOD.ItemId;
 
-        if (andy.equipCheck.isChecked)
+        if (pig.equipCheck.isChecked)
         {
             if (!StoreInventory.IsVirtualGoodEquipped(itemId))
             {
@@ -617,7 +639,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.PIRATE_GOOD.ItemId;
 
-        if (andy.equipCheck.isChecked)
+        if (pirate.equipCheck.isChecked)
         {
             if (!StoreInventory.IsVirtualGoodEquipped(itemId))
             {
@@ -630,7 +652,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.WIZARD_GOOD.ItemId;
 
-        if (andy.equipCheck.isChecked)
+        if (wizard.equipCheck.isChecked)
         {
             if (!StoreInventory.IsVirtualGoodEquipped(itemId))
             {

@@ -99,12 +99,12 @@ namespace com.soomla.unity.example
 			new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 500));
     
 		/*--- Unlockable Skins ---*/
-		public static VirtualGood ANDY_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Andy", "Andy Player Skin", "andy_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 500));
-		public static VirtualGood KELLY_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Kelly", "Kelly Player Skin", "kelly_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 500));
-		public static VirtualGood NINJA_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Ninja", "Ninja Player Skin", "ninja_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 1000));
-		public static VirtualGood PIG_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Pig", "Pig Player Skin", "pig_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 1000));
-		public static VirtualGood PIRATE_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Pirate", "Pirate Player Skin", "pirate_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 1000));
-		public static VirtualGood WIZARD_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Wizard", "Wizard Player Skin", "wizard_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 1000));
+		public static VirtualGood ANDY_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Andy", "Andy Player Skin", "andy_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 0));
+		public static VirtualGood KELLY_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Kelly", "Kelly Player Skin", "kelly_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 1250));
+		public static VirtualGood NINJA_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Ninja", "Ninja Player Skin", "ninja_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 1250));
+		public static VirtualGood PIG_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Pig", "Pig Player Skin", "pig_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
+		public static VirtualGood PIRATE_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Pirate", "Pirate Player Skin", "pirate_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
+		public static VirtualGood WIZARD_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Wizard", "Wizard Player Skin", "wizard_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
 
 		/** Virtual Categories **/
 		public static VirtualCategory UNLOCKABLE_CATEGORY = new VirtualCategory ("Unlockable", new List<string>(new string[] {ANDY_GOOD.ItemId, KELLY_GOOD.ItemId, NINJA_GOOD.ItemId, PIG_GOOD.ItemId, PIRATE_GOOD.ItemId, WIZARD_GOOD.ItemId}));
@@ -176,7 +176,7 @@ namespace com.soomla.unity.example
 		public VirtualCategory[] GetCategories ()
 		{
 			return new VirtualCategory[] {UNLOCKABLE_CATEGORY};
-//    		POWERUP_CATEGORY, UPGRADE_CATEGORY, UNLOCKABLE_CATEGORY	};
+//    		POWERUP_CATEGORY, UPGRADE_CATEGORY,};
 		}
     
 		public NonConsumableItem[] GetNonConsumableItems ()

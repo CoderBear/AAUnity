@@ -37,13 +37,15 @@ namespace com.soomla.unity.example
 		}
 			
 		public void onVirtualGoodEquipped (EquippableVG good) {
+            Debug.Log("AAUNITY/SOOMLA Equipping skin id: " + good.ItemId + ", name: " + good.Name);
 		}
 		
 		public void onVirtualGoodUnequipped (EquippableVG good) {
+            Debug.Log("AAUNITY/SOOMLA Unequipping skin id: " + good.ItemId + ", name: " + good.Name);
 		}
 		
 		public void onGoodUpgrade(VirtualGood good, UpgradeVG currentUpgrade) {
-			Debug.Log ("The current uprade of " + good.ItemId + " is " + currentUpgrade.ItemId);
+            Debug.Log("AAUNITY/SOOMLA The current uprade of " + good.ItemId + " is " + currentUpgrade.ItemId);
 		}
 		
 		public void onBillingSupported () {
@@ -71,12 +73,12 @@ namespace com.soomla.unity.example
 		}
 		
 		public void onCurrencyBalancedChanged(VirtualCurrency virtualCurrency, int balance, int amountAdded){
-			Debug.Log("New currency balance is " + balance);
+            Debug.Log("AAUNITY/SOOMLA New currency balance is " + balance);
 			LocalStoreInfo.UpdateBalances();
 		}
 		
 		public void onGoodBalanceChanged( VirtualGood good, int balance, int amountAdded) {
-			Debug.Log("New balance of VirtualGood " + good.Name + " is " + balance);
+            Debug.Log("AAUNITY/SOOMLA New balance of VirtualGood " + good.Name + " is " + balance);
 			LocalStoreInfo.UpdateBalances();
 		}
 		
