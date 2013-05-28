@@ -23,8 +23,7 @@ public class ShieldButton : MonoBehaviour
 	{	
 		itemId = AndysApplesAssets.SHIELD_POTION_GOOD.ItemId;
 		balance = StoreInventory.GetItemBalance (itemId);
-		balance = 3;
-		
+
 		Debug.Log ("Shield-Powerup Balance at Fast Apples Game Start: " + balance);
 		
 		textMesh.text = balance.ToString ();
@@ -40,11 +39,10 @@ public class ShieldButton : MonoBehaviour
 	
 	public void clickedFA ()
 	{
-//		tracker.AddProgressToAchievement ("Shielded", 1.0f);
-//		StoreInventory.TakeItem (itemId, 1);
-		
-//		balance = StoreInventory.GetItemBalance (itemId);
-		balance--;
+        tracker.AddProgressToAchievement("Shielded", 1.0f);
+        StoreInventory.TakeItem(itemId, 1);
+
+        balance = StoreInventory.GetItemBalance(itemId);
 		textMesh.text = balance.ToString ();
 		textMesh.Commit ();
 		

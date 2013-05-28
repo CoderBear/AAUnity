@@ -70,26 +70,17 @@ namespace com.soomla.unity
 		    JSONObject paGoods = new JSONObject(JSONObject.Type.ARRAY);
 		    foreach(VirtualGood g in storeAssets.GetGoods()){
 		        if (g is SingleUseVG) {
-                    Debug.Log("Adding SingleUseVG called " + g.Name);
 		            suGoods.Add(g.toJSONObject());
 		        } else if (g is EquippableVG) {
-                    Debug.Log("Adding EquippableVG called " + g.Name);
 		            eqGoods.Add(g.toJSONObject());
 		        } else if (g is LifetimeVG) {
 		            ltGoods.Add(g.toJSONObject());
 		        } else if (g is SingleUsePackVG) {
 		            paGoods.Add(g.toJSONObject());
 		        } else if (g is UpgradeVG) {
-                    Debug.Log("Adding UpgradeVG called " + g.Name);
 		            upGoods.Add(g.toJSONObject());
 		        }
 		    }
-            Debug.Log("Adding SingleUseVGs");
-            Debug.Log(suGoods.print());
-            Debug.Log("Adding EquippableVGs");
-            Debug.Log(eqGoods.print());
-            Debug.Log("Adding UpgradeVGs");
-            Debug.Log(upGoods.print());
 
 			JSONObject goods = new JSONObject(JSONObject.Type.OBJECT);
 			goods.AddField(JSONConsts.STORE_GOODS_SU, suGoods);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -64,7 +65,7 @@ public class Spawner : MonoBehaviour
         switch (goldScript.CURRENT_EFFECT)
         {
             case AppleCollider.GOLD_EFFECTS.FRENZY:
-                //			Debug.Log ("AAUNITY/GAME Frenzy Currently Active");
+                Debug.Log("AAUNITY/GAME Frenzy Currently Active");
                 if (random.Next(100) < 50)
                 {
                     Instantiate(comboPrefab1, spawnPos, Quaternion.identity);
@@ -75,7 +76,7 @@ public class Spawner : MonoBehaviour
                 }
                 break;
             case AppleCollider.GOLD_EFFECTS.SUPERFRENZY:
-                //			Debug.Log ("AAUNITY/GAME Super Frenzy Currently Active");
+                Debug.Log("AAUNITY/GAME Super Frenzy Currently Active");
                 if (random.Next(100) < 50)
                 {
                     Instantiate(comboPrefab1, spawnPos, Quaternion.identity);
@@ -86,11 +87,11 @@ public class Spawner : MonoBehaviour
                 }
                 break;
             case AppleCollider.GOLD_EFFECTS.REPEL:
-                //			Debug.Log ("AAUNITY/GAME Repel Currently Active");
+                Debug.Log("AAUNITY/GAME Repel Currently Active");
                 Instantiate(applePrefab, spawnPos, Quaternion.identity);
                 break;
             default:
-                //			Debug.Log ("AAUNITY/GAME No Gold Effects active or Gold Effect == Double Points");
+                Debug.Log("AAUNITY/GAME No Gold Effects active or Gold Effect == Double Points");
                 if (random.Next(100) > 80)
                 {
                     Instantiate(rottenPrefab, spawnPos, Quaternion.identity);
@@ -217,12 +218,6 @@ public class Spawner : MonoBehaviour
             Instantiate(shieldHitAnim, position, Quaternion.identity);
             Destroy(spawn);
         }
-    }
-    #endregion
-
-    #region Gold FirstCatch Function
-    public void firstCatchGold(int index)
-    {
     }
     #endregion
 }
