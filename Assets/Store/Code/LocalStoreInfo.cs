@@ -7,19 +7,21 @@ namespace com.soomla.unity.example {
 	/** Currency and Goods balances ! **/
 	/** we keep these balances so we won't have to make too many calls to the native (Java/iOS) code **/
 	public static class LocalStoreInfo {
-		
+
+        private const string TAG = "AAUNITY/SOOMLA";
+
 		// In this example we have a single currency so we can just save its balance. 
 		// If have more than one currency than you'll have to save a dictionary here.
 		public static int CurrencyBalance = 0;
 		
-		public static Dictionary<string, int> GoodsBalancesPowerups = new Dictionary<string, int> ();
-		public static Dictionary<string, int> GoodsBalancesUnlockables = new Dictionary<string, int> ();
-		public static Dictionary<string, int> GoodsBalancesUpgrades = new Dictionary<string, int> ();
+        //public static Dictionary<string, int> GoodsBalancesPowerups = new Dictionary<string, int> ();
+        //public static Dictionary<string, int> GoodsBalancesUnlockables = new Dictionary<string, int> ();
+        //public static Dictionary<string, int> GoodsBalancesUpgrades = new Dictionary<string, int> ();
 		public static Dictionary<string, int> GoodsBalances = new Dictionary<string, int>();
 		public static VirtualCurrency VirtualCurrency;
-		public static List<VirtualGood> VirtualGoodPowerups = new List<VirtualGood>();
-		public static List<VirtualGood> VirtualGoodUnlockables = new List<VirtualGood>();
-		public static List<VirtualGood> VirtualGoodUpgrades = new List<VirtualGood>();
+        //public static List<VirtualGood> VirtualGoodPowerups = new List<VirtualGood>();
+        //public static List<VirtualGood> VirtualGoodUnlockables = new List<VirtualGood>();
+        //public static List<VirtualGood> VirtualGoodUpgrades = new List<VirtualGood>();
 		public static List<VirtualGood> VirtualGoods = new List<VirtualGood>();
 		public static List<VirtualCurrencyPack> VirtualCurrencyPacks = new List<VirtualCurrencyPack>();
 		
@@ -43,14 +45,14 @@ namespace com.soomla.unity.example {
 		public static void Init ()
 		{
 //			List<VirtualCategory> category = StoreInfo.GetVirtualCategories();
-			Debug.Log("AAUNITY/SOOMLA getting Virtual Goods");
+			AndyUtils.LogDebug(TAG, "getting Virtual Goods");
 			VirtualGoods = StoreInfo.GetVirtualGoods();
 //			List<VirtualGood> good = StoreInfo.GetVirtualGoods ();
-			Debug.Log("AAUNITY/SOOMLA getting Virtual Currency");
+			AndyUtils.LogDebug(TAG, "getting Virtual Currency");
 			VirtualCurrency = StoreInfo.GetVirtualCurrencies()[0];
-			Debug.Log("AAUNITY/SOOMLA Got Virtual Currency");
+			AndyUtils.LogDebug(TAG, "Got Virtual Currency");
 			
-			Debug.Log("AAUNITY/SOOMLA Seperating Virtual Goods by Category");
+			AndyUtils.LogDebug(TAG, "Seperating Virtual Goods by Category");
 			
 //			foreach (VirtualGood vg in good) {
 //				Debug.Log ("AAUNITY/SOOMLA - VG name: " + vg.Name + ", id: " + vg.ItemId + ", category: " + StoreInfo.GetCategoryForVirtualGood(vg.ItemId).Name);
@@ -64,7 +66,7 @@ namespace com.soomla.unity.example {
 //					VirtualGoodUnlockables.Add(vg);
 //				}
 //			}
-			Debug.Log("AAUNITY/SOOMLA Finished Seperating");
+			AndyUtils.LogDebug(TAG, "Finished Seperating");
 			
 			VirtualCurrencyPacks = StoreInfo.GetVirtualCurrencyPacks ();
 			UpdateBalances ();

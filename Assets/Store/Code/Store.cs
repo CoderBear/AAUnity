@@ -5,6 +5,8 @@ using com.soomla.unity.example;
 
 public class Store : MonoBehaviour
 {
+    private const string TAG = "AAUNITY/SOOMLA";
+
     public UILabel currencyBalanceLabel;
     private static AndyEventHandler handler;
     public UpgradeDisplay upgradeFrenzy;
@@ -22,20 +24,20 @@ public class Store : MonoBehaviour
         string ItemId;
         handler = new AndyEventHandler();
 
-        Debug.Log("AAUNITY/SOOMLA LocalStoreInfo Initializing");
+        AndyUtils.LogDebug(TAG, "LocalStoreInfo Initializing");
         LocalStoreInfo.Init();
-        Debug.Log("AAUNITY/SOOMLA LocalStoreInfo Initialized");
+        AndyUtils.LogDebug(TAG, "LocalStoreInfo Initialized");
 
-        Debug.Log("AAUNITY/SOOMLA CurrencyBalance: " + StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID));
+        AndyUtils.LogDebug(TAG, "CurrencyBalance: " + StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID));
         currencyBalanceLabel.text = StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID).ToString();
         ItemId = AndysApplesAssets.SHIELD_POTION_GOOD.ItemId;
-        Debug.Log("AAUNITY/SOOMLA Shield Balace is " + StoreInventory.GetItemBalance(ItemId));
+        AndyUtils.LogDebug(TAG, "Shield Balace is " + StoreInventory.GetItemBalance(ItemId));
         shieldBalance.text = StoreInventory.GetItemBalance(ItemId).ToString();
         ItemId = AndysApplesAssets.ENERGY_POTION_GOOD.ItemId;
-        Debug.Log("AAUNITY/SOOMLA Energy Balance is " + StoreInventory.GetItemBalance(ItemId));
+        AndyUtils.LogDebug(TAG, "Energy Balance is " + StoreInventory.GetItemBalance(ItemId));
         energyBalance.text = StoreInventory.GetItemBalance(ItemId).ToString();
         ItemId = AndysApplesAssets.SUPER_SEED_GOOD.ItemId;
-        Debug.Log("AAUNITY/SOOMLA Seed Balance is " + StoreInventory.GetItemBalance(ItemId));
+        AndyUtils.LogDebug(TAG, "Seed Balance is " + StoreInventory.GetItemBalance(ItemId));
         seedBalance.text = StoreInventory.GetItemBalance(ItemId).ToString();
 
         displayInfo();
@@ -124,7 +126,7 @@ public class Store : MonoBehaviour
         int i = 0;
         foreach (var vg in LocalStoreInfo.VirtualGoods)
         {
-            Debug.Log("AAUNITY/SOOMLA [" + i + "].ItemId= " + vg.ItemId);
+            AndyUtils.LogDebug(TAG, "[" + i + "].ItemId= " + vg.ItemId);
             i++;
         }
 
@@ -149,7 +151,7 @@ public class Store : MonoBehaviour
     #region Display Functions
     void DisplayCurrencyInfo()
     {
-        Debug.Log("AAUNITY/SOOMLA CurrencyBalance: " + StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID));
+        AndyUtils.LogDebug(TAG, "CurrencyBalance: " + StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID));
         currencyBalanceLabel.text = StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID).ToString();
     }
     #endregion
@@ -228,49 +230,49 @@ public class Store : MonoBehaviour
                         uVG = LocalStoreInfo.VirtualGoods[14];
                         upgradeFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(vg.ItemId).ToString();
                         upgradeFrenzy.description.text = uVG.Description;
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         break;
                     case 1: // Show info for Level 2
                         uVG = LocalStoreInfo.VirtualGoods[14 + 1];
                         upgradeFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(vg.ItemId).ToString();
                         upgradeFrenzy.description.text = uVG.Description;
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         break;
                     case 2: // Show info for Level 3
                         uVG = LocalStoreInfo.VirtualGoods[14 + 2];
                         upgradeFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(vg.ItemId).ToString();
                         upgradeFrenzy.description.text = uVG.Description;
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         break;
                     case 3: // Show info for Level 4
                         uVG = LocalStoreInfo.VirtualGoods[14 + 3];
                         upgradeFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(vg.ItemId).ToString();
                         upgradeFrenzy.description.text = uVG.Description;
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         break;
                     case 4: // Show info for Level 5
                         uVG = LocalStoreInfo.VirtualGoods[14 + 4];
                         upgradeFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(vg.ItemId).ToString();
                         upgradeFrenzy.description.text = uVG.Description;
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         break;
                     case 5:  // Show info for Level 6
                         uVG = LocalStoreInfo.VirtualGoods[14 + 5];
                         upgradeFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(vg.ItemId).ToString();
                         upgradeFrenzy.description.text = uVG.Description;
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         break;
                     default:  // Show info for Fully Upgraded (Level 6)
                         uVG = LocalStoreInfo.VirtualGoods[14 + 5];
                         upgradeFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(vg.ItemId).ToString();
                         upgradeFrenzy.description.text = "Fully Upgraded";
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         break;
                 }
@@ -282,49 +284,49 @@ public class Store : MonoBehaviour
                     case 0: // Show info for Level 1
                         uVG = LocalStoreInfo.VirtualGoods[20];
                         upgradeSuperFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeSuperFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeSuperFrenzy.description.text = uVG.Description;
                         break;
                     case 1: // Show info for Level 2
                         uVG = LocalStoreInfo.VirtualGoods[20 + 1];
                         upgradeSuperFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeSuperFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeSuperFrenzy.description.text = uVG.Description;
                         break;
                     case 2: // Show info for Level 3
                         uVG = LocalStoreInfo.VirtualGoods[20 + 2];
                         upgradeSuperFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeSuperFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeSuperFrenzy.description.text = uVG.Description;
                         break;
                     case 3: // Show info for Level 4
                         uVG = LocalStoreInfo.VirtualGoods[20 + 3];
                         upgradeSuperFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeSuperFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeSuperFrenzy.description.text = uVG.Description;
                         break;
                     case 4: // Show info for Level 5
                         uVG = LocalStoreInfo.VirtualGoods[20 + 4];
                         upgradeSuperFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeSuperFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeSuperFrenzy.description.text = uVG.Description;
                         break;
                     case 5:  // Show info for Level 6
                         uVG = LocalStoreInfo.VirtualGoods[20 + 5];
                         upgradeSuperFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeSuperFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeSuperFrenzy.description.text = uVG.Description;
                         break;
                     default:  // Show info for Fully Upgraded (Level 6)
                         uVG = LocalStoreInfo.VirtualGoods[20 + 5];
                         upgradeSuperFrenzy.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeSuperFrenzy.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeSuperFrenzy.description.text = "Fully Upgraded";
                         break;
@@ -337,49 +339,49 @@ public class Store : MonoBehaviour
                     case 0: // Show info for Level 1
                         uVG = LocalStoreInfo.VirtualGoods[26];
                         upgradeDoublePoints.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeDoublePoints.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeDoublePoints.description.text = uVG.Description;
                         break;
                     case 1: // Show info for Level 2
                         uVG = LocalStoreInfo.VirtualGoods[26 + 1];
                         upgradeDoublePoints.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeDoublePoints.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeDoublePoints.description.text = uVG.Description;
                         break;
                     case 2: // Show info for Level 3
                         uVG = LocalStoreInfo.VirtualGoods[26 + 2];
                         upgradeDoublePoints.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeDoublePoints.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeDoublePoints.description.text = uVG.Description;
                         break;
                     case 3: // Show info for Level 4
                         uVG = LocalStoreInfo.VirtualGoods[26 + 3];
                         upgradeDoublePoints.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeDoublePoints.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeDoublePoints.description.text = uVG.Description;
                         break;
                     case 4: // Show info for Level 5
                         uVG = LocalStoreInfo.VirtualGoods[26 + 4];
                         upgradeDoublePoints.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeDoublePoints.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeDoublePoints.description.text = uVG.Description;
                         break;
                     case 5:  // Show info for Level 6
                         uVG = LocalStoreInfo.VirtualGoods[26 + 5];
                         upgradeDoublePoints.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeDoublePoints.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeDoublePoints.description.text = uVG.Description;
                         break;
                     default:  // Show info for Fully Upgraded (Level 6)
                         uVG = LocalStoreInfo.VirtualGoods[26 + 5];
                         upgradeDoublePoints.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeDoublePoints.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeDoublePoints.description.text = "Fully Upgraded";
                         break;
@@ -392,49 +394,49 @@ public class Store : MonoBehaviour
                     case 0: // Show info for Level 1
                         uVG = LocalStoreInfo.VirtualGoods[32];
                         upgradeRepellent.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeRepellent.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeRepellent.description.text = uVG.Description;
                         break;
                     case 1: // Show info for Level 2
                         uVG = LocalStoreInfo.VirtualGoods[32 + 1];
                         upgradeRepellent.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeRepellent.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeRepellent.description.text = uVG.Description;
                         break;
                     case 2: // Show info for Level 3
                         uVG = LocalStoreInfo.VirtualGoods[32 + 2];
                         upgradeRepellent.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeRepellent.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeRepellent.description.text = uVG.Description;
                         break;
                     case 3: // Show info for Level 4
                         uVG = LocalStoreInfo.VirtualGoods[32 + 3];
                         upgradeRepellent.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeRepellent.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeRepellent.description.text = uVG.Description;
                         break;
                     case 4: // Show info for Level 5
                         uVG = LocalStoreInfo.VirtualGoods[32 + 4];
                         upgradeRepellent.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeRepellent.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeRepellent.description.text = uVG.Description;
                         break;
                     case 5:  // Show info for Level 6
                         uVG = LocalStoreInfo.VirtualGoods[32 + 5];
                         upgradeRepellent.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeRepellent.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeRepellent.description.text = uVG.Description;
                         break;
                     default:  // Show info for Fully Upgraded (Level 6)
                         uVG = LocalStoreInfo.VirtualGoods[32 + 5];
                         upgradeRepellent.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeRepellent.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeRepellent.description.text = "Fully Upgraded";
                         break;
@@ -447,49 +449,49 @@ public class Store : MonoBehaviour
                     case 0: // Show info for Level 1
                         uVG = LocalStoreInfo.VirtualGoods[38];
                         upgradeLongevity.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeLongevity.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeLongevity.description.text = uVG.Description;
                         break;
                     case 1: // Show info for Level 2
                         uVG = LocalStoreInfo.VirtualGoods[38 + 1];
                         upgradeLongevity.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeLongevity.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeLongevity.description.text = uVG.Description;
                         break;
                     case 2: // Show info for Level 3
                         uVG = LocalStoreInfo.VirtualGoods[38 + 2];
                         upgradeLongevity.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeLongevity.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeLongevity.description.text = uVG.Description;
                         break;
                     case 3: // Show info for Level 4
                         uVG = LocalStoreInfo.VirtualGoods[38 + 3];
                         upgradeLongevity.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeLongevity.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeLongevity.description.text = uVG.Description;
                         break;
                     case 4: // Show info for Level 5
                         uVG = LocalStoreInfo.VirtualGoods[38 + 4];
                         upgradeLongevity.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeLongevity.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeLongevity.description.text = uVG.Description;
                         break;
                     case 5:  // Show info for Level 6
                         uVG = LocalStoreInfo.VirtualGoods[38 + 5];
                         upgradeLongevity.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeLongevity.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeLongevity.description.text = uVG.Description;
                         break;
                     default:  // Show info for Fully Upgraded (Level 6)
                         uVG = LocalStoreInfo.VirtualGoods[38 + 5];
                         upgradeLongevity.amount.text = "Lv " + StoreInventory.GetGoodUpgradeLevel(uVG.ItemId).ToString();
-                        Debug.Log("AAUNITY/SOOMLA cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
+                        AndyUtils.LogDebug(TAG, "cost for " + uVG.ItemId + " is " + ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount);
                         upgradeLongevity.cost.text = ((PurchaseWithVirtualItem)uVG.PurchaseType).Amount.ToString();
                         upgradeLongevity.description.text = "Fully Upgraded";
                         break;
@@ -505,7 +507,7 @@ public class Store : MonoBehaviour
     {
         string ItemId = AndysApplesAssets.FRENZY_GOOD.ItemId;
         int balance = StoreInventory.GetGoodUpgradeLevel(ItemId);
-        Debug.Log("AAUNITY/SOOMLA Frenzy Level = " + balance);
+        AndyUtils.LogDebug(TAG, "Frenzy Level = " + balance);
 
         if (balance < 6)
         {
@@ -624,6 +626,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.ANDY_GOOD.ItemId;
 
+        AndyUtils.LogDebug(TAG, "StoreInventory.IsVirtualGoodEquipped(" + itemId + ") is " + !StoreInventory.IsVirtualGoodEquipped(itemId));
         if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
             StoreInventory.EquipVirtualGood(itemId);
@@ -631,15 +634,35 @@ public class Store : MonoBehaviour
 
             // turn all others off
             if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
-            kelly.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.KELLY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.KELLY_GOOD.ItemId);
+                kelly.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
-            ninja.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.NINJA_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.NINJA_GOOD.ItemId);
+                ninja.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
-            pig.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIG_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIG_GOOD.ItemId);
+                pig.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
-            pirate.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIRATE_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIRATE_GOOD.ItemId);
+                pirate.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
-            wizard.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.WIZARD_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.WIZARD_GOOD.ItemId);
+                wizard.displayEquipStats(false);
+            }
         }
     }
 
@@ -647,6 +670,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.KELLY_GOOD.ItemId;
 
+        AndyUtils.LogDebug(TAG, "StoreInventory.IsVirtualGoodEquipped(" + itemId + ") is " + !StoreInventory.IsVirtualGoodEquipped(itemId));
         if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
             StoreInventory.EquipVirtualGood(itemId);
@@ -654,15 +678,35 @@ public class Store : MonoBehaviour
 
             // turn all others off
             if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
-            andy.displayEquipStats(false);
+            {
+                if(StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.ANDY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.ANDY_GOOD.ItemId);
+                andy.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
-            ninja.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.NINJA_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.NINJA_GOOD.ItemId);
+                ninja.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
-            pig.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIG_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIG_GOOD.ItemId);
+                pig.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
-            pirate.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIRATE_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIRATE_GOOD.ItemId);
+                pirate.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
-            wizard.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.WIZARD_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.WIZARD_GOOD.ItemId);
+                wizard.displayEquipStats(false);
+            }
         }
     }
 
@@ -670,6 +714,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.NINJA_GOOD.ItemId;
 
+        AndyUtils.LogDebug(TAG, "StoreInventory.IsVirtualGoodEquipped(" + itemId + ") is " + !StoreInventory.IsVirtualGoodEquipped(itemId));
         if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
             StoreInventory.EquipVirtualGood(itemId);
@@ -677,15 +722,35 @@ public class Store : MonoBehaviour
 
             // turn all others off
             if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
-            andy.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.ANDY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.ANDY_GOOD.ItemId);
+                andy.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
-            kelly.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.KELLY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.KELLY_GOOD.ItemId);
+                kelly.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
-            pig.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIG_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIG_GOOD.ItemId);
+                pig.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
-            pirate.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIRATE_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIRATE_GOOD.ItemId);
+                pirate.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
-            wizard.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.WIZARD_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.WIZARD_GOOD.ItemId);
+                wizard.displayEquipStats(false);
+            }
         }
     }
 
@@ -693,6 +758,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.PIG_GOOD.ItemId;
 
+        AndyUtils.LogDebug(TAG, "StoreInventory.IsVirtualGoodEquipped(" + itemId + ") is " + !StoreInventory.IsVirtualGoodEquipped(itemId));
         if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
             StoreInventory.EquipVirtualGood(itemId);
@@ -700,15 +766,35 @@ public class Store : MonoBehaviour
 
             // turn all others off
             if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
-            andy.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.ANDY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.ANDY_GOOD.ItemId);
+                andy.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
-            kelly.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.KELLY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.KELLY_GOOD.ItemId);
+                kelly.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
-            ninja.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.NINJA_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.NINJA_GOOD.ItemId);
+                ninja.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
-            pirate.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIRATE_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIRATE_GOOD.ItemId);
+                pirate.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
-            wizard.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.WIZARD_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.WIZARD_GOOD.ItemId);
+                wizard.displayEquipStats(false);
+            }
         }
     }
 
@@ -716,6 +802,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.PIRATE_GOOD.ItemId;
 
+        AndyUtils.LogDebug(TAG, "StoreInventory.IsVirtualGoodEquipped(" + itemId + ") is " + !StoreInventory.IsVirtualGoodEquipped(itemId));
         if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
             StoreInventory.EquipVirtualGood(itemId);
@@ -723,15 +810,35 @@ public class Store : MonoBehaviour
 
             // turn all others off
             if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
-            andy.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.ANDY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.ANDY_GOOD.ItemId);
+                andy.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
-            kelly.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.KELLY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.KELLY_GOOD.ItemId);
+                kelly.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
-            ninja.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.NINJA_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.NINJA_GOOD.ItemId);
+                ninja.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
-            pig.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIG_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIG_GOOD.ItemId);
+                pig.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
-            wizard.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.WIZARD_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.WIZARD_GOOD.ItemId);
+                wizard.displayEquipStats(false);
+            }
         }
     }
 
@@ -739,6 +846,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.WIZARD_GOOD.ItemId;
 
+        AndyUtils.LogDebug(TAG, "StoreInventory.IsVirtualGoodEquipped(" + itemId + ") is " + !StoreInventory.IsVirtualGoodEquipped(itemId));
         if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
             StoreInventory.EquipVirtualGood(itemId);
@@ -746,15 +854,35 @@ public class Store : MonoBehaviour
 
             // turn all others off
             if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
-            andy.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.ANDY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.ANDY_GOOD.ItemId);
+                andy.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
-            kelly.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.KELLY_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.KELLY_GOOD.ItemId);
+                kelly.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
-            ninja.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.NINJA_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.NINJA_GOOD.ItemId);
+                ninja.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
-            pig.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIG_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIG_GOOD.ItemId);
+                pig.displayEquipStats(false);
+            }
             if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
-            pirate.displayEquipStats(false);
+            {
+                if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIRATE_GOOD.ItemId))
+                    StoreInventory.UnEquipVirtualGood(AndysApplesAssets.PIRATE_GOOD.ItemId);
+                pirate.displayEquipStats(false);
+            }
         }
     }
     #endregion
