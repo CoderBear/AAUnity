@@ -22,6 +22,10 @@ public class playerAnimController : MonoBehaviour {
 		flipped = hasflipped = false;
 
         // set character skin
+        if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.ANDY_GOOD.ItemId))
+        {
+            anim.Play("Andy");
+        }
         if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.KELLY_GOOD.ItemId))
         {
             anim.Play("Kelly");

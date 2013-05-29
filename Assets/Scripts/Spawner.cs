@@ -215,6 +215,7 @@ public class Spawner : MonoBehaviour
         foreach (GameObject spawn in go)
         {
             Vector3 position = spawn.transform.position;
+            Debug.Log("AAUNITY/GAME Animation " + shieldHitAnim.name + " play at " + position.ToString());
             Instantiate(shieldHitAnim, position, Quaternion.identity);
             Destroy(spawn);
         }

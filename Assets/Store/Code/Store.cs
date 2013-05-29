@@ -5,8 +5,6 @@ using com.soomla.unity.example;
 
 public class Store : MonoBehaviour
 {
-
-    //	private static Store instance;
     public UILabel currencyBalanceLabel;
     private static AndyEventHandler handler;
     public UpgradeDisplay upgradeFrenzy;
@@ -19,16 +17,6 @@ public class Store : MonoBehaviour
 
     public UnlockablesDisplay andy, kelly, ninja, pig, pirate, wizard;
 
-    private void Awake()
-    {
-        //		if (Store.instance == null) {
-        //			Store.instance = this;
-        //			GameObject.DontDestroyOnLoad (this.gameObject);
-        //		} else {
-        //			GameObject.Destroy (this);
-        //		}
-    }
-
     public void Start()
     {
         string ItemId;
@@ -38,13 +26,6 @@ public class Store : MonoBehaviour
         LocalStoreInfo.Init();
         Debug.Log("AAUNITY/SOOMLA LocalStoreInfo Initialized");
 
-        //		currencyBalanceLabel.text = LocalStoreInfo.CurrencyBalance.ToString ();
-        //		ItemId = AndysApplesAssets.SHIELD_POTION_GOOD.ItemId;
-        //		shieldBalance.text = LocalStoreInfo.GoodsBalances [ItemId].ToString ();
-        //		ItemId = AndysApplesAssets.ENERGY_POTION_GOOD.ItemId;
-        //		energyBalance.text = LocalStoreInfo.GoodsBalances [ItemId].ToString ();
-        //		ItemId = AndysApplesAssets.SUPER_SEED_GOOD.ItemId;
-        //		seedBalance.text = LocalStoreInfo.GoodsBalances [ItemId].ToString ();
         Debug.Log("AAUNITY/SOOMLA CurrencyBalance: " + StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID));
         currencyBalanceLabel.text = StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID).ToString();
         ItemId = AndysApplesAssets.SHIELD_POTION_GOOD.ItemId;
@@ -59,18 +40,86 @@ public class Store : MonoBehaviour
 
         displayInfo();
 
+        if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 0)
+        {
+            StoreInventory.GiveItem(AndysApplesAssets.ANDY_GOOD.ItemId, 1);
+            andy.allowEquipping();
+            StoreInventory.EquipVirtualGood(AndysApplesAssets.ANDY_GOOD.ItemId);
+            andy.displayEquipStats(true);
+        }
+        else
+        {
+            andy.allowEquipping();
+            if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.ANDY_GOOD.ItemId))
+                andy.displayEquipStats(true);
+            else
+                andy.displayEquipStats(false);
+        }
+
         if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
         {
             kelly.allowEquipping();
+            if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.KELLY_GOOD.ItemId))
+                kelly.displayEquipStats(true);
+            else
+                kelly.displayEquipStats(false);
         }
+        else
+        {
+            kelly.notPurchased();
+        }
+
         if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
+        {
             ninja.allowEquipping();
+            if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.NINJA_GOOD.ItemId))
+                ninja.displayEquipStats(true);
+            else
+                ninja.displayEquipStats(false);
+        }
+        else
+        {
+            ninja.notPurchased();
+        }
+
         if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
+        {
             pig.allowEquipping();
+            if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIG_GOOD.ItemId))
+                pig.displayEquipStats(true);
+            else
+                pig.displayEquipStats(false);
+        }
+        else
+        {
+            pig.notPurchased();
+        }
+
         if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
+        {
             pirate.allowEquipping();
+            if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.PIRATE_GOOD.ItemId))
+                pirate.displayEquipStats(true);
+            else
+                pirate.displayEquipStats(false);
+        }
+        else
+        {
+            pirate.notPurchased();
+        }
+
         if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
+        {
             wizard.allowEquipping();
+            if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.WIZARD_GOOD.ItemId))
+                wizard.displayEquipStats(true);
+            else
+                wizard.displayEquipStats(false);
+        }
+        else
+        {
+            wizard.notPurchased();
+        }
 
         int i = 0;
         foreach (var vg in LocalStoreInfo.VirtualGoods)
@@ -85,23 +134,16 @@ public class Store : MonoBehaviour
     public void CloseStore()
     {
         StoreController.StoreClosing();
-        //		Store.instance = null;
     }
 
     void OnApplicationQuit()
     {
-        //		Store.instance = null;
         StoreController.StoreClosing();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //		if (Store.instance != null && !infoUpdated) {
-        //			infoUpdated = true;
-        //			DisplayCurrencyInfo ();
-        //			displayInfo ();
-        //		}
     }
 
     #region Display Functions
@@ -109,7 +151,6 @@ public class Store : MonoBehaviour
     {
         Debug.Log("AAUNITY/SOOMLA CurrencyBalance: " + StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID));
         currencyBalanceLabel.text = StoreInventory.GetItemBalance(AndysApplesAssets.COMBO_CURRENCY_ITEM_ID).ToString();
-        //		currencyBalanceLabel.text = LocalStoreInfo.CurrencyBalance.ToString ();
     }
     #endregion
 
@@ -532,35 +573,13 @@ public class Store : MonoBehaviour
     #endregion
 
     #region Unlockable good functions
-    //	public void BuySkin1 ()
-    //	{
-    //		string itemId = LocalStoreInfo.VirtualGoodUnlockables [0].ItemId;
-    //		int balance = StoreInventory.GetItemBalance (itemId);
-    //		if (balance == 0) {
-    //			StoreInventory.BuyItem (itemId);
-    //			tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
-    //		}
-    //		else {
-    //			if(!StoreInventory.IsVirtualGoodEquipped(itemId))
-    //				StoreInventory.EquipVirtualGood(itemId);
-    //		}
-    //	}
-    //	
     public void BuySkin2()
     {
         string itemId = AndysApplesAssets.KELLY_GOOD.ItemId;
         StoreInventory.BuyItem(itemId);
         tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
         Invoke("DisplayCurrencyInfo", 0.5f);
-        // show these after purchase
-        kelly.equipCheck.gameObject.SetActive(true);
-        kelly.equipText.gameObject.SetActive(true);
-
-        // hide these after purchase
-        kelly.costText.gameObject.SetActive(false);
-        kelly.buyText.gameObject.SetActive(false);
-        kelly.button.gameObject.SetActive(false);
-        kelly.icon.gameObject.SetActive(false);
+        kelly.allowEquipping();
     }
 
     public void BuySkin3()
@@ -569,16 +588,7 @@ public class Store : MonoBehaviour
         StoreInventory.BuyItem(itemId);
         tracker.AddProgressToAchievement("The Starting Lineups", 1.0f);
         Invoke("DisplayCurrencyInfo", 0.5f);
-
-        // show these after purchase
-        ninja.equipCheck.gameObject.SetActive(true);
-        ninja.equipText.gameObject.SetActive(true);
-
-        // hide these after purchase
-        ninja.costText.gameObject.SetActive(false);
-        ninja.buyText.gameObject.SetActive(false);
-        ninja.button.gameObject.SetActive(false);
-        ninja.icon.gameObject.SetActive(false);
+        ninja.allowEquipping();
     }
 
     public void BuySkin4()
@@ -610,111 +620,141 @@ public class Store : MonoBehaviour
     #endregion
 
     #region Equippable good functions
-    void EquipAndy()
+    public void EquipAndy()
     {
         string itemId = AndysApplesAssets.ANDY_GOOD.ItemId;
 
-        if (andy.equipCheck.isChecked)
+        if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
-            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
-            {
-                StoreInventory.EquipVirtualGood(itemId);
-                kelly.equipCheck.isChecked = false;
-                ninja.equipCheck.isChecked = false;
-                pig.equipCheck.isChecked = false;
-                pirate.equipCheck.isChecked = false;
-                wizard.equipCheck.isChecked = false;
-            }
+            StoreInventory.EquipVirtualGood(itemId);
+            andy.displayEquipStats(true);
+
+            // turn all others off
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
+            kelly.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
+            ninja.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
+            pig.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
+            pirate.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
+            wizard.displayEquipStats(false);
         }
     }
 
-    void EquipKelly()
+    public void EquipKelly()
     {
         string itemId = AndysApplesAssets.KELLY_GOOD.ItemId;
 
-        if (kelly.equipCheck.isChecked)
+        if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
-            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
-            {
-                StoreInventory.EquipVirtualGood(itemId);
-                andy.equipCheck.isChecked = false;
-                ninja.equipCheck.isChecked = false;
-                pig.equipCheck.isChecked = false;
-                pirate.equipCheck.isChecked = false;
-                wizard.equipCheck.isChecked = false;
-            }
+            StoreInventory.EquipVirtualGood(itemId);
+            kelly.displayEquipStats(true);
+
+            // turn all others off
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
+            andy.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
+            ninja.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
+            pig.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
+            pirate.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
+            wizard.displayEquipStats(false);
         }
     }
 
-    void EquipNinja()
+    public void EquipNinja()
     {
         string itemId = AndysApplesAssets.NINJA_GOOD.ItemId;
 
-        if (ninja.equipCheck.isChecked)
+        if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
-            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
-            {
-                StoreInventory.EquipVirtualGood(itemId);
-                andy.equipCheck.isChecked = false;
-                kelly.equipCheck.isChecked = false;
-                pig.equipCheck.isChecked = false;
-                pirate.equipCheck.isChecked = false;
-                wizard.equipCheck.isChecked = false;
-            }
+            StoreInventory.EquipVirtualGood(itemId);
+            ninja.displayEquipStats(true);
+
+            // turn all others off
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
+            andy.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
+            kelly.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
+            pig.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
+            pirate.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
+            wizard.displayEquipStats(false);
         }
     }
 
-    void EquipPig()
+    public void EquipPig()
     {
         string itemId = AndysApplesAssets.PIG_GOOD.ItemId;
 
-        if (pig.equipCheck.isChecked)
+        if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
-            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
-            {
-                StoreInventory.EquipVirtualGood(itemId);
-                andy.equipCheck.isChecked = false;
-                kelly.equipCheck.isChecked = false;
-                ninja.equipCheck.isChecked = false;
-                pirate.equipCheck.isChecked = false;
-                wizard.equipCheck.isChecked = false;
-            }
+            StoreInventory.EquipVirtualGood(itemId);
+            pig.displayEquipStats(true);
+
+            // turn all others off
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
+            andy.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
+            kelly.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
+            ninja.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
+            pirate.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
+            wizard.displayEquipStats(false);
         }
     }
 
-    void EquipPirate()
+    public void EquipPirate()
     {
         string itemId = AndysApplesAssets.PIRATE_GOOD.ItemId;
 
-        if (pirate.equipCheck.isChecked)
+        if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
-            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
-            {
-                StoreInventory.EquipVirtualGood(itemId);
-                andy.equipCheck.isChecked = false;
-                kelly.equipCheck.isChecked = false;
-                ninja.equipCheck.isChecked = false;
-                pig.equipCheck.isChecked = false;
-                wizard.equipCheck.isChecked = false;
-            }
+            StoreInventory.EquipVirtualGood(itemId);
+            pirate.displayEquipStats(true);
+
+            // turn all others off
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
+            andy.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
+            kelly.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
+            ninja.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
+            pig.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.WIZARD_GOOD.ItemId) == 1)
+            wizard.displayEquipStats(false);
         }
     }
 
-    void EquipWizard()
+    public void EquipWizard()
     {
         string itemId = AndysApplesAssets.WIZARD_GOOD.ItemId;
 
-        if (wizard.equipCheck.isChecked)
+        if (!StoreInventory.IsVirtualGoodEquipped(itemId))
         {
-            if (!StoreInventory.IsVirtualGoodEquipped(itemId))
-            {
-                StoreInventory.EquipVirtualGood(itemId);
-                andy.equipCheck.isChecked = false;
-                kelly.equipCheck.isChecked = false;
-                ninja.equipCheck.isChecked = false;
-                pig.equipCheck.isChecked = false;
-                pirate.equipCheck.isChecked = false;
-            }
+            StoreInventory.EquipVirtualGood(itemId);
+            wizard.displayEquipStats(true);
+
+            // turn all others off
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
+            andy.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.KELLY_GOOD.ItemId) == 1)
+            kelly.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.NINJA_GOOD.ItemId) == 1)
+            ninja.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIG_GOOD.ItemId) == 1)
+            pig.displayEquipStats(false);
+            if (StoreInventory.GetItemBalance(AndysApplesAssets.PIRATE_GOOD.ItemId) == 1)
+            pirate.displayEquipStats(false);
         }
     }
     #endregion

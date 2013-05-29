@@ -35,7 +35,7 @@ public class AppleCollider : MonoBehaviour
     public tk2dAnimatedSprite animHighscore;
     public tk2dAnimatedSprite animGold;
     public StatsDB db;
-    public GameObject shieldHitAnim;
+    //public GameObject shieldHitAnim;
     public AudioClip caughtGood;
     public AudioClip caughtGold;
     public AudioClip caughtBad;
@@ -283,7 +283,7 @@ public class AppleCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        Transform position = collision.gameObject.transform;
+        //Transform position = collision.gameObject.transform;
 #if UNITY_ANDROID && !UNITY_EDITOR
 		if(result)
 		touchsense.playBuiltinEffect (TouchSense.EXPLOSION1);
@@ -292,7 +292,10 @@ public class AppleCollider : MonoBehaviour
         if (audioOn)
             audio.PlayOneShot(caughtBad);
 
-        Instantiate(shieldHitAnim, position.position, Quaternion.identity);
+        //Vector3 loc = position.position + new Vector3(0, -100, 0);
+
+        //Debug.Log("AAUNITY/GAME Basket Collide | Animation " + shieldHitAnim.name + " play at " + position.ToString());
+        //Instantiate(shieldHitAnim, position.position, Quaternion.identity);
 
         achievementTracker.AddProgressToAchievement("Rotten Palooza", 1.0f);
         if (GAME_MODE == GAME_MODES.PERFECTIONIST)

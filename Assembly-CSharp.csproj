@@ -769,6 +769,7 @@
      <Compile Include="Assets\Scripts\playerAnimController.cs" />
      <Compile Include="Assets\Store\Code\AndysApplesAssets.cs" />
      <Compile Include="Assets\Store\Code\BuyButton.cs" />
+     <Compile Include="Assets\Store\Code\EquipButton.cs" />
      <Compile Include="Assets\Store\Code\EventHandler.cs" />
      <Compile Include="Assets\Store\Code\LocalStoreInfo.cs" />
      <Compile Include="Assets\Store\Code\Store.cs" />
@@ -800,6 +801,10 @@
      <Compile Include="Assets\TK2DROOT\tk2d\Code\TileMap\tk2dTileMapColliderBuilder.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\TileMap\tk2dTileMapData.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\TileMap\tk2dTileMapMeshBuilder.cs" />
+     <Compile Include="Assets\ToonEffect_V2\Examples\Gui.cs" />
+     <Compile Include="Assets\ToonEffect_V2\Plugins\HTSequence.cs" />
+     <Compile Include="Assets\ToonEffect_V2\Plugins\HTSpriteSequencer.cs" />
+     <Compile Include="Assets\ToonEffect_V2\Plugins\HTSpriteSheet.cs" />
      <Compile Include="Assets\Toon_Explosion_V1\Example\demoGUI.cs" />
      <Compile Include="Assets\Toon_Explosion_V1\Plugins\HTExplosion.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />
@@ -908,6 +913,7 @@
      <Compile Include="Assets\sqlitekit\src\walker_c.cs" />
      <Compile Include="Assets\sqlitekit\src\where_c.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
+     <None Include="Assets\ToonEffect_V2\Documentation\03 - HTSpriteSheet.cs parameters.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />
      <None Include="Assets\PlayMaker\Readme.txt" />
      <None Include="Assets\Font\appleberry.txt" />
@@ -944,6 +950,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (SoftClip).shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitCutoutVertexColor.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\ToonEffect_V2\Documentation\01 - Package description.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font.shader" />
      <None Include="Assets\NGUI\ReadMe - 2.5.1.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
@@ -962,6 +969,8 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\AA_Assets\Sprites\catch_effects.txt" />
      <None Include="Assets\PlayMaker\Versions\readme.txt" />
+     <None Include="Assets\ToonEffect_V2\Documentation\04 - How to create a sequence.txt" />
+     <None Include="Assets\ToonEffect_V2\Documentation\02 - How to create an effect.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\AdditiveVertexColor.shader" />
  <Reference Include="PauseControllerDLL">
  <HintPath>Assets\PauseController\PauseControllerDLL.dll</HintPath>
