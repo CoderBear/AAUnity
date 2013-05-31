@@ -26,7 +26,7 @@ public class AchievementTrack
 		}
 
 		currentProgress += progress;
-		if(Name != "All Nighter")
+        //if(Name != "All Nighter")
 //			Debug.Log("AAUNITY/GAME " + Name + ": " + currentProgress + " / " + TargetProgress);
 		if (currentProgress >= TargetProgress) {
 			Earned = true;
@@ -145,12 +145,40 @@ public class AchievementTracker : MonoBehaviour
 			AchievementEarned ();
 		}
 	}
+
+    public void StoreIAPprogress() {
+        if (Achievements[27].Earned) // Straight A's
+        {
+            db.unlock(28);
+            db.StoreProgress(28, (int)Achievements[27].getProgress());
+        }
+        else
+        {
+            db.StoreProgress(28, (int)Achievements[27].getProgress());
+        }
+
+        if (Achievements[28].Earned) // The Starting Lineup
+        {
+            db.unlock(29);
+            db.StoreProgress(29, (int)Achievements[28].getProgress());
+        }
+        else
+        {
+            db.StoreProgress(29, (int)Achievements[28].getProgress());
+        }
+
+        if (Achievements[29].Earned) // Change of Scenery
+        {
+            db.unlock(30);
+            db.StoreProgress(30, (int)Achievements[29].getProgress());
+        }
+    }
 	
 	public void StoreInfo ()
 	{
 		for (int i = 0; i < Achievements.Length; i++) {
 			// unlock achievement if not already unlocked in database
-			if (Achievements [i].Earned && !db.isUnlocked(i + 1)) {
+			if (Achievements [i].Earned && !db.isUnlocked(i + 1) && (i != 27 || i != 28 || i != 29)) {
 				db.unlock (i + 1);
 				db.StoreProgress(i + 1, (int)Achievements[i].getProgress());
 			}

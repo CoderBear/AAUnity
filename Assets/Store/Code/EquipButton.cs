@@ -40,8 +40,16 @@ public class EquipButton : MonoBehaviour {
             store.EquipWizard();
         }
         // Unlockable - Background 
-        if (this.gameObject.tag == "Background")
+        if (this.gameObject.tag == "Background1")
         {
+            AndyUtils.LogDebug(TAG, "EquipDefaultBG Pressed");
+            store.EquipDefaultBG();
+        }
+
+        if (this.gameObject.tag == "Background2")
+        {
+            AndyUtils.LogDebug(TAG, "EquipBlossomBG Pressed");
+            store.EquipBlossomBG();
         }
     }
 }

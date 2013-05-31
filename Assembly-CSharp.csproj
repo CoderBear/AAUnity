@@ -728,8 +728,6 @@
      <Compile Include="Assets\Scripts\AchievementManager.cs" />
      <Compile Include="Assets\Scripts\AchievementTracker.cs" />
      <Compile Include="Assets\Scripts\AndyUtils.cs" />
-     <Compile Include="Assets\Scripts\Apple.cs" />
-     <Compile Include="Assets\Scripts\AppleCollider.cs" />
      <Compile Include="Assets\Scripts\Buttons\AchieveButton.cs" />
      <Compile Include="Assets\Scripts\Buttons\BackToMain.cs" />
      <Compile Include="Assets\Scripts\Buttons\EnergyButton.cs" />
@@ -752,20 +750,23 @@
      <Compile Include="Assets\Scripts\Buttons\StorePurchaseButton.cs" />
      <Compile Include="Assets\Scripts\Buttons\StoreUnlockableButton.cs" />
      <Compile Include="Assets\Scripts\Buttons\StoreUpgradeButton.cs" />
+     <Compile Include="Assets\Scripts\GameModes\Apple.cs" />
+     <Compile Include="Assets\Scripts\GameModes\AppleCollider.cs" />
+     <Compile Include="Assets\Scripts\GameModes\BGStartup.cs" />
+     <Compile Include="Assets\Scripts\GameModes\HitGround.cs" />
+     <Compile Include="Assets\Scripts\GameModes\Spawner.cs" />
+     <Compile Include="Assets\Scripts\GameModes\TimerCountdown.cs" />
+     <Compile Include="Assets\Scripts\GameModes\UnityMersenneTwister.cs" />
+     <Compile Include="Assets\Scripts\GameModes\UnityNormalDistribution.cs" />
+     <Compile Include="Assets\Scripts\GameModes\playerAnimController.cs" />
      <Compile Include="Assets\Scripts\GameStartup.cs" />
-     <Compile Include="Assets\Scripts\HitGround.cs" />
      <Compile Include="Assets\Scripts\MainMenuAudio.cs" />
      <Compile Include="Assets\Scripts\OptionsDisplay.cs" />
      <Compile Include="Assets\Scripts\ShieldHitTrigger.cs" />
-     <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\SpinRay.cs" />
      <Compile Include="Assets\Scripts\StatStore.cs" />
      <Compile Include="Assets\Scripts\StatsDB.cs" />
-     <Compile Include="Assets\Scripts\TimerCountdown.cs" />
-     <Compile Include="Assets\Scripts\UnityMersenneTwister.cs" />
-     <Compile Include="Assets\Scripts\UnityNormalDistribution.cs" />
      <Compile Include="Assets\Scripts\UpgradeDisplay.cs" />
-     <Compile Include="Assets\Scripts\playerAnimController.cs" />
      <Compile Include="Assets\Store\Code\AndysApplesAssets.cs" />
      <Compile Include="Assets\Store\Code\BuyButton.cs" />
      <Compile Include="Assets\Store\Code\EquipButton.cs" />
@@ -800,10 +801,11 @@
      <Compile Include="Assets\TK2DROOT\tk2d\Code\TileMap\tk2dTileMapColliderBuilder.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\TileMap\tk2dTileMapData.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\TileMap\tk2dTileMapMeshBuilder.cs" />
-     <Compile Include="Assets\ToonEffect_V2\Examples\Gui.cs" />
-     <Compile Include="Assets\ToonEffect_V2\Plugins\HTSequence.cs" />
-     <Compile Include="Assets\ToonEffect_V2\Plugins\HTSpriteSequencer.cs" />
-     <Compile Include="Assets\ToonEffect_V2\Plugins\HTSpriteSheet.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoAnimController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoButtonController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoCameraController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoReloadController.cs" />
+     <Compile Include="Assets\TK2DROOT\tk2d_demo\tk2dDemoRuntimeSpriteController.cs" />
      <Compile Include="Assets\Toon_Explosion_V1\Example\demoGUI.cs" />
      <Compile Include="Assets\Toon_Explosion_V1\Plugins\HTExplosion.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />
@@ -912,7 +914,6 @@
      <Compile Include="Assets\sqlitekit\src\walker_c.cs" />
      <Compile Include="Assets\sqlitekit\src\where_c.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
-     <None Include="Assets\ToonEffect_V2\Documentation\03 - HTSpriteSheet.cs parameters.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />
      <None Include="Assets\PlayMaker\Readme.txt" />
      <None Include="Assets\Font\appleberry.txt" />
@@ -921,13 +922,13 @@
      <None Include="Assets\TK2DROOT\tk2d\Shaders\SolidVertexColor.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font (AlphaClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
-     <None Include="Assets\AA_Assets\HUD\hud.txt" />
      <None Include="Assets\Font\appleberry_0.fnt" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\PauseController\PauseControllerDLL.xml" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (AlphaClip) .shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitPremulVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\PremulVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2d_demo\Credits.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (AlphaClip).shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\goodies\PackedTextMesh.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\Blend2TexVertexColor.shader" />
@@ -943,7 +944,6 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (SoftClip).shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitCutoutVertexColor.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
-     <None Include="Assets\ToonEffect_V2\Documentation\01 - Package description.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font.shader" />
      <None Include="Assets\NGUI\ReadMe - 2.5.1.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
@@ -952,6 +952,7 @@
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\CutoutVertexColor.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
+     <None Include="Assets\TK2DROOT\tk2d_demo\demobmfont\test.fnt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitBlendVertexColor.shader" />
      <None Include="Assets\PauseController\Includes\Editor\PauseControllerEditorDLL.xml" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
@@ -960,9 +961,8 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\PlayMaker\Versions\readme.txt" />
-     <None Include="Assets\ToonEffect_V2\Documentation\04 - How to create a sequence.txt" />
-     <None Include="Assets\ToonEffect_V2\Documentation\02 - How to create an effect.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\AdditiveVertexColor.shader" />
+     <None Include="Assets\TK2DROOT\tk2d_demo\democameradata\source\democamerafont.fnt" />
  <Reference Include="PauseControllerDLL">
  <HintPath>Assets\PauseController\PauseControllerDLL.dll</HintPath>
  </Reference>

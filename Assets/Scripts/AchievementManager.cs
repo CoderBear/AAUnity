@@ -124,7 +124,7 @@ public class AchievementManager : MonoBehaviour
 //				Achievements[j].Earned = true;
 				Achievements[j].SetProgress(Achievements[j].TargetProgress);
 			}
-			if(j >= 40 )
+			if(j >= 39 )
 				Achievements[j].SetProgress((float)db.getProgress(j+1));
 			
 			// Get UI Label for name in child obj and set it to Achievments[j].name
