@@ -7,6 +7,8 @@ using com.soomla.unity.example;
 
 public class TimerCountdown : MonoBehaviour
 {
+    private const string TAG = "AAUNITY/GAME";
+
 	tk2dTextMesh textMesh;
 	public PauseController pause;
 	public AudioClip game_end;
@@ -19,7 +21,7 @@ public class TimerCountdown : MonoBehaviour
 	int restSeconds; // amount of seconds left in counddown
 	int roundedRestSeconds; // amount of seconds left in counddown (rounded up)
 
-	public float totalTime;
+	public int totalTime;
 	public int countDownSeconds; // timelimit for countdown in seconds
 	
 	public bool timerActive; // determines whether timer is active
@@ -57,6 +59,7 @@ public class TimerCountdown : MonoBehaviour
 			} else {
 				countDownSeconds += 25;
 			}
+            //countDownSeconds = 10;
 			textMesh.text = countDownSeconds.ToString ();
 			break;
 		case AppleCollider.GAME_MODES.PERFECTIONIST:
@@ -133,7 +136,7 @@ public class TimerCountdown : MonoBehaviour
 	{
 		// Make sure that your time is based on ** when the script is first called**
 		// instead of when your game started
-		totalTime += Time.deltaTime;
+        totalTime++;
 		countDownSeconds--;
 		restSeconds = countDownSeconds;
 		
@@ -166,9 +169,13 @@ public class TimerCountdown : MonoBehaviour
 
     public void resetTimer()
     {
+        //PauseGame();
         string ItemId = AndysApplesAssets.LONGEVITY_GOOD.ItemId;
         int level = StoreInventory.GetGoodUpgradeLevel(ItemId);
         endSoundPlaying = !endSoundPlaying;
+
+        AndyUtils.LogDebug(TAG, "Setting time to default");
+        countDownSeconds = 60;
 
         if (level < 6)
         {
@@ -178,8 +185,10 @@ public class TimerCountdown : MonoBehaviour
         {
             countDownSeconds += 25;
         }
-        textMesh.text = countDownSeconds.ToString();
-        textMesh.Commit();
+        AndyUtils.LogDebug(TAG, "CountdownSeconds are now " + countDownSeconds);
+
+        DisplayTimer();
+        //ResumeGame();
     }
 	
 	void OnClick ()

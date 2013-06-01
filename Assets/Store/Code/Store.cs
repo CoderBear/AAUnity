@@ -44,13 +44,6 @@ public class Store : MonoBehaviour
         displayInfo();
 
         // Initialize skins
-        //if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 0)
-        //{
-        //    StoreInventory.GiveItem(AndysApplesAssets.ANDY_GOOD.ItemId, 1);
-        //    andy.allowEquipping();
-        //    StoreInventory.EquipVirtualGood(AndysApplesAssets.ANDY_GOOD.ItemId);
-        //    andy.displayEquipStats(true);
-        //}
         if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 1)
         {
             andy.allowEquipping();
@@ -661,7 +654,7 @@ public class Store : MonoBehaviour
     {
         string itemId = AndysApplesAssets.CBLOSSOM_BG.ItemId;
         StoreInventory.BuyItem(itemId);
-        tracker.AddProgressToAchievement("A Change of Scenery", 1.0f);
+        tracker.AddProgressToAchievement("Change of Scenery", 1.0f);
         tracker.StoreIAPprogress();
         Invoke("DisplayCurrencyInfo", 0.5f);
         blossomBG.allowEquipping();
