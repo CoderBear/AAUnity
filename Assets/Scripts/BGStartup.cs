@@ -6,42 +6,31 @@ using com.soomla.unity.example;
 
 public class BGStartup : MonoBehaviour
 {
-    public tk2dSprite sky, sky2;
-    public tk2dSprite tree, tree2;
-    public tk2dSprite canopy, canopy2;
-    public tk2dSprite ray, ray2;
-    public tk2dSprite bottom, bottom2;
+    public tk2dSprite sky;
+    public tk2dSprite tree;
+    public tk2dSprite canopy;
+    public tk2dSprite ray;
+    public tk2dSprite bottom;
+
+    public tk2dSpriteCollectionData bkgdSpriteCollection, bkgdSpriteCollection2;
 
     void Start()
     {
-
         if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.DEFAULT_BG.ItemId))
         {
-            sky.gameObject.SetActive(true);
-            tree.gameObject.SetActive(true);
-            canopy.gameObject.SetActive(true);
-            ray.gameObject.SetActive(true);
-            bottom.gameObject.SetActive(true);
-
-            sky2.gameObject.SetActive(false);
-            tree2.gameObject.SetActive(false);
-            canopy2.gameObject.SetActive(false);
-            ray2.gameObject.SetActive(false);
-            bottom2.gameObject.SetActive(false);
+            sky.SetSprite(bkgdSpriteCollection, "newbg 1");
+            tree.SetSprite(bkgdSpriteCollection, "treeland");
+            canopy.SetSprite(bkgdSpriteCollection, "treetop");
+            ray.SetSprite(bkgdSpriteCollection, "hugeray");
+            bottom.SetSprite(bkgdSpriteCollection, "treeland_bottom");
         }
         if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.CBLOSSOM_BG.ItemId))
         {
-            sky.gameObject.SetActive(false);
-            tree.gameObject.SetActive(false);
-            canopy.gameObject.SetActive(false);
-            ray.gameObject.SetActive(false);
-            bottom.gameObject.SetActive(false);
-
-            sky2.gameObject.SetActive(true);
-            tree2.gameObject.SetActive(true);
-            canopy2.gameObject.SetActive(true);
-            ray2.gameObject.SetActive(true);
-            bottom2.gameObject.SetActive(true);
+            sky.SetSprite(bkgdSpriteCollection2, "bg_blossom");
+            tree.SetSprite(bkgdSpriteCollection2, "tree_cherry");
+            canopy.SetSprite(bkgdSpriteCollection2, "cherryblossombgtop");
+            ray.SetSprite(bkgdSpriteCollection2, "hugeray2");
+            bottom.SetSprite(bkgdSpriteCollection2, "tree_cherry_bottom");
         }
     }
 }
