@@ -41,12 +41,7 @@ public class ShieldButton : MonoBehaviour
         StoreInventory.TakeItem(itemId, 1);
         balance--;
 
-<<<<<<< HEAD
-=======
-        balance = StoreInventory.GetItemBalance(itemId);
-        //balance = 1;
->>>>>>> 68205bd490838e0b0a390fdd46409e1bae50bd24
-		textMesh.text = balance.ToString ();
+        textMesh.text = balance.ToString ();
 		textMesh.Commit ();
 		
 		icon.color = Color.gray;
