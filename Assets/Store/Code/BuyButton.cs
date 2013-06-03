@@ -49,10 +49,8 @@ public class BuyButton : MonoBehaviour
 			store.BuyUpgrade5();
 		}
 		// Unlockable - Skin goods
-		if(this.gameObject.tag == "Skin1") {
-//			store.BuySkin1();
-		}
-		else if(this.gameObject.tag == "Skin2") {
+        if (this.gameObject.tag == "Skin2")
+        {
             store.BuySkin2();
 		}
 		else if(this.gameObject.tag == "Skin3") {
@@ -68,7 +66,9 @@ public class BuyButton : MonoBehaviour
             store.BuySkin6();
 		}
 		// Unlockable - Background 
-		if(this.gameObject.tag == "Background") {
-		}
+        if (this.gameObject.tag == "Background2")
+        {
+            store.BuyBackground2();
+        }
 	}
 }

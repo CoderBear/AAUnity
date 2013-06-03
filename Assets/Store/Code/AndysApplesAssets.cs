@@ -8,8 +8,8 @@ namespace com.soomla.unity.example
 	{
 		/** Static Final members **/
 		public static string COMBO_CURRENCY_ITEM_ID = "currency_combo";
-		public static string COMBO725_PACK_PRODUCT_ID = "android.test.purchased";
-		public static string COMBO2500_PACK_PRODUCT_ID = "android.test.purchased";
+		public static string COMBO2K_PACK_PRODUCT_ID = "android.test.purchased";
+		public static string COMBO15K_PACK_PRODUCT_ID = "android.test.purchased";
 		public static string COMBO5K_PACK_PRODUCT_ID = "android.test.purchased";
 
 		/** Virtual Currencies **/
@@ -106,43 +106,36 @@ namespace com.soomla.unity.example
 		public static VirtualGood PIRATE_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Pirate", "Pirate Player Skin", "pirate_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
 		public static VirtualGood WIZARD_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Wizard", "Wizard Player Skin", "wizard_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
 
+        /*--- Unlockable Backgrounds ---*/
+        public static VirtualGood DEFAULT_BG = new EquippableVG(EquippableVG.EquippingModel.CATEGORY, "Default", "The initial starting background", "default_bg", new PurchaseWithVirtualItem(COMBO_CURRENCY_ITEM_ID, 0));
+        public static VirtualGood CBLOSSOM_BG = new EquippableVG(EquippableVG.EquippingModel.CATEGORY, "Cherry Blossom", "Experience the Japanese concept of 'Mono No Aware' with this background.", "blossom_bg", new PurchaseWithVirtualItem(COMBO_CURRENCY_ITEM_ID, 5000));
+
 		/** Virtual Categories **/
 		public static VirtualCategory UNLOCKABLE_CATEGORY = new VirtualCategory ("Unlockable", new List<string>(new string[] {ANDY_GOOD.ItemId, KELLY_GOOD.ItemId, NINJA_GOOD.ItemId, PIG_GOOD.ItemId, PIRATE_GOOD.ItemId, WIZARD_GOOD.ItemId}));
-//		public static VirtualCategory POWERUP_CATEGORY = new VirtualCategory ("Powerup", new List<string>(new string[] {SHIELD_POTION_GOOD.ItemId, ENERGY_POTION_GOOD.ItemId, SUPER_SEED_GOOD.ItemId}));
-//		public static VirtualCategory UPGRADE_CATEGORY = new VirtualCategory ("Upgrade", new List<string>(new string[] {FRENZY_GOOD.ItemId, SUPER_GOOD.ItemId, DOUBLE_GOOD.ItemId, REPELLENT_GOOD.ItemId, LONGEVITY_GOOD.ItemId}));
-//		public static VirtualCategory GENERAL_CATEGORY = new VirtualCategory("general", new List<string>(new string[] {
-//			SHIELD_POTION_GOOD.ItemId, ENERGY_POTION_GOOD.ItemId, SUPER_SEED_GOOD.ItemId,
-//			FRENZY_GOOD.ItemId, SUPER_GOOD.ItemId, DOUBLE_GOOD.ItemId, REPELLENT_GOOD.ItemId, LONGEVITY_GOOD.ItemId,
-//			ANDY_GOOD.ItemId, KELLY_GOOD.ItemId, NINJA_GOOD.ItemId, PIG_GOOD.ItemId, PIRATE_GOOD.ItemId, WIZARD_GOOD.ItemId,
-//			FRENZY_UPGRADE1.ItemId, FRENZY_UPGRADE2.ItemId, FRENZY_UPGRADE3.ItemId, FRENZY_UPGRADE4.ItemId,FRENZY_UPGRADE5.ItemId,FRENZY_UPGRADE6.ItemId,
-//			SUPER_UPGRADE1.ItemId,SUPER_UPGRADE2.ItemId,SUPER_UPGRADE3.ItemId,SUPER_UPGRADE4.ItemId,SUPER_UPGRADE5.ItemId,SUPER_UPGRADE6.ItemId,
-//			DOUBLE_UPGRADE1.ItemId,DOUBLE_UPGRADE2.ItemId,DOUBLE_UPGRADE3.ItemId,DOUBLE_UPGRADE4.ItemId,DOUBLE_UPGRADE5.ItemId,DOUBLE_UPGRADE6.ItemId,
-//			REPELLENT_UPGRADE1.ItemId,REPELLENT_UPGRADE2.ItemId,REPELLENT_UPGRADE3.ItemId,REPELLENT_UPGRADE4.ItemId,REPELLENT_UPGRADE5.ItemId,REPELLENT_UPGRADE6.ItemId,
-//			LONGEVITY_UPGRADE1.ItemId,LONGEVITY_UPGRADE2.ItemId,LONGEVITY_UPGRADE3.ItemId,LONGEVITY_UPGRADE4.ItemId,LONGEVITY_UPGRADE5.ItemId,LONGEVITY_UPGRADE6.ItemId
-//		}));
-   
+        public static VirtualCategory BACKGROUND_CATEGORY = new VirtualCategory("Background", new List<string>(new string[] { DEFAULT_BG.ItemId, CBLOSSOM_BG.ItemId }));
+
 		/** Virtual Currency Packs **/
-		public static VirtualCurrencyPack COMBO725_PACK = new VirtualCurrencyPack (
-    		"725 Combos", // name
+		public static VirtualCurrencyPack COMBO2K_PACK = new VirtualCurrencyPack (
+    		"2000 Combos", // name
     		"Test purchase of an item", // description
-    		"combos_725", // item id
-			725, // number of currencies in the pack
+    		"combos_2000", // item id
+			2000, // number of currencies in the pack
 			COMBO_CURRENCY_ITEM_ID,
-			new PurchaseWithMarket (COMBO725_PACK_PRODUCT_ID, 0.99));
-		public static VirtualCurrencyPack COMBO2500_PACK = new VirtualCurrencyPack (
-    		"2500 Combos", // name
-    		"Test purchase of an item", // description
-    		"combos_2500", // item id
-			2500, // number of currencies in the pack
-			COMBO_CURRENCY_ITEM_ID,
-			new PurchaseWithMarket (COMBO2500_PACK_PRODUCT_ID, 2.99));
+			new PurchaseWithMarket (COMBO2K_PACK_PRODUCT_ID, 0.99));
 		public static VirtualCurrencyPack COMBO5K_PACK = new VirtualCurrencyPack (
     		"5000 Combos", // name
     		"Test purchase of an item", // description
     		"combos_5K", // item id
 			5000, // number of currencies in the pack
 			COMBO_CURRENCY_ITEM_ID,
-    		new PurchaseWithMarket (COMBO5K_PACK_PRODUCT_ID, 4.99));
+            new PurchaseWithMarket(COMBO5K_PACK_PRODUCT_ID, 4.99));
+        public static VirtualCurrencyPack COMBO15K_PACK = new VirtualCurrencyPack(
+            "15,000 Combos", // name
+            "Test purchase of an item", // description
+            "combos_10K", // item id
+            15000, // number of currencies in the pack
+            COMBO_CURRENCY_ITEM_ID,
+            new PurchaseWithMarket(COMBO15K_PACK_PRODUCT_ID, 2.99));
     
 		public int GetVersion ()
 		{
@@ -164,19 +157,19 @@ namespace com.soomla.unity.example
 				DOUBLE_UPGRADE1,DOUBLE_UPGRADE2,DOUBLE_UPGRADE3,DOUBLE_UPGRADE4,DOUBLE_UPGRADE5,DOUBLE_UPGRADE6,
 				REPELLENT_UPGRADE1,REPELLENT_UPGRADE2,REPELLENT_UPGRADE3,REPELLENT_UPGRADE4,REPELLENT_UPGRADE5,REPELLENT_UPGRADE6,
 				LONGEVITY_UPGRADE1,LONGEVITY_UPGRADE2,LONGEVITY_UPGRADE3,LONGEVITY_UPGRADE4,LONGEVITY_UPGRADE5,LONGEVITY_UPGRADE6,
-				ANDY_GOOD, KELLY_GOOD, NINJA_GOOD, PIG_GOOD, PIRATE_GOOD, WIZARD_GOOD // Unlockables
+				ANDY_GOOD, KELLY_GOOD, NINJA_GOOD, PIG_GOOD, PIRATE_GOOD, WIZARD_GOOD, // Unlockables - Skins
+                DEFAULT_BG, CBLOSSOM_BG // Unlockables - Backgrounds
     	};
 		}
     
 		public VirtualCurrencyPack[] GetCurrencyPacks ()
 		{
-			return new VirtualCurrencyPack[] { COMBO725_PACK, COMBO2500_PACK, COMBO5K_PACK };
+			return new VirtualCurrencyPack[] { COMBO2K_PACK, COMBO15K_PACK, COMBO5K_PACK };
 		}
     
 		public VirtualCategory[] GetCategories ()
 		{
-			return new VirtualCategory[] {UNLOCKABLE_CATEGORY};
-//    		POWERUP_CATEGORY, UPGRADE_CATEGORY,};
+			return new VirtualCategory[] {UNLOCKABLE_CATEGORY, BACKGROUND_CATEGORY};
 		}
     
 		public NonConsumableItem[] GetNonConsumableItems ()

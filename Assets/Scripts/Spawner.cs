@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
     public TimerCountdown script;
     public AppleCollider goldScript;
     public int[] a_locations;
+    List<GameObject> rottenSpawns;
     List<int> spawns;
     MersenneTwister random;
     int comboCounter;
@@ -26,6 +27,7 @@ public class Spawner : MonoBehaviour
     {
         random = new MersenneTwister();
         spawns = new List<int>();
+        rottenSpawns = new List<GameObject>();
 
         comboCounter = 0;
         goldCounter = 0;
@@ -65,7 +67,7 @@ public class Spawner : MonoBehaviour
         switch (goldScript.CURRENT_EFFECT)
         {
             case AppleCollider.GOLD_EFFECTS.FRENZY:
-                Debug.Log("AAUNITY/GAME Frenzy Currently Active");
+                //Debug.Log("AAUNITY/GAME Frenzy Currently Active");
                 if (random.Next(100) < 50)
                 {
                     Instantiate(comboPrefab1, spawnPos, Quaternion.identity);
@@ -76,7 +78,7 @@ public class Spawner : MonoBehaviour
                 }
                 break;
             case AppleCollider.GOLD_EFFECTS.SUPERFRENZY:
-                Debug.Log("AAUNITY/GAME Super Frenzy Currently Active");
+                //Debug.Log("AAUNITY/GAME Super Frenzy Currently Active");
                 if (random.Next(100) < 50)
                 {
                     Instantiate(comboPrefab1, spawnPos, Quaternion.identity);
@@ -87,14 +89,15 @@ public class Spawner : MonoBehaviour
                 }
                 break;
             case AppleCollider.GOLD_EFFECTS.REPEL:
-                Debug.Log("AAUNITY/GAME Repel Currently Active");
+                //Debug.Log("AAUNITY/GAME Repel Currently Active");
                 Instantiate(applePrefab, spawnPos, Quaternion.identity);
                 break;
             default:
-                Debug.Log("AAUNITY/GAME No Gold Effects active or Gold Effect == Double Points");
+                //Debug.Log("AAUNITY/GAME No Gold Effects active or Gold Effect == Double Points");
                 if (random.Next(100) > 80)
                 {
                     Instantiate(rottenPrefab, spawnPos, Quaternion.identity);
+                    rottenSpawns.Add(GameObject.FindWithTag("RottenApple"));
                 }
                 else
                 {
@@ -213,12 +216,14 @@ public class Spawner : MonoBehaviour
     {
         GameObject[] go = GameObject.FindGameObjectsWithTag("RottenApple");
         foreach (GameObject spawn in go)
+        //foreach (GameObject spawn in rottenSpawns)
         {
             Vector3 position = spawn.transform.position;
             Debug.Log("AAUNITY/GAME Animation " + shieldHitAnim.name + " play at " + position.ToString());
             Instantiate(shieldHitAnim, position, Quaternion.identity);
-            Destroy(spawn);
+            DestroyImmediate(spawn);
         }
+        rottenSpawns.Clear();
     }
     #endregion
 }
