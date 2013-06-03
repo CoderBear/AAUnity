@@ -14,6 +14,8 @@ public class BGStartup : MonoBehaviour
 
     public tk2dSpriteCollectionData bkgdSpriteCollection, bkgdSpriteCollection2;
 
+    public tk2dTextMesh counterText, scoreText, comboText;
+
     void Start()
     {
         if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.DEFAULT_BG.ItemId))
@@ -31,6 +33,13 @@ public class BGStartup : MonoBehaviour
             canopy.SetSprite(bkgdSpriteCollection2, "cherryblossombgtop");
             ray.SetSprite(bkgdSpriteCollection2, "hugeray2");
             bottom.SetSprite(bkgdSpriteCollection2, "tree_cherry_bottom");
+
+            counterText.color = Color.black;
+            counterText.Commit();
+            scoreText.color = Color.black;
+            scoreText.Commit();
+            comboText.color = Color.black;
+            comboText.Commit();
         }
     }
 }
