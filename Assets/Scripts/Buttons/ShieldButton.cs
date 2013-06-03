@@ -21,6 +21,7 @@ public class ShieldButton : MonoBehaviour
 	{	
 		itemId = AndysApplesAssets.SHIELD_POTION_GOOD.ItemId;
 		balance = StoreInventory.GetItemBalance (itemId);
+        //balance = 1;
 
 		Debug.Log ("Shield-Powerup Balance at Fast Apples Game Start: " + balance);
 
@@ -40,6 +41,11 @@ public class ShieldButton : MonoBehaviour
         StoreInventory.TakeItem(itemId, 1);
         balance--;
 
+<<<<<<< HEAD
+=======
+        balance = StoreInventory.GetItemBalance(itemId);
+        //balance = 1;
+>>>>>>> 68205bd490838e0b0a390fdd46409e1bae50bd24
 		textMesh.text = balance.ToString ();
 		textMesh.Commit ();
 		

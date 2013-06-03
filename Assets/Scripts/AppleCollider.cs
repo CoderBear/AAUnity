@@ -280,6 +280,14 @@ public class AppleCollider : MonoBehaviour
         if (audioOn)
             audio.PlayOneShot(caughtBad);
 
+<<<<<<< HEAD
+=======
+        //Vector3 loc = position.position + new Vector3(0, -100, 0);
+
+        //AndyUtils.LogDebug(TAG,"Basket Collide | Animation " + shieldHitAnim.name + " play at " + position.ToString());
+        //Instantiate(shieldHitAnim, position.position, Quaternion.identity);
+
+>>>>>>> 68205bd490838e0b0a390fdd46409e1bae50bd24
         achievementTracker.AddProgressToAchievement("Rotten Palooza", 1.0f);
         if (GAME_MODE == GAME_MODES.PERFECTIONIST)
         {

@@ -113,6 +113,11 @@ namespace com.soomla.unity.example
 		/** Virtual Categories **/
 		public static VirtualCategory UNLOCKABLE_CATEGORY = new VirtualCategory ("Unlockable", new List<string>(new string[] {ANDY_GOOD.ItemId, KELLY_GOOD.ItemId, NINJA_GOOD.ItemId, PIG_GOOD.ItemId, PIRATE_GOOD.ItemId, WIZARD_GOOD.ItemId}));
         public static VirtualCategory BACKGROUND_CATEGORY = new VirtualCategory("Background", new List<string>(new string[] { DEFAULT_BG.ItemId, CBLOSSOM_BG.ItemId }));
+<<<<<<< HEAD
+=======
+//		public static VirtualCategory POWERUP_CATEGORY = new VirtualCategory ("Powerup", new List<string>(new string[] {SHIELD_POTION_GOOD.ItemId, ENERGY_POTION_GOOD.ItemId, SUPER_SEED_GOOD.ItemId}));
+//		public static VirtualCategory UPGRADE_CATEGORY = new VirtualCategory ("Upgrade", new List<string>(new string[] {FRENZY_GOOD.ItemId, SUPER_GOOD.ItemId, DOUBLE_GOOD.ItemId, REPELLENT_GOOD.ItemId, LONGEVITY_GOOD.ItemId}));
+>>>>>>> 68205bd490838e0b0a390fdd46409e1bae50bd24
 
 		/** Virtual Currency Packs **/
 		public static VirtualCurrencyPack COMBO2K_PACK = new VirtualCurrencyPack (
@@ -170,6 +175,10 @@ namespace com.soomla.unity.example
 		public VirtualCategory[] GetCategories ()
 		{
 			return new VirtualCategory[] {UNLOCKABLE_CATEGORY, BACKGROUND_CATEGORY};
+<<<<<<< HEAD
+=======
+//    		POWERUP_CATEGORY, UPGRADE_CATEGORY,};
+>>>>>>> 68205bd490838e0b0a390fdd46409e1bae50bd24
 		}
     
 		public NonConsumableItem[] GetNonConsumableItems ()
