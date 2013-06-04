@@ -756,6 +756,8 @@
      <Compile Include="Assets\Scripts\GameStartup.cs" />
      <Compile Include="Assets\Scripts\HitGround.cs" />
      <Compile Include="Assets\Scripts\MainMenuAudio.cs" />
+     <Compile Include="Assets\Scripts\Mics\Advertisement\AdvertisementHandler.cs" />
+     <Compile Include="Assets\Scripts\Mics\Advertisement\AdvertisementManager.cs" />
      <Compile Include="Assets\Scripts\OptionsDisplay.cs" />
      <Compile Include="Assets\Scripts\ShieldHitTrigger.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
