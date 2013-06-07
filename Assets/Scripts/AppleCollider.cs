@@ -22,6 +22,7 @@ public class AppleCollider : MonoBehaviour
         REPEL
     };
 
+    public optionDB optionDB;
     public AchievementTracker achievementTracker;
     public Spawner spawnScript;
     public GAME_MODES GAME_MODE;
@@ -88,7 +89,7 @@ public class AppleCollider : MonoBehaviour
                 }
                 break;
             case 4: // Perfectionist
-                if (StoreInventory.GetGoodUpgradeLevel(AndysApplesAssets.LONGEVITY_GOOD.ItemId) > 4)
+                if ((StoreInventory.GetGoodUpgradeLevel(AndysApplesAssets.LONGEVITY_GOOD.ItemId) > 4) && optionDB.getStatus(3))
                 {
                     lifeCounter = 5;
                 }
@@ -233,7 +234,7 @@ public class AppleCollider : MonoBehaviour
                     displayedScore = multiplier * ((10 * caughtApples) + score + (10 * combo));
                 else
                     displayedScore = ((10 * caughtApples) + score + (10 * combo));
-                if (!goldEffectActive)
+                if (!goldEffectActive && optionDB.getStatus(4)) // if gold effect is activate then continue
                 {
                     AndyUtils.LogDebug(TAG,"Now activating Gold Effect");
                     activateEffect();
@@ -388,7 +389,14 @@ public class AppleCollider : MonoBehaviour
 
     public void ResetLives()
     {
-        lifeCounter = 3;
+        if ((StoreInventory.GetGoodUpgradeLevel(AndysApplesAssets.LONGEVITY_GOOD.ItemId) > 4) && optionDB.getStatus(3))
+        {
+            lifeCounter = 5;
+        }
+        else
+        {
+            lifeCounter = 3;
+        }
         DisplayLives();
     }
 
@@ -407,7 +415,7 @@ public class AppleCollider : MonoBehaviour
             switch (index)
             {
                 case 1:
-                    AndyUtils.LogDebug(TAG,"Index " + index + ": Frenzy");
+                    AndyUtils.LogDebug(TAG, "Index " + index + ": Frenzy");
                     animGold.gameObject.SetActive(true);
                     animGold.Play("Frenzy");
 
@@ -416,7 +424,7 @@ public class AppleCollider : MonoBehaviour
                     animGold.animationCompleteDelegate = AnimFinishedDelegate;
                     break;
                 case 2:
-                    AndyUtils.LogDebug(TAG,"Index " + index + ": Super Frenzy");
+                    AndyUtils.LogDebug(TAG, "Index " + index + ": Super Frenzy");
                     animGold.gameObject.SetActive(true);
                     animGold.Play("Super Frenzy");
 
@@ -425,7 +433,7 @@ public class AppleCollider : MonoBehaviour
                     animGold.animationCompleteDelegate = AnimFinishedDelegate;
                     break;
                 case 3:
-                    AndyUtils.LogDebug(TAG,"Index " + index + ": Double Points");
+                    AndyUtils.LogDebug(TAG, "Index " + index + ": Double Points");
                     animGold.gameObject.SetActive(true);
                     animGold.Play("Double");
 
@@ -434,7 +442,7 @@ public class AppleCollider : MonoBehaviour
                     animGold.animationCompleteDelegate = AnimFinishedDelegate;
                     break;
                 case 4:
-                    AndyUtils.LogDebug(TAG,"Index " + index + ": Repellent");
+                    AndyUtils.LogDebug(TAG, "Index " + index + ": Repellent");
                     animGold.gameObject.SetActive(true);
                     animGold.Play("Repellent");
 

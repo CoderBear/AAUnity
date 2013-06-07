@@ -90,7 +90,6 @@ public class AchievementManager : MonoBehaviour
 			// Do this for description, points, and target
 			display.nameLabel.text = Achievements[j].Name;
 			display.descriptionLabel.text = Achievements[j].Description;
-			display.pointsLabel.text = Achievements[j].RewardPoints.ToString();
 			display.targetLabel.text = Achievements[j].getProgress().ToString() + " / " + Achievements[j].TargetProgress.ToString();
 			
 			Debug.Log ("AAUNITY/ACHIEVEMENT Achievement " + Achievements[j].Name + " is Earned? " + Achievements[j].Earned);

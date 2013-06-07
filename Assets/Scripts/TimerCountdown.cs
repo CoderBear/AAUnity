@@ -15,6 +15,7 @@ public class TimerCountdown : MonoBehaviour
 	public AchievementTracker tracker;
 	public Spawner script;
 	public AppleCollider colliderscript;
+    public optionDB db;
 	
 	#region Fields
 	
@@ -54,19 +55,26 @@ public class TimerCountdown : MonoBehaviour
 		
 		switch (colliderscript.GAME_MODE) {
 		case AppleCollider.GAME_MODES.FAST_APPLES:
-			if (level < 6) {
-				countDownSeconds += (5 * level);
-			} else {
-				countDownSeconds += 25;
-			}
+                    if (level < 6)
+                    {
+                        countDownSeconds += (5 * level);
+                        textMesh.text = countDownSeconds.ToString();
+                    }
+                    else
+                    {
+                        countDownSeconds += 25;
+                        textMesh.text = countDownSeconds.ToString();
+                    }
             //countDownSeconds = 10;
-			textMesh.text = countDownSeconds.ToString ();
+                AndyUtils.LogDebug(TAG, "CountdownSeconds are " + countDownSeconds);
+                textMesh.text = countDownSeconds.ToString();
+			
 			break;
 		case AppleCollider.GAME_MODES.PERFECTIONIST:
 			textMesh.text = colliderscript.lifeCounter.ToString ();
 			break;
 		}
-		
+        AndyUtils.LogDebug(TAG, "Committing Text");
 		textMesh.Commit ();
 		
 		if (game_end != null && audio == null) {
@@ -177,13 +185,16 @@ public class TimerCountdown : MonoBehaviour
         AndyUtils.LogDebug(TAG, "Setting time to default");
         countDownSeconds = 60;
 
-        if (level < 6)
+        if (db.getStatus(3)) // returns if longevity is on or off
         {
-            countDownSeconds += (5 * level);
-        }
-        else
-        {
-            countDownSeconds += 25;
+            if (level < 6)
+            {
+                countDownSeconds += (5 * level);
+            }
+            else
+            {
+                countDownSeconds += 25;
+            }
         }
         AndyUtils.LogDebug(TAG, "CountdownSeconds are now " + countDownSeconds);
 

@@ -14,7 +14,7 @@ public class BGStartup : MonoBehaviour
 
     public tk2dSpriteCollectionData bkgdSpriteCollection, bkgdSpriteCollection2;
 
-    public tk2dTextMesh counterText, scoreText, comboText;
+    public tk2dSprite scoreBack, counterback;
 
     void Start()
     {
@@ -25,6 +25,9 @@ public class BGStartup : MonoBehaviour
             canopy.SetSprite(bkgdSpriteCollection, "treetop");
             ray.SetSprite(bkgdSpriteCollection, "hugeray");
             bottom.SetSprite(bkgdSpriteCollection, "treeland_bottom");
+
+            scoreBack.gameObject.SetActive(false);
+            counterback.gameObject.SetActive(false);
         }
         if (StoreInventory.IsVirtualGoodEquipped(AndysApplesAssets.CBLOSSOM_BG.ItemId))
         {
@@ -34,12 +37,8 @@ public class BGStartup : MonoBehaviour
             ray.SetSprite(bkgdSpriteCollection2, "hugeray2");
             bottom.SetSprite(bkgdSpriteCollection2, "tree_cherry_bottom");
 
-            counterText.color = Color.black;
-            counterText.Commit();
-            scoreText.color = Color.black;
-            scoreText.Commit();
-            comboText.color = Color.black;
-            comboText.Commit();
+            scoreBack.gameObject.SetActive(true);
+            counterback.gameObject.SetActive(true);
         }
     }
 }
