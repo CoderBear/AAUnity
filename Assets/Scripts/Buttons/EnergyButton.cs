@@ -24,7 +24,7 @@ public class EnergyButton : MonoBehaviour
 		itemId = AndysApplesAssets.ENERGY_POTION_GOOD.ItemId;
 		balance = StoreInventory.GetItemBalance (itemId);
 		
-		Debug.Log ("Energy-Powerup Balance at Fast Apples Game Start: " + balance);
+        //Debug.Log ("Energy-Powerup Balance at Fast Apples Game Start: " + balance);
 		
 		textMesh.text = balance.ToString ();
 		textMesh.Commit ();
@@ -36,17 +36,17 @@ public class EnergyButton : MonoBehaviour
 	
 	void OnClick ()
 	{
-//		pressed = true;
-		
 		if ((balance > 0) && !cooldownActive) {
 			switch (Application.loadedLevel) {
 			case 3: // Fast Apples
 				if (timerScript.countDownSeconds > 5) {
+                    pressed = !pressed;
 					clickedFA();
 				}
 				break;
 			case 4: // Perfectionist
 				if (colliderScript.lifeCounter < 9) {
+                    pressed = !pressed;
 					clickedPM();
 				}
 				break;
@@ -59,40 +59,43 @@ public class EnergyButton : MonoBehaviour
 	{
 		tracker.AddProgressToAchievement ("Energy Boost", 1.0f);
 		StoreInventory.TakeItem (itemId, 1);
+        balance--;
 		
-		balance = StoreInventory.GetItemBalance (itemId);
-		textMesh.text = balance.ToString ();
-		textMesh.Commit ();
-		
-		icon.color = Color.gray;
-		cooldownActive = true;
-		
-		timerScript.countDownSeconds += 10;
-		timerScript.DisplayTimer();
-		
-		Invoke("ActivateCooldown", 10); // cooldown lasts 10 secs
+        //balance = StoreInventory.GetItemBalance (itemId);
+        textMesh.text = balance.ToString();
+        textMesh.Commit();
+
+        icon.color = Color.gray;
+        cooldownActive = !cooldownActive;
+
+        timerScript.countDownSeconds += 10;
+        timerScript.DisplayTimer();
+
+        Invoke("ActivateCooldown", 10); // cooldown lasts 10 secs
 	}
 	
 	public void clickedPM ()
 	{
 		tracker.AddProgressToAchievement ("Energy Boost", 1.0f);
 		StoreInventory.TakeItem (itemId, 1);
+        balance--;
 
-		balance = StoreInventory.GetItemBalance (itemId);
-		textMesh.text = balance.ToString ();
-		textMesh.Commit ();
-		
-		icon.color = Color.gray;
+        //balance = StoreInventory.GetItemBalance (itemId);
+        textMesh.text = balance.ToString();
+        textMesh.Commit();
+
+        icon.color = Color.gray;
 		cooldownActive = true;
-		
-		colliderScript.lifeCounter++;
-		colliderScript.DisplayLives();
-		
-		Invoke("ActivateCooldown", 10); // cooldown lasts 10 secs
+
+        colliderScript.lifeCounter++;
+        colliderScript.DisplayLives();
+
+        Invoke("ActivateCooldown", 10); // cooldown lasts 10 secs
 	}
 	
 	private void ActivateCooldown() {
-		icon.color = Color.white;
-		cooldownActive = false;
+        icon.color = Color.white;
+        pressed = !pressed;
+		cooldownActive = !cooldownActive;
 	}
 }

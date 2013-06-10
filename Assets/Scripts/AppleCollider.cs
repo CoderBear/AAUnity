@@ -81,7 +81,7 @@ public class AppleCollider : MonoBehaviour
         {
             case 3: // Fast Apples
                 gameNum = db.getValue("fa_games");
-                AndyUtils.LogDebug(TAG,"Fast Apples games played: " + gameNum);
+                //AndyUtils.LogDebug(TAG,"Fast Apples games played: " + gameNum);
                 if (gameNum > 0)
                 {
                     firstGame = false;
@@ -89,14 +89,18 @@ public class AppleCollider : MonoBehaviour
                 }
                 break;
             case 4: // Perfectionist
-                if ((StoreInventory.GetGoodUpgradeLevel(AndysApplesAssets.LONGEVITY_GOOD.ItemId) > 4) && optionDB.getStatus(3))
+                if (StoreInventory.GetGoodUpgradeLevel(AndysApplesAssets.LONGEVITY_GOOD.ItemId) > 4)
                 {
                     lifeCounter = 5;
+                }
+                else
+                {
+                    lifeCounter = 3;
                 }
                 timerText.text = lifeCounter.ToString();
                 timerText.Commit();
                 gameNum = db.getValue("p_games");
-                AndyUtils.LogDebug(TAG,"Perfectionist games played: " + gameNum);
+                //AndyUtils.LogDebug(TAG,"Perfectionist games played: " + gameNum);
                 if (gameNum > 0)
                 {
                     firstGame = false;
@@ -207,7 +211,7 @@ public class AppleCollider : MonoBehaviour
 				if(result)
 				touchsense.playBuiltinEffect (TouchSense.IMPACT_WOOD_100);
 #endif
-                AndyUtils.LogDebug(TAG,"Gold Apple Caught");
+                //AndyUtils.LogDebug(TAG,"Gold Apple Caught");
                 incementGoldAppleAchievement();
                 if (audioOn)
                     audio.PlayOneShot(caughtGold);
@@ -234,9 +238,9 @@ public class AppleCollider : MonoBehaviour
                     displayedScore = multiplier * ((10 * caughtApples) + score + (10 * combo));
                 else
                     displayedScore = ((10 * caughtApples) + score + (10 * combo));
-                if (!goldEffectActive && optionDB.getStatus(4)) // if gold effect is activate then continue
+                if (!goldEffectActive)
                 {
-                    AndyUtils.LogDebug(TAG,"Now activating Gold Effect");
+                    //AndyUtils.LogDebug(TAG,"Now activating Gold Effect");
                     activateEffect();
                 }
             }
@@ -415,7 +419,7 @@ public class AppleCollider : MonoBehaviour
             switch (index)
             {
                 case 1:
-                    AndyUtils.LogDebug(TAG, "Index " + index + ": Frenzy");
+                    //AndyUtils.LogDebug(TAG, "Index " + index + ": Frenzy");
                     animGold.gameObject.SetActive(true);
                     animGold.Play("Frenzy");
 
@@ -424,7 +428,7 @@ public class AppleCollider : MonoBehaviour
                     animGold.animationCompleteDelegate = AnimFinishedDelegate;
                     break;
                 case 2:
-                    AndyUtils.LogDebug(TAG, "Index " + index + ": Super Frenzy");
+                    //AndyUtils.LogDebug(TAG, "Index " + index + ": Super Frenzy");
                     animGold.gameObject.SetActive(true);
                     animGold.Play("Super Frenzy");
 
@@ -433,7 +437,7 @@ public class AppleCollider : MonoBehaviour
                     animGold.animationCompleteDelegate = AnimFinishedDelegate;
                     break;
                 case 3:
-                    AndyUtils.LogDebug(TAG, "Index " + index + ": Double Points");
+                    //AndyUtils.LogDebug(TAG, "Index " + index + ": Double Points");
                     animGold.gameObject.SetActive(true);
                     animGold.Play("Double");
 
@@ -442,7 +446,7 @@ public class AppleCollider : MonoBehaviour
                     animGold.animationCompleteDelegate = AnimFinishedDelegate;
                     break;
                 case 4:
-                    AndyUtils.LogDebug(TAG, "Index " + index + ": Repellent");
+                    //AndyUtils.LogDebug(TAG, "Index " + index + ": Repellent");
                     animGold.gameObject.SetActive(true);
                     animGold.Play("Repellent");
 
@@ -457,35 +461,35 @@ public class AppleCollider : MonoBehaviour
         switch (index)
         {
             case 1: // Frenzy
-                AndyUtils.LogDebug(TAG,"Current Effect Before:" + CURRENT_EFFECT);
+                //AndyUtils.LogDebug(TAG,"Current Effect Before:" + CURRENT_EFFECT);
                 CURRENT_EFFECT = GOLD_EFFECTS.FRENZY;
-                AndyUtils.LogDebug(TAG,"Current Effect After:" + CURRENT_EFFECT);
+                //AndyUtils.LogDebug(TAG,"Current Effect After:" + CURRENT_EFFECT);
                 itemId = AndysApplesAssets.FRENZY_GOOD.ItemId;
                 break;
             case 2: // Super Frenzy
-                AndyUtils.LogDebug(TAG,"Current Effect Before:" + CURRENT_EFFECT);
+                //AndyUtils.LogDebug(TAG,"Current Effect Before:" + CURRENT_EFFECT);
                 CURRENT_EFFECT = GOLD_EFFECTS.SUPERFRENZY;
-                AndyUtils.LogDebug(TAG,"Current Effect After:" + CURRENT_EFFECT);
+                //AndyUtils.LogDebug(TAG,"Current Effect After:" + CURRENT_EFFECT);
                 itemId = AndysApplesAssets.SUPER_GOOD.ItemId;
                 break;
             case 3: // Double Points
-                AndyUtils.LogDebug(TAG,"Current Effect Before:" + CURRENT_EFFECT);
+                //AndyUtils.LogDebug(TAG,"Current Effect Before:" + CURRENT_EFFECT);
                 CURRENT_EFFECT = GOLD_EFFECTS.DOUBLE;
-                AndyUtils.LogDebug(TAG,"Current Effect After:" + CURRENT_EFFECT);
+                //AndyUtils.LogDebug(TAG,"Current Effect After:" + CURRENT_EFFECT);
                 itemId = AndysApplesAssets.DOUBLE_GOOD.ItemId;
                 break;
             case 4: // Repellent
-                AndyUtils.LogDebug(TAG,"Current Effect Before:" + CURRENT_EFFECT);
+                //AndyUtils.LogDebug(TAG,"Current Effect Before:" + CURRENT_EFFECT);
                 CURRENT_EFFECT = GOLD_EFFECTS.REPEL;
-                AndyUtils.LogDebug(TAG,"Current Effect After:" + CURRENT_EFFECT);
+                //AndyUtils.LogDebug(TAG,"Current Effect After:" + CURRENT_EFFECT);
                 itemId = AndysApplesAssets.REPELLENT_GOOD.ItemId;
                 break;
         }
-        AndyUtils.LogDebug(TAG,"now adding to achievements");
+        //AndyUtils.LogDebug(TAG,"now adding to achievements");
         achievementTracker.AddProgressToAchievement("Gold Standard", 1.0f);
 
         GE_INDEX = index;
-        AndyUtils.LogDebug(TAG,"now switching on/ Gold effect");
+        //AndyUtils.LogDebug(TAG,"now switching on/ Gold effect");
         switch (CURRENT_EFFECT)
         {
             case GOLD_EFFECTS.FRENZY:
@@ -525,7 +529,7 @@ public class AppleCollider : MonoBehaviour
                 break;
         }
 
-        AndyUtils.LogDebug(TAG,"Effect timer length for Gold Effect " + CURRENT_EFFECT + " is " + effectTimer + " seconds.");
+        //AndyUtils.LogDebug(TAG,"Effect timer length for Gold Effect " + CURRENT_EFFECT + " is " + effectTimer + " seconds.");
 
         Invoke("deactivateEffect", (float)effectTimer);
     }
@@ -635,7 +639,7 @@ public class AppleCollider : MonoBehaviour
 
         db.StoreValue(1, achievementTracker.getRewardPoints()); // multiplier
         multiplier = achievementTracker.getRewardPoints();
-        AndyUtils.LogDebug(TAG, "Multiplier at game end is " + multiplier);
+        //AndyUtils.LogDebug(TAG, "Multiplier at game end is " + multiplier);
 
         achievementTracker.StoreInfo();
     }

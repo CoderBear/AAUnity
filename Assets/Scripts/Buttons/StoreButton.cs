@@ -9,6 +9,7 @@ public class StoreButton : MonoBehaviour {
 		Debug.Log("Store Button Pressed");
 		
 		storeActive = !storeActive;
+        MainMenuAudio.isObjectActive = storeActive;
 		
 		Application.LoadLevel("AAStore");
 	}

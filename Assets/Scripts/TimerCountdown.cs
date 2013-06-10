@@ -66,7 +66,7 @@ public class TimerCountdown : MonoBehaviour
                         textMesh.text = countDownSeconds.ToString();
                     }
             //countDownSeconds = 10;
-                AndyUtils.LogDebug(TAG, "CountdownSeconds are " + countDownSeconds);
+                //AndyUtils.LogDebug(TAG, "CountdownSeconds are " + countDownSeconds);
                 textMesh.text = countDownSeconds.ToString();
 			
 			break;
@@ -74,7 +74,7 @@ public class TimerCountdown : MonoBehaviour
 			textMesh.text = colliderscript.lifeCounter.ToString ();
 			break;
 		}
-        AndyUtils.LogDebug(TAG, "Committing Text");
+        //AndyUtils.LogDebug(TAG, "Committing Text");
 		textMesh.Commit ();
 		
 		if (game_end != null && audio == null) {
@@ -182,7 +182,7 @@ public class TimerCountdown : MonoBehaviour
         int level = StoreInventory.GetGoodUpgradeLevel(ItemId);
         endSoundPlaying = !endSoundPlaying;
 
-        AndyUtils.LogDebug(TAG, "Setting time to default");
+        //AndyUtils.LogDebug(TAG, "Setting time to default");
         countDownSeconds = 60;
 
         if (db.getStatus(3)) // returns if longevity is on or off
@@ -196,7 +196,7 @@ public class TimerCountdown : MonoBehaviour
                 countDownSeconds += 25;
             }
         }
-        AndyUtils.LogDebug(TAG, "CountdownSeconds are now " + countDownSeconds);
+        //AndyUtils.LogDebug(TAG, "CountdownSeconds are now " + countDownSeconds);
 
         DisplayTimer();
         //ResumeGame();

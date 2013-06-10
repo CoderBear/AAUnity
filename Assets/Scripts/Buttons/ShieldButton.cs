@@ -13,7 +13,8 @@ public class ShieldButton : MonoBehaviour
 	public tk2dSprite icon;
 	
 	public Spawner spawnScript;
-	
+
+    public bool pressed = false;
 	bool cooldownActive = false;
 	
 	// Use this for initialization
@@ -23,7 +24,7 @@ public class ShieldButton : MonoBehaviour
 		balance = StoreInventory.GetItemBalance (itemId);
         //balance = 1;
 
-		Debug.Log ("Shield-Powerup Balance at Fast Apples Game Start: " + balance);
+        //Debug.Log ("Shield-Powerup Balance at Fast Apples Game Start: " + balance);
 
         textMesh.text = balance.ToString ();
 		textMesh.Commit ();
@@ -31,8 +32,11 @@ public class ShieldButton : MonoBehaviour
 
 	void OnClick ()
 	{
-		if ((balance > 0) && !cooldownActive)
-			clickedFA ();
+        if ((balance > 0) && !cooldownActive)
+        {
+            pressed = !pressed;
+            clickedFA();
+        }
 	}
 
 	public void clickedFA ()
@@ -41,13 +45,13 @@ public class ShieldButton : MonoBehaviour
         StoreInventory.TakeItem(itemId, 1);
         balance--;
 
-        textMesh.text = balance.ToString ();
-		textMesh.Commit ();
-		
-		icon.color = Color.gray;
+        textMesh.text = balance.ToString();
+        textMesh.Commit();
+
+        icon.color = Color.gray;
 		cooldownActive = !cooldownActive;
-		
-		Invoke("ResetIcon", 5);  // cooldown in 5 seconds.
+
+        Invoke("ResetIcon", 5);  // cooldown in 5 seconds.
 		ActivateShield();
 	}
 	
@@ -57,7 +61,8 @@ public class ShieldButton : MonoBehaviour
 
 	private void ResetIcon() {
 		cooldownActive = !cooldownActive;
-		icon.color = Color.white;
+        pressed = !pressed;
+        icon.color = Color.white;
 	}
 	
 }

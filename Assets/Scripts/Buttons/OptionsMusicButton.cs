@@ -25,11 +25,13 @@ public class OptionsMusicButton : MonoBehaviour
         if (checkbox.isChecked)
         {
             result = true;
+            MainMenuAudio.Instance.StartInstanceAudio();
             db.setStatus(1, 1);
         }
         else // set the music to off
         {
             result = false;
+            MainMenuAudio.Instance.StopInstanceAudio();
             db.setStatus(1, 0);
         }
     }
