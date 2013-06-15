@@ -5,8 +5,11 @@ using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
+    private const string TAG = "AAUNITY/GAME";
+
     #region Fields
     public GameObject shieldHitAnim;
+    public AudioClip shieldHitClip;
     public Transform applePrefab;
     public Transform goldPrefab;
     public Transform comboPrefab1;
@@ -32,6 +35,12 @@ public class Spawner : MonoBehaviour
         comboCounter = 0;
         goldCounter = 0;
 
+        if (shieldHitClip != null && audio == null)
+        {
+            AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.playOnAwake = false;
+        }
+
         refillSpawns();
 
         InvokeRepeating("SpawnNormalApple", 0.01f, 0.2f);
@@ -52,6 +61,14 @@ public class Spawner : MonoBehaviour
         spawns.Clear();
         refillSpawns();
         InvokeRepeating("SpawnNormalApple", 0.01f, 0.2f);
+    }
+
+    void PlaySound(AudioClip source)
+    {
+        if (audio && source)
+        {
+            audio.PlayOneShot(source);
+        }
     }
 
     #region Spawn Functions
@@ -215,6 +232,7 @@ public class Spawner : MonoBehaviour
     public void removeRotten()
     {
         GameObject[] go = GameObject.FindGameObjectsWithTag("RottenApple");
+        PlaySound(shieldHitClip);
         foreach (GameObject spawn in go)
         //foreach (GameObject spawn in rottenSpawns)
         {
@@ -225,5 +243,17 @@ public class Spawner : MonoBehaviour
         }
         rottenSpawns.Clear();
     }
+
+    public void removeFromList(GameObject go)
+    {
+        AndyUtils.LogDebug(TAG, "RottenSpawns count before is " + rottenSpawns.Count);
+        for (int i = 0; i < rottenSpawns.Count; i++)
+        {
+            if (rottenSpawns[i].gameObject == null)
+                rottenSpawns.RemoveAt(i);
+        }
+        //rottenSpawns.Remove(go);
+        AndyUtils.LogDebug(TAG, "RottenSpawns count after is " + rottenSpawns.Count);
+}
     #endregion
 }

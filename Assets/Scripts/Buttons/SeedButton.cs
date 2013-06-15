@@ -89,18 +89,20 @@ public class SeedButton : MonoBehaviour
 
     public void clickedFA()
     {
-        StoreInventory.TakeItem(itemId, 1);
         HideIcon();
         //AndyUtils.LogDebug(TAG, "Reseting Timer");
         timerScript.resetTimer();
         CancelInvoke("CheckThenActivate");
+        Invoke("decrementBalance", 0.5f);
     }
 
     public void clickedPM()
     {
-        StoreInventory.TakeItem(itemId, 1);
         HideIcon();
         colliderScript.ResetLives();
         CancelInvoke("CheckThenActivate");
+        Invoke("decrementBalance", 0.5f);
     }
+
+    private void decrementBalance() { StoreInventory.TakeItem(itemId, 1); }
 }

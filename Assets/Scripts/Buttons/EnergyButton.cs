@@ -23,7 +23,7 @@ public class EnergyButton : MonoBehaviour
 	{
 		itemId = AndysApplesAssets.ENERGY_POTION_GOOD.ItemId;
 		balance = StoreInventory.GetItemBalance (itemId);
-		
+        //balance = 1;
         //Debug.Log ("Energy-Powerup Balance at Fast Apples Game Start: " + balance);
 		
 		textMesh.text = balance.ToString ();
@@ -59,6 +59,7 @@ public class EnergyButton : MonoBehaviour
 	{
 		tracker.AddProgressToAchievement ("Energy Boost", 1.0f);
         balance--;
+        //balance = 1;
 
         icon.color = Color.gray;
         cooldownActive = !cooldownActive;
@@ -88,7 +89,7 @@ public class EnergyButton : MonoBehaviour
         textMesh.text = balance.ToString();
         textMesh.Commit();
 
-        timerScript.DisplayTimer();
+        //timerScript.DisplayTimer();
         StoreInventory.TakeItem(itemId, 1);
     }
 

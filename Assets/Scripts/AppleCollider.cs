@@ -281,6 +281,7 @@ public class AppleCollider : MonoBehaviour
 		if(result)
 		touchsense.playBuiltinEffect (TouchSense.EXPLOSION1);
 #endif
+        spawnScript.removeFromList(collision.gameObject);
         Destroy(collision.gameObject);
         if (audioOn)
             audio.PlayOneShot(caughtBad);
