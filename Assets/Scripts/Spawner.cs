@@ -232,7 +232,7 @@ public class Spawner : MonoBehaviour
     public void removeRotten()
     {
         GameObject[] go = GameObject.FindGameObjectsWithTag("RottenApple");
-        PlaySound(shieldHitClip);
+        //PlaySound(shieldHitClip);
         foreach (GameObject spawn in go)
         //foreach (GameObject spawn in rottenSpawns)
         {
