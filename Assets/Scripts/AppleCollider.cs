@@ -47,7 +47,6 @@ public class AppleCollider : MonoBehaviour
     public int highscore, gameNum, displayedScore;
     public int lifeCounter;
     public bool audioOn;
-    TouchSense touchsense;
     private bool firstCatch = true, firstGame = true;
 
     public int caughtApples
@@ -64,8 +63,6 @@ public class AppleCollider : MonoBehaviour
 
     public int multiplier;
     int effectTimer;
-    //AndroidJavaObject activity;
-    //AndroidJavaObject mWindowManager;
     bool result = true;
 
     // Automatically run when a game starts
@@ -111,15 +108,15 @@ public class AppleCollider : MonoBehaviour
 
 #if UNITY_ANDROID
         TouchSenseSingleDevice device = new TouchSenseSingleDevice(0);
-        if (device.type == TouchSenseDevice.ActuatorType.ERM)
+        //AndyUtils.LogDebug(TAG, "Device is " + device.name);
+        //AndyUtils.LogDebug(TAG, "Device type is " + device.type.ToString());
+        Debug.Log(TAG + "Device is " + device.name);
+        Debug.Log(TAG + "Device type is " + device.type.ToString());
+        if (device == null)
         {
             result = false;
             TouchSense.instance.hapticsEnabled = false;
         }
-        else
-        {
-            touchsense = TouchSense.instance;
-}
 #endif
 
         multiplier = achievementTracker.getRewardPoints();
@@ -211,7 +208,7 @@ public class AppleCollider : MonoBehaviour
             {
 #if UNITY_ANDROID
                 if (result)
-                    touchsense.playBuiltinEffect(TouchSense.IMPACT_WOOD_100);
+                    TouchSense.instance.playBuiltinEffect(TouchSense.IMPACT_WOOD_100);
 #endif
                 //AndyUtils.LogDebug(TAG,"Gold Apple Caught");
                 incementGoldAppleAchievement();
@@ -245,6 +242,11 @@ public class AppleCollider : MonoBehaviour
                     //AndyUtils.LogDebug(TAG,"Now activating Gold Effect");
                     activateEffect();
                 }
+
+#if UNITY_ANDROID
+                if (result)
+                    TouchSense.instance.stopPlayingBuiltinEffect();
+#endif
             }
             //			AndyUtils.LogDebug(TAG,"!firstGame is " + !firstGame);
             if (!firstGame)
@@ -265,11 +267,6 @@ public class AppleCollider : MonoBehaviour
             // This is so you can change multiple parameters without reconstructing
             // the mesh repeatedly
             textScore.Commit();
-
-#if UNITY_ANDROID
-            if (result)
-                touchsense.stopPlayingBuiltinEffect();
-#endif
         }
         else
         {
@@ -281,7 +278,7 @@ public class AppleCollider : MonoBehaviour
     {
 #if UNITY_ANDROID
         if (result)
-            touchsense.playBuiltinEffect(TouchSense.EXPLOSION1);
+            TouchSense.instance.playBuiltinEffect(TouchSense.EXPLOSION1);
 #endif
         spawnScript.removeFromList(collision.gameObject);
         Destroy(collision.gameObject);
@@ -322,7 +319,7 @@ public class AppleCollider : MonoBehaviour
             displayedScore = ((10 * caughtApples) + score + (10 * combo));
 #if UNITY_ANDROID
         if (result)
-            touchsense.stopPlayingBuiltinEffect();
+            TouchSense.instance.stopPlayingBuiltinEffect();
 #endif
         comboText.text = combo.ToString();
         // This is important, your changes will not be updated until you call Commit()
@@ -556,8 +553,6 @@ public class AppleCollider : MonoBehaviour
     #region GameOver Functions
     public void StoreGameStats()
     {
-        touchsense = null;
-
         // No gold caught achievement
         if (!firstCatch)
         {

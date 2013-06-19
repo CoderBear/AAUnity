@@ -64,7 +64,7 @@ public class EnergyButton : MonoBehaviour
         icon.color = Color.gray;
         cooldownActive = !cooldownActive;
 
-        timerScript.countDownSeconds += 10;
+        timerScript.countDownSeconds += 5;
 
         Invoke("changedDisplayFA", 0.5f);
         Invoke("ActivateCooldown", 10); // cooldown lasts 10 secs

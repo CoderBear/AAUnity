@@ -766,7 +766,7 @@ public class TouchSense : MonoBehaviour{
     private void OnDestroy()
     {
 #if UNITY_ANDROID
-        ImmVibeTerminate();
+        //ImmVibeTerminate();
 #endif
     }
 

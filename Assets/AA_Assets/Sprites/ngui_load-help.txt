@@ -1,0 +1,36 @@
+{"frames": {
+
+"back.png":
+{
+	"frame": {"x":2,"y":1478,"w":169,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":169,"h":78},
+	"sourceSize": {"w":169,"h":78}
+},
+"help.jpg":
+{
+	"frame": {"x":2,"y":740,"w":1280,"h":736},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":736},
+	"sourceSize": {"w":1280,"h":736}
+},
+"splash_back.jpg":
+{
+	"frame": {"x":2,"y":2,"w":1280,"h":736},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":736},
+	"sourceSize": {"w":1280,"h":736}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "ngui_load-help.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2244154cf1bd691d977ff798a5fc1ac3$"
+}
+}
