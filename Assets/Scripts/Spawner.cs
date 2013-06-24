@@ -23,7 +23,24 @@ public class Spawner : MonoBehaviour
     MersenneTwister random;
     int comboCounter;
     int goldCounter;
+    private bool result = true;
     #endregion
+
+    void Awake()
+    {
+#if UNITY_ANDROID
+        TouchSenseSingleDevice device = new TouchSenseSingleDevice(0);
+        //AndyUtils.LogDebug(TAG, "Device is " + device.name);
+        //AndyUtils.LogDebug(TAG, "Device type is " + device.type.ToString());
+        Debug.Log(TAG + "Device is " + device.name);
+        Debug.Log(TAG + "Device type is " + device.type.ToString());
+        if (device == null)
+        {
+            result = false;
+            TouchSense.instance.hapticsEnabled = false;
+        }
+#endif
+    }
 
     // Use this for initialization
     void Start()
@@ -232,7 +249,11 @@ public class Spawner : MonoBehaviour
     public void removeRotten()
     {
         GameObject[] go = GameObject.FindGameObjectsWithTag("RottenApple");
-        //PlaySound(shieldHitClip);
+        PlaySound(shieldHitClip);
+#if UNITY_ANDROID
+        if (result)
+            TouchSense.instance.playBuiltinEffect(TouchSense.EXPLOSION2);
+#endif
         foreach (GameObject spawn in go)
         //foreach (GameObject spawn in rottenSpawns)
         {
@@ -241,6 +262,10 @@ public class Spawner : MonoBehaviour
             Instantiate(shieldHitAnim, position, Quaternion.identity);
             DestroyImmediate(spawn);
         }
+#if UNITY_ANDROID
+        if (result)
+            TouchSense.instance.stopPlayingBuiltinEffect();
+#endif
         rottenSpawns.Clear();
     }
 

@@ -2,7 +2,7 @@
 
 "basket (2).png":
 {
-	"frame": {"x":2,"y":1462,"w":420,"h":434},
+	"frame": {"x":2,"y":1446,"w":420,"h":434},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":13,"w":420,"h":434},
@@ -10,7 +10,7 @@
 },
 "button.jpg":
 {
-	"frame": {"x":1290,"y":1768,"w":320,"h":100},
+	"frame": {"x":1606,"y":1256,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -18,7 +18,7 @@
 },
 "buttonpress.jpg":
 {
-	"frame": {"x":968,"y":1870,"w":320,"h":100},
+	"frame": {"x":1606,"y":1154,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -50,7 +50,7 @@
 },
 "loadscreen.jpg":
 {
-	"frame": {"x":2,"y":740,"w":1280,"h":720},
+	"frame": {"x":2,"y":724,"w":1280,"h":720},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":720},
@@ -58,7 +58,7 @@
 },
 "mmb_achieve.png":
 {
-	"frame": {"x":1068,"y":1666,"w":320,"h":100},
+	"frame": {"x":1284,"y":1256,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -66,7 +66,7 @@
 },
 "mmb_achieve2.png":
 {
-	"frame": {"x":968,"y":1768,"w":320,"h":100},
+	"frame": {"x":1284,"y":1154,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -74,7 +74,7 @@
 },
 "mmb_exit.png":
 {
-	"frame": {"x":1044,"y":1564,"w":320,"h":100},
+	"frame": {"x":1044,"y":1548,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -82,7 +82,7 @@
 },
 "mmb_exit2.png":
 {
-	"frame": {"x":1044,"y":1462,"w":320,"h":100},
+	"frame": {"x":1044,"y":1446,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -90,7 +90,7 @@
 },
 "mmb_help.png":
 {
-	"frame": {"x":746,"y":1666,"w":320,"h":100},
+	"frame": {"x":746,"y":1650,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -98,7 +98,7 @@
 },
 "mmb_help2.png":
 {
-	"frame": {"x":722,"y":1564,"w":320,"h":100},
+	"frame": {"x":722,"y":1548,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -106,7 +106,7 @@
 },
 "mmb_options.png":
 {
-	"frame": {"x":722,"y":1462,"w":320,"h":100},
+	"frame": {"x":722,"y":1446,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -114,7 +114,7 @@
 },
 "mmb_options2.png":
 {
-	"frame": {"x":646,"y":1928,"w":320,"h":100},
+	"frame": {"x":646,"y":1912,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -122,7 +122,7 @@
 },
 "mmb_stats.png":
 {
-	"frame": {"x":646,"y":1826,"w":320,"h":100},
+	"frame": {"x":646,"y":1810,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -130,7 +130,7 @@
 },
 "mmb_stats2.png":
 {
-	"frame": {"x":424,"y":1724,"w":320,"h":100},
+	"frame": {"x":424,"y":1708,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -138,7 +138,7 @@
 },
 "mmb_store.png":
 {
-	"frame": {"x":324,"y":1898,"w":320,"h":100},
+	"frame": {"x":324,"y":1882,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -146,7 +146,7 @@
 },
 "mmb_store2.png":
 {
-	"frame": {"x":2,"y":1898,"w":320,"h":100},
+	"frame": {"x":2,"y":1882,"w":320,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":100},
@@ -154,11 +154,11 @@
 },
 "newbg.jpg":
 {
-	"frame": {"x":2,"y":2,"w":1280,"h":736},
+	"frame": {"x":2,"y":2,"w":1280,"h":720},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":736},
-	"sourceSize": {"w":1280,"h":736}
+	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":720},
+	"sourceSize": {"w":1280,"h":720}
 },
 "perfectionist.png":
 {
@@ -170,7 +170,7 @@
 },
 "smallray.png":
 {
-	"frame": {"x":424,"y":1462,"w":296,"h":260},
+	"frame": {"x":424,"y":1446,"w":296,"h":260},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":17,"w":296,"h":260},
@@ -183,6 +183,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b22b54db913c1f37b413eb611de02630$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ef84f8a857dfcb1c84fa60149c6a104f$"
 }
 }

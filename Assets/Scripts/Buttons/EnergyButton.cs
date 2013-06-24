@@ -57,14 +57,14 @@ public class EnergyButton : MonoBehaviour
 	
 	public void clickedFA ()
 	{
-		tracker.AddProgressToAchievement ("Energy Boost", 1.0f);
+        //tracker.AddProgressToAchievement ("Energy Boost", 1.0f);
         balance--;
         //balance = 1;
 
         icon.color = Color.gray;
         cooldownActive = !cooldownActive;
 
-        timerScript.countDownSeconds += 5;
+        timerScript.countDownSeconds += 10;
 
         Invoke("changedDisplayFA", 0.5f);
         Invoke("ActivateCooldown", 10); // cooldown lasts 10 secs
@@ -72,7 +72,7 @@ public class EnergyButton : MonoBehaviour
 	
 	public void clickedPM ()
 	{
-		tracker.AddProgressToAchievement ("Energy Boost", 1.0f);
+        //tracker.AddProgressToAchievement ("Energy Boost", 1.0f);
         balance--;
 
         icon.color = Color.gray;
@@ -103,6 +103,7 @@ public class EnergyButton : MonoBehaviour
     }
 	
 	private void ActivateCooldown() {
+        tracker.AddProgressToAchievement("Energy Boost", 1.0f);
         icon.color = Color.white;
         pressed = !pressed;
 		cooldownActive = !cooldownActive;

@@ -124,7 +124,7 @@ public class AchievementTracker : MonoBehaviour
 	{
 		AchievementTrack achievement = GetAchievementByName (achievementName);
 		if (achievement == null) {
-			Debug.LogWarning ("AchievementManager::AddProgressToAchievement() - Trying to add progress to an achievemnet that doesn't exist: " + achievementName);
+            //Debug.LogWarning ("AchievementManager::AddProgressToAchievement() - Trying to add progress to an achievemnet that doesn't exist: " + achievementName);
 			return;
 		}
 
@@ -137,7 +137,7 @@ public class AchievementTracker : MonoBehaviour
 	{
 		AchievementTrack achievement = GetAchievementByName (achievementName);
 		if (achievement == null) {
-			Debug.LogWarning ("AchievementManager::SetProgressToAchievement() - Trying to add progress to an achievemnet that doesn't exist: " + achievementName);
+            //Debug.LogWarning ("AchievementManager::SetProgressToAchievement() - Trying to add progress to an achievemnet that doesn't exist: " + achievementName);
 			return;
 		}
 
