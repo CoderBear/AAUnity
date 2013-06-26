@@ -12,6 +12,7 @@ public class FAButton : MonoBehaviour {
 		sprite.gameObject.SetActive(true);
         script.turnMusicOff();
 
+        AdvertisementHandler.DisableAds();
 		LoadGame();
 	}
 	

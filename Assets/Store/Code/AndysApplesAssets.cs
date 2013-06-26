@@ -8,9 +8,12 @@ namespace com.soomla.unity.example
 	{
 		/** Static Final members **/
 		public static string COMBO_CURRENCY_ITEM_ID = "currency_combo";
-		public static string COMBO2K_PACK_PRODUCT_ID = "android.test.purchased";
-		public static string COMBO5K_PACK_PRODUCT_ID = "android.test.purchased";
-        public static string COMBO15K_PACK_PRODUCT_ID = "android.test.purchased";
+        //public static string COMBO2K_PACK_PRODUCT_ID = "android.test.purchased";
+        //public static string COMBO5K_PACK_PRODUCT_ID = "android.test.purchased";
+        //public static string COMBO15K_PACK_PRODUCT_ID = "android.test.purchased";
+        public static string COMBO2K_PACK_PRODUCT_ID = "currency_pack1";
+        public static string COMBO5K_PACK_PRODUCT_ID = "currency_pack2";
+        public static string COMBO15K_PACK_PRODUCT_ID = "currency_pack3";
 
 		/** Virtual Currencies **/
 		public static VirtualCurrency COMBO_CURRENCY = new VirtualCurrency ("Combos", "", COMBO_CURRENCY_ITEM_ID);

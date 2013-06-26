@@ -8,6 +8,8 @@ public class OptionsButton : MonoBehaviour {
 	void OnClick() {
         pressed = !pressed;
         MainMenuAudio.isObjectActive = pressed;
+
+        AdvertisementHandler.DisableAds();
 		Application.LoadLevel("Options");
 	}
 }

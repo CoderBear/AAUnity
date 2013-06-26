@@ -127,6 +127,8 @@ public class AppleCollider : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        AdvertisementHandler.DisableAds();
+
         totalGameCombos = 0;
         displayedScore = 0;
         caughtApples = 0;

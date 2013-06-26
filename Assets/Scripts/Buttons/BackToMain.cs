@@ -12,6 +12,7 @@ public class BackToMain : MonoBehaviour {
             if (this.gameObject.tag == "Store")
                 script.CloseStore();
 
+            AdvertisementHandler.EnableAds();
             Application.LoadLevel("AAMainMenu");
         }
     }
@@ -19,7 +20,8 @@ public class BackToMain : MonoBehaviour {
 	void OnClick() {
 		if(this.gameObject.tag == "Store")
 			script.CloseStore();
-		
+
+        AdvertisementHandler.EnableAds();
 		Application.LoadLevel("AAMainMenu");
 	}
 }

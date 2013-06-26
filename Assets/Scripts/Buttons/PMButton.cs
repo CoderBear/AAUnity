@@ -12,6 +12,8 @@ public class PMButton : MonoBehaviour {
 		sprite.gameObject.SetActive(true);
 
         script.turnMusicOff();
+
+        AdvertisementHandler.DisableAds();
 		LoadGame();
 	}
 	

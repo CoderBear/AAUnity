@@ -9,6 +9,7 @@ public class AchieveButton : MonoBehaviour {
         pressed = !pressed;
         MainMenuAudio.isObjectActive = pressed;
 
+        AdvertisementHandler.DisableAds();
 		Application.LoadLevel("Acheivements");
 	}
 }

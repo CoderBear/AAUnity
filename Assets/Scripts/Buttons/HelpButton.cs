@@ -8,6 +8,8 @@ public class HelpButton : MonoBehaviour {
 	void OnClick() {
         pressed = !pressed;
         MainMenuAudio.isObjectActive = pressed;
+
+        AdvertisementHandler.DisableAds();
 		Debug.Log("Help Button Pressed");
 		Application.LoadLevel("HelpMenu");
 	}

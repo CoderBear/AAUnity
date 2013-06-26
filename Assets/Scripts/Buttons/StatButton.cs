@@ -8,6 +8,8 @@ public class StatButton : MonoBehaviour {
 	void OnClick() {
         pressed = !pressed;
         MainMenuAudio.isObjectActive = pressed;
+
+        AdvertisementHandler.DisableAds();
 		Application.LoadLevel("Statistics");
 	}
 	
