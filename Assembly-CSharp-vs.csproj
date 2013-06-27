@@ -757,6 +757,7 @@
      <Compile Include="Assets\Scripts\Buttons\StoreUnlockableButton.cs" />
      <Compile Include="Assets\Scripts\Buttons\StoreUpgradeButton.cs" />
      <Compile Include="Assets\Scripts\GameStartup.cs" />
+     <Compile Include="Assets\Scripts\GoogleAnalyticsHelper.cs" />
      <Compile Include="Assets\Scripts\HitGround.cs" />
      <Compile Include="Assets\Scripts\MainMenuAudio.cs" />
      <Compile Include="Assets\Scripts\Mics\Advertisement\AdvertisementHandler.cs" />

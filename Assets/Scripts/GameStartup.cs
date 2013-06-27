@@ -9,6 +9,7 @@ public class GameStartup : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+        //GoogleAnalyticsHelper.Settings("UA-41934084-1", "127.0.0.1");
 		StoreController.Initialize (new AndysApplesAssets ());
 
         // Acquire default player skin "Andy" and equip him for use in game.
