@@ -12,11 +12,11 @@ public class FAButton : MonoBehaviour {
 		sprite.gameObject.SetActive(true);
         script.turnMusicOff();
 
-        AdvertisementHandler.DisableAds();
 		LoadGame();
 	}
 	
 	public void LoadGame() {
+        GoogleAnalyticsHelper.trackGamePlayed("Fast Apples");
 		Application.LoadLevel("Fast Apples");
 	}
 }

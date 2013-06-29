@@ -104,7 +104,7 @@ namespace com.soomla.unity.example
 		/*--- Unlockable Skins ---*/
 		public static VirtualGood ANDY_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Andy", "Andy Player Skin", "andy_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 0));
 		public static VirtualGood KELLY_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Kelly", "Kelly Player Skin", "kelly_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 1250));
-		public static VirtualGood NINJA_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Ninja", "Ninja Player Skin", "ninja_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 1250));
+		public static VirtualGood NINJA_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Ninja", "Ninja Player Skin", "ninja_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
 		public static VirtualGood PIG_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Pig", "Pig Player Skin", "pig_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
 		public static VirtualGood PIRATE_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Pirate", "Pirate Player Skin", "pirate_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
 		public static VirtualGood WIZARD_GOOD = new EquippableVG (EquippableVG.EquippingModel.CATEGORY, "Wizard", "Wizard Player Skin", "wizard_skin", new PurchaseWithVirtualItem (COMBO_CURRENCY_ITEM_ID, 5000));
@@ -129,14 +129,14 @@ namespace com.soomla.unity.example
     		"5000 Combos", // name
     		"Test purchase of an item", // description
     		"combos_5K", // item id
-			5000, // number of currencies in the pack
+			6000, // number of currencies in the pack
 			COMBO_CURRENCY_ITEM_ID,
             new PurchaseWithMarket(COMBO5K_PACK_PRODUCT_ID, 4.99));
         public static VirtualCurrencyPack COMBO15K_PACK = new VirtualCurrencyPack(
             "15,000 Combos", // name
             "Test purchase of an item", // description
             "combos_10K", // item id
-            15000, // number of currencies in the pack
+            20000, // number of currencies in the pack
             COMBO_CURRENCY_ITEM_ID,
             new PurchaseWithMarket(COMBO15K_PACK_PRODUCT_ID, 2.99));
     

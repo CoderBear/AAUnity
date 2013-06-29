@@ -5,11 +5,20 @@ using com.soomla.unity.example;
 
 public class GameStartup : MonoBehaviour
 {
-	
+    public static string lastLevelLoaded;
+
+	void Awake()
+    {
+        ChartBoostAndroid.init("51c797cb16ba47fe02000009", "a58d9cbbb5a4db2d7c62eb7c146b75d7c070691e", true);
+    }
+
+
 	// Use this for initialization
 	void Start ()
 	{
-        //GoogleAnalyticsHelper.Settings("UA-41934084-1", "127.0.0.1");
+        //ChartBoostAndroid.onStart();
+        //ChartBoostAndroid.showInterstitial(null);
+        GoogleAnalyticsHelper.Init();
 		StoreController.Initialize (new AndysApplesAssets ());
 
         // Acquire default player skin "Andy" and equip him for use in game.

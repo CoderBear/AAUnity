@@ -13,11 +13,11 @@ public class PMButton : MonoBehaviour {
 
         script.turnMusicOff();
 
-        AdvertisementHandler.DisableAds();
 		LoadGame();
 	}
 	
 	public void LoadGame() {
+        GoogleAnalyticsHelper.trackGamePlayed("Perfectionist");
 		Application.LoadLevel("Perfectionist");
 	}
 }

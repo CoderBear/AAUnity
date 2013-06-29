@@ -12,7 +12,6 @@ public class BackToMain : MonoBehaviour {
             if (this.gameObject.tag == "Store")
                 script.CloseStore();
 
-            AdvertisementHandler.EnableAds();
             Application.LoadLevel("AAMainMenu");
         }
     }
@@ -21,7 +20,16 @@ public class BackToMain : MonoBehaviour {
 		if(this.gameObject.tag == "Store")
 			script.CloseStore();
 
-        AdvertisementHandler.EnableAds();
+        if (this.gameObject.tag == "Game End")
+        {
+            GoogleAnalyticsHelper.trackGameFinished(Application.loadedLevelName);
+        }
+
+        if (Application.loadedLevel == 3 || Application.loadedLevel == 4)
+        {
+            GoogleAnalyticsHelper.lastLevelLoaded = Application.loadedLevelName;
+        }
+
 		Application.LoadLevel("AAMainMenu");
 	}
 }

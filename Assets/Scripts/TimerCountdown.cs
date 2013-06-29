@@ -16,6 +16,7 @@ public class TimerCountdown : MonoBehaviour
 	public Spawner script;
 	public AppleCollider colliderscript;
     public optionDB db;
+    public float analyticsTimer = 0.0f;
 	
 	#region Fields
 	
@@ -130,6 +131,7 @@ public class TimerCountdown : MonoBehaviour
 		}
 				
 		if (timerActive) {
+            analyticsTimer += Time.deltaTime;
 			if (!tracker.Achievements [10].Earned)
 				tracker.AddProgressToAchievement ("All Nighter", Time.deltaTime);
 		}

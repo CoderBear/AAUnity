@@ -152,15 +152,10 @@ public class Store : MonoBehaviour
             blossomBG.notPurchased();
         }
 
-        AdvertisementHandler.DisableAds();
-
-        ChartBoostAndroid.init("51c797cb16ba47fe02000009", "a58d9cbbb5a4db2d7c62eb7c146b75d7c070691e", true);
-        ChartBoostAndroid.onStart();
     }
 
     public void CloseStore()
     {
-        AdvertisementHandler.EnableAds();
         StoreController.StoreClosing();
     }
 

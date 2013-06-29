@@ -17,7 +17,7 @@ public class AdvertisementManager : MonoBehaviour {
         }
 
         rect.y = rect.y + rect.height;
-        if (GUI.Button(rect, "Disable")) {           
+        if (GUI.Button(rect, "Disable")) {
             AdvertisementHandler.DisableAds();
         }
 

@@ -127,8 +127,6 @@ public class AppleCollider : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        AdvertisementHandler.DisableAds();
-
         totalGameCombos = 0;
         displayedScore = 0;
         caughtApples = 0;
@@ -555,6 +553,7 @@ public class AppleCollider : MonoBehaviour
     #region GameOver Functions
     public void StoreGameStats()
     {
+        GoogleAnalyticsHelper.trackGameLength(Application.loadedLevelName, (long)timerScript.analyticsTimer);
         // No gold caught achievement
         if (!firstCatch)
         {

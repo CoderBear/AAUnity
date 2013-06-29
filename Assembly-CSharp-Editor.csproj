@@ -218,6 +218,7 @@
      <None Include="Assets\Plugins\Android\build.xml" />
      <None Include="Assets\Toon_Explosion_V1\Documentation\03 - HTExplosion.cs parameters.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth.shader" />
+     <None Include="Assets\Analytics\README.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\PlayMaker\Versions\readme.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\AdditiveVertexColor.shader" />

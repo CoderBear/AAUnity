@@ -55,6 +55,10 @@
       <activity android:name="com.google.ads.AdActivity"
                   android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 
+      <activity
+            android:name="com.unityrealm.uranalytics.AnalyticsActivity" >
+      </activity>
+
       <service android:name="com.soomla.billing.BillingService" />
 
       <receiver android:name="com.soomla.billing.BillingReceiver">
