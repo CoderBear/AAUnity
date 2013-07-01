@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":720},
 	"sourceSize": {"w":1280,"h":720}
 },
-"splash_screen.png":
+"uri.jpg":
 {
 	"frame": {"x":2,"y":2,"w":1280,"h":720},
 	"rotated": false,
@@ -39,6 +39,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:8324fde05ce3ae8056996bfa73d19277$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7644467a16a83ca9b37c21e2a9c061e2$"
 }
 }

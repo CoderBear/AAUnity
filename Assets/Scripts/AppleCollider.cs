@@ -592,7 +592,7 @@ public class AppleCollider : MonoBehaviour
                 else
                 {
                     db.StoreValue(2, caughtApples); // lifetime apples
-                    db.StoreValue(3, 1); // lifetime games
+                    db.StoreValue(3, db.getValue("lifetime_games") + 1); // lifetime games
                     db.StoreValue(5, 1); // fast apple_games
                     db.StoreValue(4, caughtApples);
                     db.StoreValue(9, displayedScore);
@@ -606,7 +606,7 @@ public class AppleCollider : MonoBehaviour
                 achievementTracker.AddProgressToAchievement("Mr. Clean Basket", 1.0f);
                 achievementTracker.AddProgressToAchievement("Mr. Bateman", 1.0f);
 
-                if (db.getValue("fa_games") != 0)
+                if (db.getValue("p_games") != 0)
                 {
                     db.StoreValue(2, db.getValue("lifetime_apples") + caughtApples);
                     db.StoreValue(3, db.getValue("lifetime_games") + 1);
@@ -624,7 +624,7 @@ public class AppleCollider : MonoBehaviour
                 else
                 {
                     db.StoreValue(2, caughtApples); // lifetime apples
-                    db.StoreValue(3, 1); // lifetime games
+                    db.StoreValue(3, db.getValue("lifetime_games") + 1); // lifetime games
                     db.StoreValue(11, 1); // perfectionist_games
                     db.StoreValue(10, caughtApples);
                     db.StoreValue(15, displayedScore);
