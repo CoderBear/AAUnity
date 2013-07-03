@@ -46,8 +46,11 @@ import java.lang.Runnable;
  */
 public class PlayHavenFacade implements PHPublisherContentRequest.ContentDelegate, PHPublisherContentRequest.PurchaseDelegate, PHPublisherContentRequest.RewardDelegate, PHPublisherContentRequest.CustomizeDelegate, PHPublisherContentRequest.FailureDelegate
 {	
+    public final static String UNITY_SDK_VERSION = "android-unity-1.14.1";
+    
 	private Activity currentActivity;
 	private PHPurchase currentPurchase;
+	private boolean isPreloading;
 	
 	private class RequestRunner implements Runnable
 	{
@@ -91,6 +94,7 @@ public class PlayHavenFacade implements PHPublisherContentRequest.ContentDelegat
 	{		
 		setCurrentActivity(currentActivity);
 		setKeys(token, secret);
+        //PlayHaven.setSDKPlatform(currentActivity, UNITY_SDK_VERSION);
 	}
 	
 	/**
@@ -209,6 +213,7 @@ public class PlayHavenFacade implements PHPublisherContentRequest.ContentDelegat
  		Log.d("PlayHavenFacade", "preloadRequest");
 		PHPublisherContentRequest request = new PHPublisherContentRequest(currentActivity, this, placement);
 		request.setRequestTag(hash);
+		isPreloading = true;
 		new PreloadRequestRunner().run(currentActivity, request);
 	}
 	
@@ -216,23 +221,37 @@ public class PlayHavenFacade implements PHPublisherContentRequest.ContentDelegat
 	
 	public void requestSucceeded(PHAPIRequest request, JSONObject responseData)
 	{
- 		Log.d("PlayHavenFacade", "requestSucceeded");	
-
-		HashMap<String, Object> data = new HashMap<String, Object>(1);
-		data.put("name", "success");
-		data.put("hash", request.getRequestTag());
-		if (responseData == null)
-			data.put("data", "");
-		else
-			data.put("data", responseData);
-		responseData = new JSONObject(data);
+ 		Log.d("PlayHavenFacade", "requestSucceeded ("+request.toString()+")");
+        
+		if (request instanceof PHPublisherOpenRequest || (request instanceof PHPublisherContentRequest && isPreloading) || request instanceof PHPublisherMetadataRequest)
+		{
+			HashMap<String, Object> data = new HashMap<String, Object>(1);
+			if (request instanceof PHPublisherContentRequest && isPreloading)
+			{
+				data.put("name", "gotcontent");
+				isPreloading = false;
+			}
+			else
+			{
+				data.put("name", "success");
+			}
+			data.put("hash", request.getRequestTag());
+			if (responseData == null)
+				data.put("data", "");
+			else
+				data.put("data", responseData);
+			responseData = new JSONObject(data);
 		
-		UnityPlayer.UnitySendMessage("PlayHavenManager", "HandleNativeEvent", responseData.toString());
+			UnityPlayer.UnitySendMessage("PlayHavenManager", "HandleNativeEvent", responseData.toString());
+		}
 	}
 	
 	public void requestFailed(PHAPIRequest request, Exception e)
 	{
  		Log.d("PlayHavenFacade", "requestFailed");
+		
+		if (request instanceof PHPublisherContentRequest && isPreloading)
+			isPreloading = false;
 		
 		HashMap<String, Object> error = new HashMap<String, Object>(2);
 		error.put("code", 0);

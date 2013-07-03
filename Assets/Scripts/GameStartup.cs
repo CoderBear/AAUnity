@@ -36,6 +36,9 @@ public class GameStartup : MonoBehaviour
             StoreInventory.GiveItem(AndysApplesAssets.DEFAULT_BG.ItemId, 1);
             StoreInventory.EquipVirtualGood(AndysApplesAssets.DEFAULT_BG.ItemId);
         }
+
+        GoogleAnalyticsHelper.lastLevelLoaded = Application.loadedLevelName;
+        Debug.Log("Last Level Loaded is " + GoogleAnalyticsHelper.lastLevelLoaded);
 	}
 	
 	// Update is called once per frame

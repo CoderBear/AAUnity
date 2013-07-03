@@ -154,7 +154,7 @@ namespace PlayHaven
 		public void Dispose()
 		{
 #if UNITY_ANDROID
-			if (obj_PlayHavenFacade != null)
+			if (Application.platform == RuntimePlatform.Android && obj_PlayHavenFacade != null)
 				obj_PlayHavenFacade.Dispose();
 #endif
 		}
@@ -162,7 +162,7 @@ namespace PlayHaven
 #if UNITY_ANDROID
 		public static void Initialize()
 		{
-			if (PlayHavenManager.IsAndroidSupported)
+			if (Application.platform == RuntimePlatform.Android && PlayHavenManager.IsAndroidSupported)
 			{
 				// Pass on the UnityPlayer's current activity to the Java facade object.
 				// Also, the token and secret are set up differently from Android vs. iOS SDKs.  The Android
@@ -181,10 +181,13 @@ namespace PlayHaven
 
 		public static void SetKeys(string token, string secret)
 		{
+			if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(secret))
+				return;
+			
 			PlayHavenBinding.token = token;
 			PlayHavenBinding.secret = secret;
 #if UNITY_ANDROID
-			if (obj_PlayHavenFacade != null)
+			if (Application.platform == RuntimePlatform.Android && obj_PlayHavenFacade != null)
 			{
 				obj_PlayHavenFacade.Call("setKeys", token, secret);
 			}
@@ -258,7 +261,7 @@ namespace PlayHaven
 #if UNITY_ANDROID
 		public static void RegisterActivityForTracking(bool register)
 		{
-			if (PlayHavenManager.IsAndroidSupported)
+			if (Application.platform == RuntimePlatform.Android && PlayHavenManager.IsAndroidSupported)
 				PlayHavenBinding.obj_PlayHavenFacade.Call((register) ? "register" : "unregister");
 		}
 #endif
@@ -646,7 +649,11 @@ namespace PlayHaven
 		public static void ClearRequestWithHash(int hash)
 		{
 			if (sRequests.ContainsKey(hash))
+			{
 				sRequests.Remove(hash);
+				if (Debug.isDebugBuild)
+					Debug.Log(string.Format("Cleared request (id={0})", hash));
+			}
 		}
 		
 		// Event Handlers
@@ -685,21 +692,24 @@ namespace PlayHaven
 			private static extern void _PlayHavenOpenRequest(int hash, string token, string secret, string customUDID);
 #endif			
 			
+			public OpenRequest()
+			{
+				hashCode = GetHashCode();
+				sRequests.Add(hashCode, this);
+			}
+			
 			public OpenRequest(string customUDID)
 			{
 #if UNITY_IPHONE
 				this.customUDID = customUDID;
 #endif			
+				hashCode = GetHashCode();
+				sRequests.Add(hashCode, this);
 			}
 			
 			public int HashCode
 			{
 				get { return hashCode; }
-			}
-			
-			public OpenRequest()
-			{
-				sRequests.Add(GetHashCode(), this);
 			}
 			
 			public void Send()
@@ -709,7 +719,6 @@ namespace PlayHaven
 			
 			public void Send(bool showsOverlayImmediately)
 			{			
-				hashCode = GetHashCode();
 #if UNITY_IPHONE || UNITY_ANDROID
 				if (Application.isEditor)
 				{
@@ -734,6 +743,8 @@ namespace PlayHaven
 				} 
 				else 
 				{
+					if (Debug.isDebugBuild)
+						Debug.Log(string.Format("PlayHaven: open request (id={0})", hashCode));
 					#if UNITY_IPHONE
 					_PlayHavenOpenRequest(hashCode, PlayHavenBinding.token, PlayHavenBinding.secret, customUDID);
 					#elif UNITY_ANDROID
@@ -785,8 +796,8 @@ namespace PlayHaven
 			public MetadataRequest(string placement)
 			{
 				mPlacement = placement;
-				
-				sRequests.Add(GetHashCode(), this);
+				hashCode = GetHashCode();
+				sRequests.Add(hashCode, this);
 			}
 			
 			public int HashCode
@@ -801,7 +812,6 @@ namespace PlayHaven
 			
 			public void Send(bool showsOverlayImmediately)
 			{
-				hashCode = GetHashCode();
 #if UNITY_IPHONE || UNITY_ANDROID
 				if (Application.isEditor)
 				{
@@ -830,6 +840,8 @@ namespace PlayHaven
 				} 
 				else 
 				{
+					if (Debug.isDebugBuild)
+						Debug.Log(string.Format("PlayHaven: metadata request (id={0}, placement={1})", hashCode, mPlacement));
 					#if UNITY_IPHONE
 					_PlayHavenMetadataRequest(hashCode, PlayHavenBinding.token, PlayHavenBinding.secret, mPlacement);
 					#elif UNITY_ANDROID
@@ -890,8 +902,8 @@ namespace PlayHaven
 			public ContentRequest(string placement)
 			{
 				mPlacement = placement;
-				
-				sRequests.Add(GetHashCode(), this);	
+				hashCode = GetHashCode();				
+				sRequests.Add(hashCode, this);	
 			}
 			
 			public int HashCode
@@ -906,7 +918,6 @@ namespace PlayHaven
 			
 			public void Send(bool showsOverlayImmediately)
 			{
-				hashCode = GetHashCode();
 #if UNITY_IPHONE || UNITY_ANDROID
 				if (Application.isEditor)
 				{
@@ -931,6 +942,8 @@ namespace PlayHaven
 				} 
 				else 
 				{
+					if (Debug.isDebugBuild)
+						Debug.Log(string.Format("PlayHaven: content request (id={0}, placement={1})", hashCode, mPlacement));
 					#if UNITY_IPHONE
 					_PlayHavenContentRequest(hashCode, PlayHavenBinding.token, PlayHavenBinding.secret, mPlacement, showsOverlayImmediately);
 					#elif UNITY_ANDROID
@@ -1004,8 +1017,8 @@ namespace PlayHaven
 			public ContentPreloadRequest(string placement)
 			{
 				mPlacement = placement;
-				
-				sRequests.Add(GetHashCode(), this);	
+				hashCode = GetHashCode();				
+				sRequests.Add(hashCode, this);	
 			}
 			
 			public int HashCode
@@ -1020,7 +1033,6 @@ namespace PlayHaven
 			
 			public void Send(bool showsOverlayImmediately)
 			{
-				hashCode = GetHashCode();
 #if UNITY_IPHONE || UNITY_ANDROID
 				if (Application.isEditor)
 				{
@@ -1045,6 +1057,8 @@ namespace PlayHaven
 				} 
 				else 
 				{
+					if (Debug.isDebugBuild)
+						Debug.Log(string.Format("PlayHaven: content preload request (id={0}, placement={1})", hashCode, mPlacement));
 					#if UNITY_IPHONE
 					_PlayHavenPreloadRequest(hashCode, PlayHavenBinding.token, PlayHavenBinding.secret, mPlacement);
 					#elif UNITY_ANDROID

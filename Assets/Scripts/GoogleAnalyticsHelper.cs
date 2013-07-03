@@ -47,6 +47,6 @@ public sealed class GoogleAnalyticsHelper : MonoBehaviour
 
     public static void trackGameLength(string mode_name, long time)
     {
-        analyticsPlugin.Call("timePlayed", mode_name, time);
+        analyticsPlugin.Call("timePlayed", time, mode_name);
     }
 }

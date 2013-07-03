@@ -1,9 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using PlayHaven;
 
 public class BackToMain : MonoBehaviour {
 	
 	public Store script;
+    public PlayHavenContentRequester requester;
+
+    void Awake()
+    {
+        PlayHavenManager.instance.ContentPreloadRequest(requester.placement);
+    }
 
     void Update()
     {
@@ -11,6 +18,13 @@ public class BackToMain : MonoBehaviour {
         {
             if (this.gameObject.tag == "Store")
                 script.CloseStore();
+
+
+            if (this.gameObject.tag == "Game End")
+            {
+                requester.Request();
+                GoogleAnalyticsHelper.trackGameFinished(Application.loadedLevelName);
+            }
 
             Application.LoadLevel("AAMainMenu");
         }
@@ -22,12 +36,8 @@ public class BackToMain : MonoBehaviour {
 
         if (this.gameObject.tag == "Game End")
         {
+            requester.Request();
             GoogleAnalyticsHelper.trackGameFinished(Application.loadedLevelName);
-        }
-
-        if (Application.loadedLevel == 3 || Application.loadedLevel == 4)
-        {
-            GoogleAnalyticsHelper.lastLevelLoaded = Application.loadedLevelName;
         }
 
 		Application.LoadLevel("AAMainMenu");

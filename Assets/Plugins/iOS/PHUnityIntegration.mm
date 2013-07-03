@@ -19,6 +19,8 @@
 #import "PHAPIRequest.h"
 #import "JSON.h"
 
+#define UNITY_SDK_VERSION @"ios-unity-1.14.2"
+
 //#define OPENUDID_SUPPORT
 
 #pragma mark - Unity Externs
@@ -40,6 +42,7 @@ static PHUnityIntegration *sharedIntegration;
     if (sharedIntegration == nil)
     {
         sharedIntegration = [PHUnityIntegration new];
+        [PHAPIRequest setPluginIdentifier:UNITY_SDK_VERSION];
     }
     
     return sharedIntegration;

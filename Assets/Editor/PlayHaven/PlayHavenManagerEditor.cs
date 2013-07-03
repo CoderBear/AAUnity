@@ -37,6 +37,7 @@ namespace PlayHavenEditor
 		private SerializedProperty doNotDestroyOnLoad;
 		private SerializedProperty whenToSendOpen;
 		private SerializedProperty whenToGetNotifications;
+		private SerializedProperty badgeMoreGamesPlacement;
 		private SerializedProperty notificationPollDelay;
 		private SerializedProperty notificationPollRate;
 		private SerializedProperty defaultShowsOverlayImmediately;
@@ -83,6 +84,7 @@ namespace PlayHavenEditor
 			whenToSendOpen = serializedObject.FindProperty("whenToSendOpen");
 			
 			whenToGetNotifications = serializedObject.FindProperty("whenToGetNotifications");
+			badgeMoreGamesPlacement = serializedObject.FindProperty("badgeMoreGamesPlacement");
 			notificationPollDelay = serializedObject.FindProperty("notificationPollDelay");
 			notificationPollRate = serializedObject.FindProperty("notificationPollRate");
 			cancelAllOnLevelLoad = serializedObject.FindProperty("cancelAllOnLevelLoad");
@@ -195,6 +197,11 @@ namespace PlayHavenEditor
 			{
 				// whenToGetNotifications
 				EditorGUILayout.PropertyField(whenToGetNotifications, new GUIContent("Fetch Badges"));
+				if (whenToGetNotifications.enumValueIndex != (int)PlayHavenManager.WhenToGetNotifications.Disabled)
+				{
+					// badgeMoreGamesPlacement
+					EditorGUILayout.PropertyField(badgeMoreGamesPlacement, new GUIContent("More Games Placement"));
+				}
 				if (whenToGetNotifications.enumValueIndex == (int)PlayHavenManager.WhenToGetNotifications.Poll)
 				{
 					//GUILayout.Space(4);

@@ -69,6 +69,7 @@ namespace PlayHaven
 			
 		public enum WhenToGetNotifications { Disabled, Awake, Start, OnEnable, Manual, Poll };
 		public WhenToGetNotifications whenToGetNotifications = WhenToGetNotifications.Start;
+		public string badgeMoreGamesPlacement = "more_games";
 		public float notificationPollDelay = 1f;
 		public float notificationPollRate = 15f;
 		
@@ -139,30 +140,14 @@ namespace PlayHaven
 			_instance = FindInstance();
 			
 			DetectNetworkReachable();
-			
-			if (token.Length == 0)
-				Debug.LogError("PlayHaven token has not been specified in the PlayerHavenManager");
-			if (secret.Length == 0)
-				Debug.LogError("PlayHaven secret has not been specified in the PlayerHavenManager");
-			
-			gameObject.name = this.GetType().ToString();
+						
+			gameObject.name = "PlayHavenManager";
 			if (doNotDestroyOnLoad)
 				DontDestroyOnLoad(this);
 			
 			#if UNITY_EDITOR
 			DetermineInEditorDevice();
 			integrationSkin = (GUISkin)Resources.Load("PlayHavenIntegrationSkin", typeof(GUISkin));
-			#endif
-			
-			// 
-			#if UNITY_ANDROID
-			PlayHavenBinding.SetKeys(tokenAndroid, secretAndroid);
-			#else
-			PlayHavenBinding.SetKeys(token, secret);
-			#endif
-			PlayHavenBinding.listener = this;
-			#if UNITY_ANDROID
-			PlayHavenBinding.Initialize();
 			#endif
 			
 			// launch counting
@@ -176,17 +161,41 @@ namespace PlayHaven
 					Debug.Log("Launch count: "+launchCount);
 			}
 					
+			// 
+			#if UNITY_ANDROID
+			PlayHavenBinding.Initialize();
+			#endif
+			
+			#if !ENABLE_MANUAL_PH_MANAGER_INSTANTIATION
+			#if UNITY_IPHONE
+			if (string.IsNullOrEmpty(token))
+				Debug.LogError("PlayHaven token has not been specified in the PlayerHavenManager");
+			if (string.IsNullOrEmpty(secret))
+				Debug.LogError("PlayHaven secret has not been specified in the PlayerHavenManager");
+			#elif UNITY_ANDROID
+			if (string.IsNullOrEmpty(tokenAndroid))
+				Debug.LogError("PlayHaven token has not been specified in the PlayerHavenManager");
+			if (string.IsNullOrEmpty(secretAndroid))
+				Debug.LogError("PlayHaven secret has not been specified in the PlayerHavenManager");
+			#endif
+			#if UNITY_ANDROID
+			PlayHavenBinding.SetKeys(tokenAndroid, secretAndroid);
+			#elif UNITY_IPHONE
+			PlayHavenBinding.SetKeys(token, secret);
+			#endif
+			PlayHavenBinding.listener = this;
 			if (whenToSendOpen == PlayHavenManager.WhenToOpen.Awake)
 				OpenNotification();
 	
 			if (whenToGetNotifications == PlayHavenManager.WhenToGetNotifications.Awake)
-				BadgeRequest();
+				BadgeRequest(badgeMoreGamesPlacement);
+			#endif
 		}
 		
 		void OnEnable()
 		{
 			if (whenToGetNotifications == PlayHavenManager.WhenToGetNotifications.OnEnable)
-				BadgeRequest();
+				BadgeRequest(badgeMoreGamesPlacement);
 		}
 		
 		// Executed before the first frame.  If "whenToSendOpen" is set to Start, PlayHaven will
@@ -197,7 +206,7 @@ namespace PlayHaven
 				OpenNotification();
 			
 			if (whenToGetNotifications == PlayHavenManager.WhenToGetNotifications.Start)
-				BadgeRequest();
+				BadgeRequest(badgeMoreGamesPlacement);
 			else if (whenToGetNotifications == PlayHavenManager.WhenToGetNotifications.Poll)
 				PollForBadgeRequests();
 	
@@ -489,11 +498,11 @@ namespace PlayHaven
 		#region Badges
 		
 		// Request notification badge data
-		public int BadgeRequest()
+		public int BadgeRequest(string placement)
 		{
 			if (networkReachable && whenToGetNotifications != PlayHavenManager.WhenToGetNotifications.Disabled)
 			{
-				int requestId = PlayHavenBinding.SendRequest(PlayHavenBinding.RequestType.Metadata, "more_games");
+				int requestId = PlayHavenBinding.SendRequest(PlayHavenBinding.RequestType.Metadata, placement);
 				#if !UNITY_EDITOR
 				requestsInProgress.Add(requestId);
 				#endif
@@ -501,17 +510,34 @@ namespace PlayHaven
 			}
 			return NO_HASH_CODE;
 		}
+
+		// Request notification badge data
+		[Obsolete("This method is obsolete; it assumes that you will have a placement called more_games; instead, simply use BadgeRequest() but with the relevant placement.",false)]
+		public int BadgeRequest()
+		{
+			return BadgeRequest("more_games");
+		}
 	
 		// Poll for badge requests.
 		public void PollForBadgeRequests()
 		{
-			CancelInvoke("BadgeRequest");
+			CancelInvoke("BadgeRequestPolled");
 			if (notificationPollRate > 0)
-				InvokeRepeating("BadgeRequest", notificationPollDelay, notificationPollRate);
+			{
+				if (!string.IsNullOrEmpty(badgeMoreGamesPlacement))
+					InvokeRepeating("BadgeRequestPolled", notificationPollDelay, notificationPollRate);
+				else if (Debug.isDebugBuild)
+					Debug.LogError("A more games badge placement is not defined.");
+			}
 			else
 				Debug.LogError("cannot have a notification poll rate <= 0");
 		}
 		
+		private void BadgeRequestPolled()
+		{
+			BadgeRequest(badgeMoreGamesPlacement);
+		}
+				
 		#region In-editor Testing
 		
 		#if UNITY_EDITOR
@@ -834,6 +860,8 @@ namespace PlayHaven
 			if (request != null)
 			{
 				string eventName = (string)nativeData["name"];
+				if (Debug.isDebugBuild)
+					Debug.Log(string.Format("PlayHaven event={0} (id={1})", eventName, hash));
 				
 				// possible events:
 				//		willdisplay
@@ -858,6 +886,10 @@ namespace PlayHaven
 				{
 					PlayHavenBinding.ClearRequestWithHash(hash);
 				}
+			}
+			else if (Debug.isDebugBuild)
+			{
+				Debug.LogError("Unable to locate request with id="+hash);
 			}
 		}
 		

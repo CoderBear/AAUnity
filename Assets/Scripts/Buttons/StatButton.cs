@@ -9,6 +9,8 @@ public class StatButton : MonoBehaviour {
         pressed = !pressed;
         MainMenuAudio.isObjectActive = pressed;
 
+        GoogleAnalyticsHelper.lastLevelLoaded = Application.loadedLevelName;
+
 		Application.LoadLevel("Statistics");
 	}
 	

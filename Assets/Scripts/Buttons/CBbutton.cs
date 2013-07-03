@@ -1,7 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using PlayHaven;
 
 public class CBbutton : MonoBehaviour {
+
+    public PlayHavenContentRequester requester;
+
+    void Awake()
+    {
+        PlayHavenManager.instance.ContentPreloadRequest(requester.placement);
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -10,14 +18,14 @@ public class CBbutton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ChartBoostAndroid.onBackPressed();
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    requester.
+        //}
 	}
 
     void OnClick()
     {
-        ChartBoostAndroid.showMoreApps();
+        PlayHavenManager.instance.ContentRequest(requester.placement);
     }
 }
