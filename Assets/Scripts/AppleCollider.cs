@@ -47,7 +47,7 @@ public class AppleCollider : MonoBehaviour
     public int highscore, gameNum, displayedScore;
     public int lifeCounter;
     public bool audioOn;
-    private bool firstCatch = true, firstGame = true;
+    private bool firstCatch = false, firstGame = true;
 
     public int caughtApples
     {
@@ -62,12 +62,13 @@ public class AppleCollider : MonoBehaviour
     }
 
     public int multiplier;
-    int effectTimer;
+    int effectTimer, effectTimerCounter;
     bool result = true;
 
     // Automatically run when a game starts
     void Awake()
     {
+        Debug.Log(TAG + " first catch is " + firstCatch);
         GM_INDEX = (int)GAME_MODE;
 
         script = transform.parent.GetComponent<playerAnimController>();
@@ -119,8 +120,6 @@ public class AppleCollider : MonoBehaviour
         }
 #endif
 
-        multiplier = achievementTracker.getRewardPoints();
-
         effectTimer = 5;
     }
 
@@ -142,11 +141,26 @@ public class AppleCollider : MonoBehaviour
 
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.playOnAwake = false;
+
+        multiplier = db.getValue("multiplier");
+        Debug.Log("AAUNITY/GAME Multiplier at game start is " + multiplier);
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void PauseGame()
+    {
+        if(IsInvoking())
+        CancelInvoke();
+    }
+
+    public void ResumeGame()
+    {
+        Invoke("decrementEffectTimer", 1.0f);
+        Invoke("deactivateEffect", (float)effectTimerCounter);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -412,9 +426,11 @@ public class AppleCollider : MonoBehaviour
         goldEffectActive = true;
         MersenneTwister random = new MersenneTwister();
         int index = random.Next(1, 5);
-        if (firstCatch)
+        if (!firstCatch)
         {
+            Debug.Log(TAG + " first catch was " + firstCatch);
             firstCatch = !firstCatch;
+            Debug.Log(TAG + " first catch is now " + firstCatch);
             if (effectTimer == 0) effectTimer = 5;
             switch (index)
             {
@@ -530,17 +546,25 @@ public class AppleCollider : MonoBehaviour
         }
 
         //AndyUtils.LogDebug(TAG,"Effect timer length for Gold Effect " + CURRENT_EFFECT + " is " + effectTimer + " seconds.");
+        effectTimerCounter = effectTimer;
 
+        Invoke("decrementEffectTimer", 1.0f);
         Invoke("deactivateEffect", (float)effectTimer);
     }
 
     public void deactivateEffect()
     {
+        CancelInvoke("decrementEffectTimer");
         GE_INDEX = 0;
         LAST_EFFECT = CURRENT_EFFECT;
         CURRENT_EFFECT = GOLD_EFFECTS.NONE;
         goldEffectActive = false;
         effectTimer = 5;
+        effectTimerCounter = effectTimer;
+    }
+
+    void decrementEffectTimer() {
+        effectTimerCounter--;
     }
 
     // This is called once the animation has compelted playing.
@@ -553,11 +577,14 @@ public class AppleCollider : MonoBehaviour
     #region GameOver Functions
     public void StoreGameStats()
     {
-        GoogleAnalyticsHelper.trackGameLength(Application.loadedLevelName, (long)timerScript.analyticsTimer);
         // No gold caught achievement
-        if (!firstCatch)
+
+        // Check to make sure a golden apple was never caught
+        // and that the game mode is Fast Apples (scene 3)
+        if (!firstCatch  && (Application.loadedLevel == 3))
         {
-            achievementTracker.AddProgressToAchievement("Allergic to Powerups", 0.0f);
+            Debug.Log(TAG + " 'Allergic to Powerups' being added to");
+            achievementTracker.AddProgressToAchievement("Allergic to Powerups", 1.0f);
         }
 
         // Score Achievements
@@ -574,6 +601,7 @@ public class AppleCollider : MonoBehaviour
         switch (GAME_MODE)
         {
             case GAME_MODES.FAST_APPLES:
+                GA.API.Design.NewEvent("Mode: " + Application.loadedLevelName, timerScript.analyticsTimer);
                 if (db.getValue("fa_games") != 0)
                 {
                     db.StoreValue(2, db.getValue("lifetime_apples") + caughtApples);
@@ -602,6 +630,7 @@ public class AppleCollider : MonoBehaviour
                 }
                 break;
             case GAME_MODES.PERFECTIONIST:
+                GA.API.Design.NewEvent("Mode: " + Application.loadedLevelName, timerScript.analyticsTimer);
                 achievementTracker.AddProgressToAchievement("A Tad Insane", 1.0f);
                 achievementTracker.AddProgressToAchievement("Mr. Clean Basket", 1.0f);
                 achievementTracker.AddProgressToAchievement("Mr. Bateman", 1.0f);
@@ -641,6 +670,7 @@ public class AppleCollider : MonoBehaviour
         db.StoreValue(1, achievementTracker.getRewardPoints()); // multiplier
         multiplier = achievementTracker.getRewardPoints();
         //AndyUtils.LogDebug(TAG, "Multiplier at game end is " + multiplier);
+        Debug.Log(TAG + " Multiplier at game end is " + multiplier);
 
         achievementTracker.StoreInfo();
     }

@@ -16,9 +16,8 @@ public class GameStartup : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-        //ChartBoostAndroid.onStart();
-        //ChartBoostAndroid.showInterstitial(null);
-        GoogleAnalyticsHelper.Init();
+        ChartBoostAndroid.onStart();
+        
 		StoreController.Initialize (new AndysApplesAssets ());
 
         // Acquire default player skin "Andy" and equip him for use in game.
@@ -37,8 +36,6 @@ public class GameStartup : MonoBehaviour
             StoreInventory.EquipVirtualGood(AndysApplesAssets.DEFAULT_BG.ItemId);
         }
 
-        GoogleAnalyticsHelper.lastLevelLoaded = Application.loadedLevelName;
-        Debug.Log("Last Level Loaded is " + GoogleAnalyticsHelper.lastLevelLoaded);
 	}
 	
 	// Update is called once per frame

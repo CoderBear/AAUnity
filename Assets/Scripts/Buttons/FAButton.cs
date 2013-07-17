@@ -16,7 +16,6 @@ public class FAButton : MonoBehaviour {
 	}
 	
 	public void LoadGame() {
-        GoogleAnalyticsHelper.trackGamePlayed("Fast Apples");
 		Application.LoadLevel("Fast Apples");
 	}
 }

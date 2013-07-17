@@ -2,8 +2,8 @@
 
 "back.png":
 {
-	"frame": {"x":2,"y":1446,"w":169,"h":78},
-	"rotated": true,
+	"frame": {"x":1284,"y":2,"w":169,"h":78},
+	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":169,"h":78},
 	"sourceSize": {"w":169,"h":78}
@@ -16,15 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":720},
 	"sourceSize": {"w":1280,"h":720}
 },
-"sbs_id.png":
-{
-	"frame": {"x":1284,"y":2,"w":1280,"h":720},
-	"rotated": true,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":720},
-	"sourceSize": {"w":1280,"h":720}
-},
-"uri.jpg":
+"urisplash.jpg":
 {
 	"frame": {"x":2,"y":2,"w":1280,"h":720},
 	"rotated": false,
@@ -39,6 +31,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:7644467a16a83ca9b37c21e2a9c061e2$"
+	"smartupdate": "$TexturePacker:SmartUpdate:77faa32f42dcc5c351ac1f1adcd16f0f$"
 }
 }

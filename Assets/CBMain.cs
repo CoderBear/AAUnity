@@ -5,18 +5,26 @@ public class CBMain : MonoBehaviour {
 
     private static bool firstRun = true;
 
-	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         if (firstRun)
         {
             firstRun = !firstRun;
-            ChartBoostAndroid.onStart();
             ChartBoostAndroid.showInterstitial(null);
         }
+    }
+
+	// Use this for initialization
+	void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    void onApplicationQuit()
+    {
+        ChartBoostAndroid.onStop();
+    }
 }

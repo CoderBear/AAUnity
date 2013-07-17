@@ -17,7 +17,6 @@ public class PMButton : MonoBehaviour {
 	}
 	
 	public void LoadGame() {
-        GoogleAnalyticsHelper.trackGamePlayed("Perfectionist");
 		Application.LoadLevel("Perfectionist");
 	}
 }

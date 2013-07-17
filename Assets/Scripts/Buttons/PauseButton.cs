@@ -5,6 +5,7 @@ public class PauseButton : MonoBehaviour
 {
 	public TimerCountdown script;
 	public Spawner scriptSpawn;
+    public AppleCollider colliderScript;
 
     void Update ()
     {
@@ -20,11 +21,13 @@ public class PauseButton : MonoBehaviour
                 {
                     scriptSpawn.PauseGame();
                     script.PauseGame();
+                    colliderScript.PauseGame();
                 }
                 else
                 {
                     scriptSpawn.ResumeGame();
                     script.ResumeGame();
+                    colliderScript.ResumeGame();
                 }
             }
         }
@@ -40,9 +43,11 @@ public class PauseButton : MonoBehaviour
 			if (script.gamePaused) {
 				scriptSpawn.PauseGame ();
 				script.PauseGame();
+                colliderScript.PauseGame();
 			} else {
 				scriptSpawn.ResumeGame ();
 				script.ResumeGame();
+                colliderScript.ResumeGame();
 			}
 		}
 	}
