@@ -20,6 +20,9 @@ public class GameStartup : MonoBehaviour
         
 		StoreController.Initialize (new AndysApplesAssets ());
 
+        //if (StoreInventory.GetItemBalance(AndysApplesAssets.SUPER_SEED_GOOD.ItemId) == 0)
+        //    StoreInventory.GiveItem(AndysApplesAssets.SUPER_SEED_GOOD.ItemId, 2);
+
         // Acquire default player skin "Andy" and equip him for use in game.
         // This is is only run on the first startup of the game or if data is deleted.
         if (StoreInventory.GetItemBalance(AndysApplesAssets.ANDY_GOOD.ItemId) == 0)

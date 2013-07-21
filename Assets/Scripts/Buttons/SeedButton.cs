@@ -45,7 +45,7 @@ public class SeedButton : MonoBehaviour
             {
                 case "Fast Apples":
                     //AndyUtils.LogDebug(TAG, "(timerScript.countDownSeconds <= 5) is " + (timerScript.countDownSeconds <= 5));
-                    if (timerScript.countDownSeconds <= 5)
+                    if (timerScript.countDownSeconds <= 5 && timerScript.countDownSeconds > 0)
                     {
                         used = !used;
                         ShowIcon();
@@ -90,10 +90,10 @@ public class SeedButton : MonoBehaviour
     public void clickedFA()
     {
         HideIcon();
+        StoreInventory.TakeItem(itemId, 1);
         //AndyUtils.LogDebug(TAG, "Reseting Timer");
         timerScript.resetTimer();
         CancelInvoke("CheckThenActivate");
-        Invoke("decrementBalance", 0.5f);
     }
 
     public void clickedPM()
