@@ -36,6 +36,7 @@ namespace com.soomla.unity.example
 		}
 		
 		public void onItemPurchased (PurchasableVirtualItem marketItem) {
+            Debug.Log(TAG + " Purchased " + marketItem.ItemId);
 		}
 			
 		public void onVirtualGoodEquipped (EquippableVG good) {

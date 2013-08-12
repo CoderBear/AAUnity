@@ -126,7 +126,7 @@ public class UICheckbox : MonoBehaviour
 	/// Fade out or fade in the checkmark and notify the target of OnChecked event.
 	/// </summary>
 
-	public void Set (bool state)
+	void Set (bool state)
 	{
 		if (!mStarted)
 		{

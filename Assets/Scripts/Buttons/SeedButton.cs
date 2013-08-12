@@ -75,15 +75,18 @@ public class SeedButton : MonoBehaviour
 
     void OnClick()
     {
-        switch (Application.loadedLevelName)
+        if (!timerScript.gameOver && !timerScript.gamePaused)
         {
-            case "Fast Apples":
-                //AndyUtils.LogDebug(TAG, "Super Seed Button Pressed");
-                clickedFA();
-                break;
-            case "Perfectionist":
-                clickedPM();
-                break;
+            switch (Application.loadedLevelName)
+            {
+                case "Fast Apples":
+                    //AndyUtils.LogDebug(TAG, "Super Seed Button Pressed");
+                    clickedFA();
+                    break;
+                case "Perfectionist":
+                    clickedPM();
+                    break;
+            } 
         }
     }
 

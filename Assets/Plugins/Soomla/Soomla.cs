@@ -24,6 +24,7 @@ namespace com.soomla.unity {
 		public string androidPublicKey = AND_PUB_KEY_DEFAULT;
 		public bool androidTestMode = false;
 		public string soomSec = ONLY_ONCE_DEFAULT;
+
 		
 		public static Soomla GetInstance(){
 			return instance;
@@ -135,21 +136,21 @@ namespace com.soomla.unity {
 			Events.OnMarketPurchaseStarted(pvi);
 		}
 		
-		public static void onMarketRefund(string message) {
+		public void onMarketRefund(string message) {
 			StoreUtils.LogDebug(TAG, "SOOMLA/UNITY onMarketRefund:" + message);
 			
 			PurchasableVirtualItem pvi = (PurchasableVirtualItem)StoreInfo.GetItemByItemId(message);
 			Events.OnMarketPurchaseStarted(pvi);
 		}
 		
-		public static void onRestoreTransactions(string message) {
+		public void onRestoreTransactions(string message) {
 			StoreUtils.LogDebug(TAG, "SOOMLA/UNITY onRestoreTransactions:" + message);
 			
 			bool success = Convert.ToBoolean(int.Parse(message));
 			Events.OnRestoreTransactions(success);
 		}
 		
-		public static void onRestoreTransactionsStarted(string message) {
+		public void onRestoreTransactionsStarted(string message) {
 			StoreUtils.LogDebug(TAG, "SOOMLA/UNITY onRestoreTransactionsStarted");
 			
 			Events.OnRestoreTransactionsStarted();
@@ -159,6 +160,12 @@ namespace com.soomla.unity {
 			StoreUtils.LogDebug(TAG, "SOOMLA/UNITY onUnexpectedErrorInStore");
 			
 			Events.OnUnexpectedErrorInStore();
+		}
+		
+		public void onStoreControllerInitialized(string message) {
+			StoreUtils.LogDebug(TAG, "SOOMLA/UNITY onStoreControllerInitialized");
+			
+			Events.OnStoreControllerInitialized();
 		}
 
 	}

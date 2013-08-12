@@ -36,22 +36,29 @@ public class EnergyButton : MonoBehaviour
 	
 	void OnClick ()
 	{
-		if ((balance > 0) && !cooldownActive) {
-			switch (Application.loadedLevel) {
-			case 3: // Fast Apples
-				if (timerScript.countDownSeconds > 5) {
-                    pressed = !pressed;
-					clickedFA();
-				}
-				break;
-			case 4: // Perfectionist
-				if (colliderScript.lifeCounter < 9) {
-                    pressed = !pressed;
-					clickedPM();
-				}
-				break;
-			}
-		}
+        if (!timerScript.gameOver && !timerScript.gamePaused)
+        {
+            if ((balance > 0) && !cooldownActive)
+            {
+                switch (Application.loadedLevel)
+                {
+                    case 3: // Fast Apples
+                        if (timerScript.countDownSeconds > 5)
+                        {
+                            pressed = !pressed;
+                            clickedFA();
+                        }
+                        break;
+                    case 4: // Perfectionist
+                        if (colliderScript.lifeCounter < 9)
+                        {
+                            pressed = !pressed;
+                            clickedPM();
+                        }
+                        break;
+                }
+            }
+        }
 		
 	}
 	

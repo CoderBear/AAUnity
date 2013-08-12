@@ -121,24 +121,24 @@ namespace com.soomla.unity.example
 		public static VirtualCurrencyPack COMBO2K_PACK = new VirtualCurrencyPack (
     		"2000 Combos", // name
     		"Test purchase of an item", // description
-    		"combos_2000", // item id
+    		"combos_2K", // item id
 			2000, // number of currencies in the pack
 			COMBO_CURRENCY_ITEM_ID,
 			new PurchaseWithMarket (COMBO2K_PACK_PRODUCT_ID, 0.99));
 		public static VirtualCurrencyPack COMBO5K_PACK = new VirtualCurrencyPack (
-    		"5000 Combos", // name
+    		"6000 Combos", // name
     		"Test purchase of an item", // description
     		"combos_5K", // item id
 			6000, // number of currencies in the pack
 			COMBO_CURRENCY_ITEM_ID,
-            new PurchaseWithMarket(COMBO5K_PACK_PRODUCT_ID, 4.99));
+            new PurchaseWithMarket(COMBO5K_PACK_PRODUCT_ID, 2.99));
         public static VirtualCurrencyPack COMBO15K_PACK = new VirtualCurrencyPack(
-            "15,000 Combos", // name
+            "20,000 Combos", // name
             "Test purchase of an item", // description
-            "combos_10K", // item id
+            "combos_15K", // item id
             20000, // number of currencies in the pack
             COMBO_CURRENCY_ITEM_ID,
-            new PurchaseWithMarket(COMBO15K_PACK_PRODUCT_ID, 2.99));
+            new PurchaseWithMarket(COMBO15K_PACK_PRODUCT_ID, 4.99));
     
 		public int GetVersion ()
 		{
@@ -167,7 +167,7 @@ namespace com.soomla.unity.example
     
 		public VirtualCurrencyPack[] GetCurrencyPacks ()
 		{
-			return new VirtualCurrencyPack[] { COMBO2K_PACK, COMBO15K_PACK, COMBO5K_PACK };
+			return new VirtualCurrencyPack[] { COMBO2K_PACK, COMBO5K_PACK, COMBO15K_PACK };
 		}
     
 		public VirtualCategory[] GetCategories ()

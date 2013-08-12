@@ -11,6 +11,7 @@ public class ShieldButton : MonoBehaviour
 	public tk2dTextMesh textMesh;
 	public AchievementTracker tracker;
 	public tk2dSprite icon;
+    public TimerCountdown timerScript;
 	
 	public Spawner spawnScript;
 
@@ -32,10 +33,13 @@ public class ShieldButton : MonoBehaviour
 
 	void OnClick ()
 	{
-        if ((balance > 0) && !cooldownActive)
+        if (!timerScript.gameOver && !timerScript.gamePaused)
         {
-            pressed = !pressed;
-            clickedFA();
+            if ((balance > 0) && !cooldownActive)
+            {
+                pressed = !pressed;
+                clickedFA();
+            } 
         }
 	}
 

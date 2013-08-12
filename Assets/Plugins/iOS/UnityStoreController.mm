@@ -6,10 +6,8 @@
 #import "AppStoreItem.h"
 #import "VirtualCurrencyPack.h"
 #import "StoreController.h"
-#import "JSONKit.h"
 #import "VirtualItemNotFoundException.h"
 #import "NotEnoughGoodsException.h"
-#import "InsufficientFundsException.h"
 #import "UnityCommons.h"
 #import "StoreConfig.h"
 #import "NonConsumableItem.h"
@@ -35,8 +33,8 @@ extern "C"{
     }
 	
 	void storeController_Init(const char* secret){
+		storeEventDispatcher = [[UnityStoreEventDispatcher alloc] init];
 		[[StoreController getInstance] initializeWithStoreAssets:storeAssets andCustomSecret:[NSString stringWithUTF8String:secret]];
-        storeEventDispatcher = [[UnityStoreEventDispatcher alloc] init];
 	}
 	
 	int storeController_BuyMarketItem(const char* productId) {
@@ -72,7 +70,7 @@ extern "C"{
 	}
 	
 	void storeController_TransactionsAlreadyRestored(bool* outResult){
-		*outResult = [StoreController transactionsAlreadyRestored];
+		*outResult = [[StoreController getInstance] transactionsAlreadyRestored];
 	}
 	
 }
