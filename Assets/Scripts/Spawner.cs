@@ -60,7 +60,7 @@ public class Spawner : MonoBehaviour
 
         refillSpawns();
 
-        InvokeRepeating("SpawnNormalApple", 0.01f, 0.2f);
+        InvokeRepeating("SpawnNormalApple", 1.0f, 0.2f);
     }
 
     // Update is called once per frame

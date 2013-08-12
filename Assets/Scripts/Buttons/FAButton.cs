@@ -12,10 +12,15 @@ public class FAButton : MonoBehaviour {
 		sprite.gameObject.SetActive(true);
         script.turnMusicOff();
 
-		LoadGame();
+        LoadGame();
 	}
 	
 	public void LoadGame() {
 		Application.LoadLevel("Fast Apples");
 	}
+
+    private void killLoadScreen()
+    {
+        sprite.gameObject.SetActive(false);
+    }
 }

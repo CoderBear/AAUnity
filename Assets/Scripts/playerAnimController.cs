@@ -79,10 +79,10 @@ public class playerAnimController : MonoBehaviour {
 			}
 			
 			if(!hasflipped && flipped){
-				anim.FlipX();
+				anim.FlipX = true;
 				hasflipped = !hasflipped;
 			} else if(hasflipped && !flipped) {
-				anim.FlipX();
+                anim.FlipX = false;
 				hasflipped = !hasflipped;
 			}
 		}

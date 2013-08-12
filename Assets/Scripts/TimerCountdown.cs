@@ -86,10 +86,10 @@ public class TimerCountdown : MonoBehaviour
 		if (timerActive) {
 			switch (colliderscript.GAME_MODE) {
 			case AppleCollider.GAME_MODES.FAST_APPLES:
-				InvokeRepeating ("InitiateCountdown", 0.0f, 1.0f);
+				InvokeRepeating ("InitiateCountdown", 1.0f, 1.0f);
 				break;
 			case AppleCollider.GAME_MODES.PERFECTIONIST:
-				InvokeRepeating ("TimeGame", 0.0f, 1.0f);
+				InvokeRepeating ("TimeGame", 1.0f, 1.0f);
 				break;
 			}
 		}

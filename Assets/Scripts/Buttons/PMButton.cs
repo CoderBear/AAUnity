@@ -19,4 +19,9 @@ public class PMButton : MonoBehaviour {
 	public void LoadGame() {
 		Application.LoadLevel("Perfectionist");
 	}
+
+    private void killLoadScreen()
+    {
+        sprite.gameObject.SetActive(false);
+    }
 }
